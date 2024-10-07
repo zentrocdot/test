@@ -82,10 +82,7 @@ class AspectRatioScript(scripts.Script):
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ):
                 # Aspect ratio buttons line 1.
-                btns = [
-                    ARButton(ar=1.0, value="1:1")
-                    #((1.0, "1:1"))
-                ]
+                btns = [ARButton(ar=1.0, value="1:1")]
                 with contextlib.suppress(AttributeError):
                     for b in btns:
                         if is_img2img:
