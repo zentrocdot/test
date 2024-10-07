@@ -78,7 +78,7 @@ class AspectRatioScript(scripts.Script):
         with gr.Column(
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
-          with gr.Accordion(open=False, label='常用SD1.5宽高比例', visible=False): 
+          with gr.Accordion(open=True, label='SD1.5', visible=True): 
             
             with gr.Row(
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
