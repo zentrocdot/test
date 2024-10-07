@@ -78,7 +78,6 @@ class AspectRatioScript(scripts.Script):
         with gr.Column(
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
-
           
             with gr.Row(
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
@@ -86,9 +85,7 @@ class AspectRatioScript(scripts.Script):
                 # Aspect ratio buttons line 1.
                 btns = [
                     ARButton(ar=ar, value=label)
-                    for ar, label in (
-                        self.ar_reset
-                    )
+                    for ar, label in self.ar_reset
                 ]
                 with contextlib.suppress(AttributeError):
                     for b in btns:
