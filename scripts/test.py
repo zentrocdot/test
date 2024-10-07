@@ -85,8 +85,8 @@ class AspectRatioScript(scripts.Script):
                 # Aspect ratio buttons line 1.
                 btns = [
                     ARButton(ar=ar, value=label),
-                    ar = self.ar_reset[0],
-                    label = self.ar_reset[1]
+                    self.ar_reset[0],
+                    self.ar_reset[1]
                 ]
                 with contextlib.suppress(AttributeError):
                     for b in btns:
