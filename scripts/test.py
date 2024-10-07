@@ -28,7 +28,8 @@ class ARButton(ToolButton):
         super().__init__(**kwargs)
         self.ar = ar
 
-    def apply(self, w, h):
+    #def apply(self, w, h):
+    def apply(self):
         '''Class method apply.'''
         # Initialise height and width.
         w = 512
@@ -46,9 +47,9 @@ class ARButton(ToolButton):
         # Return the list with width and height.
         return retlst
 
-    def reset(self, w, h):
-        '''Class method reset.'''
-        return [self.res, self.res]
+    #def reset(self, w, h):
+    #    '''Class method reset.'''
+    #    return [self.res, self.res]
 
 # Define class AspectRatioScript.
 class AspectRatioScript(scripts.Script):
