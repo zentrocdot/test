@@ -54,7 +54,6 @@ class ARButton(ToolButton):
 class AspectRatioScript(scripts.Script):
     '''Class for selecting the aspect ratio.'''
     def __init__(self, ar=1.0, **kwargs):
-        #self.ar_reset = (1.0, "1:1")
         self.ar_values_0 = (1.0, 2.0, 3/2, 4/3, 5/3, 5/4, 6/5,
                             7/5, 14/9, 15/9, 16/9, 16/10)
         self.ar_values_1 = (1.0, 0.5, 2/3, 3/4, 3/5, 4/5, 5/6,
@@ -84,8 +83,8 @@ class AspectRatioScript(scripts.Script):
             ):
                 # Aspect ratio buttons line 1.
                 btns = [
-                    ARButton(ar=ar, value=label)
-                    ((1.0, "1:1"))
+                    ARButton(ar=1.0, value="1:1")
+                    #((1.0, "1:1"))
                 ]
                 with contextlib.suppress(AttributeError):
                     for b in btns:
