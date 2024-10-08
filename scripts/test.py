@@ -90,7 +90,7 @@ class AspectRatioScript(scripts.Script):
                     y = thisdict[x]
                     print(y)
                     b = [AspectRatioButton(ar=y, value=x)]
-                    #b.apply
+                    b.apply
                     #(AspectRatioButton(ar=y, value=x)).apply                        
                     return [x, thisdict[x]]
                 use_prompt_button.click(
@@ -148,8 +148,6 @@ class AspectRatioScript(scripts.Script):
                 btns = [
                     AspectRatioButton(ar=ar, value=label)
                     for ar, label in zip(
-                        #self.ar_values_1,
-                        #self.ar_labels_1
                         _ar_values_1,
                         _ar_labels_1
                     )
