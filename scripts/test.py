@@ -100,7 +100,7 @@ class AspectRatioScript(scripts.Script):
                         return btn.apply(512, 512)
                     btn.click(
                         combine,
-                        inputs=[ardd]
+                        inputs=[ardd],
                         outputs=resolution
                     )
     
