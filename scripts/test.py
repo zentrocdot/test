@@ -87,23 +87,22 @@ class AspectRatioScript(scripts.Script):
         with gr.Column(
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
-          #with InputAccordion(False, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as enabled:
-          with InputAccordion(True, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as disabled:
-            ardd = gr.Dropdown(arlist, label="Aspect Ratios", value="1.0")
-            btn = AspectRatioButton(ar=1.0, value="DO")
-            with contextlib.suppress(AttributeError):
-                if is_img2img:
-                    resolution = [self.i2i_w, self.i2i_h]
-                else:
-                    resolution = [self.t2i_w, self.t2i_h]
-                def combine(x):      
-                    btn.ar = ardict[x]
-                    return btn.apply(512, 512)
-                btn.click(
+            with InputAccordion(False, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as enabled:
+                ardd = gr.Dropdown(arlist, label="Aspect Ratios", value="1.0")
+                btn = AspectRatioButton(ar=1.0, value="DO")
+                with contextlib.suppress(AttributeError):
+                    if is_img2img:
+                        resolution = [self.i2i_w, self.i2i_h]
+                    else:
+                        resolution = [self.t2i_w, self.t2i_h]
+                    def combine(x):      
+                        btn.ar = ardict[x]
+                        return btn.apply(512, 512)
+                    btn.click(
                         combine,
                         inputs=[ardd],
                         outputs=resolution
-                )
+                    )
     
     # Class method after_component.
     # This is to generalize the code. Detect if one is in txt2img tab or img2img tab, and then
