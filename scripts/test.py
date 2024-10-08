@@ -99,7 +99,7 @@ class AspectRatioScript(scripts.Script):
                 #    return [x, thisdict[x]]
                 b.click(
                         combine,
-                        inputs=[thisdict[ardd]],
+                        inputs=[ardd],
                         outputs=resolution
                 )
             
