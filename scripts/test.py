@@ -96,7 +96,7 @@ class AspectRatioScript(scripts.Script):
                 #   #b = [AspectRatioButton(ar=y, value=x)]
                 #   b.apply
                 #    #(AspectRatioButton(ar=y, value=x)).apply                        
-                #    return [x, thisdict[x]]
+                    return [x, thisdict[x]]
                 b.click(
                         combine,
                         inputs=[ardd],
