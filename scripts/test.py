@@ -34,7 +34,7 @@ ardict = {"1:1   ": 1.0,  "1.19:1": 1.19, "1.25:1": 1.25, "1.30:1": 1.30,
           "1.33:1": 1.33, "1.37:1": 1.37, "1.41:1": 1.41, "1.50:1": 1.50, 
           "1.59:1": 1.59, "1.60:1": 1.60, "1.66:1": 1.66, "1.75:1": 1.75, 
           "1.77:1": 1.77, "1.78:1": 1.78, "1.85:1": 1.85, "2.35:1": 2.35,
-          "2.37:1": 2.37} 
+          "2.37:1": 2.37, "2.38:1": 2.38, "2.39:1": 2.39, "2.40:1": 2.40} 
 
 arlist = []
 
@@ -56,7 +56,6 @@ class  AspectRatioButton(ToolButton):
         # Initialise height and width.
         w = _width
         h = _height
-        print(self.ar)
         # Calculate new width and height.
         if self.ar > 1.0:  # fixed height, change width
             w = self.ar * h
@@ -98,9 +97,6 @@ class AspectRatioScript(scripts.Script):
                 else:
                     resolution = [self.t2i_w, self.t2i_h]
                 def combine(x):
-                    print(x)
-                    #y = ardict[x]
-                    #bb.ar = y
                     bb.ar = float(x)
                     return bb.apply(512, 512)
                 bb.click(
@@ -108,7 +104,7 @@ class AspectRatioScript(scripts.Script):
                         inputs=[ardd],
                         outputs=resolution
                 )
-            
+       
           with gr.Accordion(open=True, label='SD1.5', visible=True): 
             
             with gr.Row(
