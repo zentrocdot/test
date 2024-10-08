@@ -93,7 +93,7 @@ class AspectRatioScript(scripts.Script):
                     print(x)
                     y = thisdict[x]
                     print(y)                      
-                    return bb.apply(w=512, h=512)
+                    return bb.apply
                 bb.click(
                         combine,
                         inputs=[ardd],
