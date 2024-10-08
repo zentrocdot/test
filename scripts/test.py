@@ -83,7 +83,7 @@ class AspectRatioScript(scripts.Script):
           with InputAccordion(False, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as enabled:
             ar_dd = gr.Dropdown(
                 ["1.19:1", "1.25:1"], label="Aspect Ratio", value="aspectratio")
-
+            use_prompt_button = gr.Button("Use Aspect Ratio", variant="primary", elem_id="use-prompt-button", tooltip="")
             btns = [AspectRatioButton(ar=1.0, value="1:1")]
             with contextlib.suppress(AttributeError):
                 for b in btns:
