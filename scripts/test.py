@@ -45,6 +45,8 @@ class  AspectRatioButton(ToolButton):
         # Initialise height and width.
         w = _width
         h = _height
+        print(ar)
+        print(w, h)
         # Calculate new width and height.
         if self.ar > 1.0:  # fixed height, change width
             w = self.ar * h
@@ -96,7 +98,7 @@ class AspectRatioScript(scripts.Script):
                 #    return [x, thisdict[x]]
                 b.click(
                         b.apply,
-                        inputs=[ardd],
+                        inputs=[thisdict[ardd]],
                         outputs=resolution
                 )
             
