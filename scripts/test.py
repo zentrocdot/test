@@ -90,7 +90,8 @@ class AspectRatioScript(scripts.Script):
                     resolution = [self.i2i_w, self.i2i_h]
                 else:
                     resolution = [self.t2i_w, self.t2i_h]
-                ardd = "1.19:1"  inputs[0].select(fn=rs_change, inputs=inputs[0], outputs=inputs[1])
+                #ardd = "1.19:1" 
+                #inputs[0].select(fn=rs_change, inputs=inputs[0], outputs=inputs[1])
                 #b.click(dummy, dd, tb)
                 #def test():
                 #    return {t1: gr.update(visible=True, value="hi")}
