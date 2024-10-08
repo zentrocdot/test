@@ -77,9 +77,9 @@ class AspectRatioScript(scripts.Script):
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
           with InputAccordion(False, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as enabled:
-            ardd = gr.Dropdown(["1.19:1", "1.25:1"], label="Aspect Ratios", value="")
+            ardd = gr.Dropdown(["1.19:1", "1.25:1", "1.3:1"], label="Aspect Ratios", value="")
             use_prompt_button = gr.Button("Apply", variant="primary", elem_id="use-prompt-button", tooltip="")
-            thisdict = {"1.19:1": 1.19, "1.25:1": 1.25}
+            thisdict = {"1.19:1": 1.19, "1.25:1": 1.25, "1.3:1": 1.3}
             with contextlib.suppress(AttributeError):
                 if is_img2img:
                     resolution = [self.i2i_w, self.i2i_h]
