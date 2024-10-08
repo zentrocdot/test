@@ -56,8 +56,8 @@ class  AspectRatioButton(ToolButton):
         # Initialise height and width.
         w = _width
         h = _height
-        if isinstance(self.ar, str):
-            self.ar = ardict[self.ar]
+        #if isinstance(self.ar, str):
+        #    self.ar = ardict[self.ar]
         # Calculate new width and height.
         if self.ar > 1.0:  # fixed height, change width
             w = self.ar * h
