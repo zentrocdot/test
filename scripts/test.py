@@ -57,7 +57,7 @@ class  AspectRatioButton(ToolButton):
         w = _width
         h = _height
         print(self.ar)   
-        if isinstance(self.ar, str):
+        '''if isinstance(self.ar, str):
              try:
                  self.ar = float(self.ar)
              except:
@@ -66,7 +66,7 @@ class  AspectRatioButton(ToolButton):
                  self.ar = ardict[self.ar]
              except:  
                  pass   
-        print(self.ar)       
+        print(self.ar)'''       
         # Calculate new width and height.
         if self.ar > 1.0:  # fixed height, change width
             w = self.ar * h
@@ -111,7 +111,7 @@ class AspectRatioScript(scripts.Script):
                 def combine(x):
                     #y = ardict[x]
                     #bb.ar = y
-                    bb.ar = x
+                    bb.ar = float(x)
                     return bb.apply
                 bb.click(
                         combine,
