@@ -96,8 +96,8 @@ class AspectRatioScript(scripts.Script):
                     return [x, thisdict[x]]
                 use_prompt_button.click(
                         combine,
-                        inputs=[ardd]
-                        #outputs=resolution
+                        inputs=[ardd],
+                        outputs=resolution
                 )
             
           with gr.Accordion(open=True, label='SD1.5', visible=True): 
