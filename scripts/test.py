@@ -93,7 +93,10 @@ class AspectRatioScript(scripts.Script):
                 def combine(x):
                     print(x)
                     print(thisdict[x])
-                    #(AspectRatioButton(ar=thisdict[x], value="1:1")).apply                        
+                    #b = [AspectRatioButton(ar=1.0, value="1:1")]
+                    #b.apply
+                    (AspectRatioButton(ar=thisdict[x], value="1:1")).apply                        
+                    return [x, thisdict[x]]
                 use_prompt_button.click(
                         combine,
                         inputs=[ardd],
@@ -126,8 +129,6 @@ class AspectRatioScript(scripts.Script):
                 btns = [
                     AspectRatioButton(ar=ar, value=label)
                     for ar, label in zip(
-                        #self.ar_values_0,
-                        #elf.ar_labels_0
                         _ar_values_0,
                         _ar_labels_0
                     )
