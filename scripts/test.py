@@ -105,7 +105,7 @@ class AspectRatioScript(scripts.Script):
                         outputs=resolution
                 )
        
-          with gr.Accordion(open=True, label='SD1.5', visible=True): 
+          '''with gr.Accordion(open=True, label='SD1.5', visible=True): 
             
             with gr.Row(
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
@@ -168,7 +168,7 @@ class AspectRatioScript(scripts.Script):
                             b.apply,
                             inputs=resolution,
                             outputs=resolution
-                        )
+                        )'''
     
     # Class method after_component.
     # to generalize the code, detect if we are in txt2img tab or img2img tab, and then use the corresponding self variables
