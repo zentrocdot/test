@@ -88,7 +88,8 @@ class AspectRatioScript(scripts.Script):
                     resolution = [self.i2i_w, self.i2i_h]
                 else:
                     resolution = [self.t2i_w, self.t2i_h]
-                #def combine(x):
+                def combine(x):
+                     b.apply
                 #    print(x)
                 #    y = thisdict[x]
                 # #   print(y)
@@ -97,7 +98,7 @@ class AspectRatioScript(scripts.Script):
                 #    #(AspectRatioButton(ar=y, value=x)).apply                        
                 #    return [x, thisdict[x]]
                 b.click(
-                        b.apply,
+                        combine,
                         inputs=[thisdict[ardd]],
                         outputs=resolution
                 )
