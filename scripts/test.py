@@ -22,7 +22,7 @@ from modules.ui_components import ToolButton, InputAccordion
 _width = 512
 _height = 512
 
-# Define module dict.
+# Define the module aspect ratio dictionary.
 ardict = {"1:1   ": 1.00, "1.19:1": 1.19, "1.25:1": 1.25, "1.30:1": 1.30, 
           "1.33:1": 1.33, "1.37:1": 1.37, "1.41:1": 1.41, "1.50:1": 1.50, 
           "1.59:1": 1.59, "1.60:1": 1.60, "1.66:1": 1.66, "1.75:1": 1.75, 
@@ -33,8 +33,10 @@ ardict = {"1:1   ": 1.00, "1.19:1": 1.19, "1.25:1": 1.25, "1.30:1": 1.30,
           "18:9  ": 2.00, "19.5:9": 2.17, "20:9  ": 2.22, "21:9  ": 2.33,
           "22:9  ": 2.44, "32:9  ": 3.56, "36:10 ": 3.60} 
 
-# Create list.
+# Declare the aspect ratio list.
 arlist = []
+
+# Create the aspect ratio list.
 for key, value in ardict.items():
     arlist.append(value)  
 
@@ -85,7 +87,8 @@ class AspectRatioScript(scripts.Script):
         with gr.Column(
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
-          with InputAccordion(False, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as enabled:
+          #with InputAccordion(False, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as enabled:
+          with InputAccordion(open=True, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")):
             ardd = gr.Dropdown(arlist, label="Aspect Ratios", value="")
             bb = AspectRatioButton(ar=1.0, value="DO")
             with contextlib.suppress(AttributeError):
