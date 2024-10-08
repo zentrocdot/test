@@ -91,7 +91,7 @@ class AspectRatioScript(scripts.Script):
                 else:
                     resolution = [self.t2i_w, self.t2i_h]
                 use_prompt_button.click(
-                        use_prompt_button.apply,
+                        ardd.apply,
                         inputs=resolution,
                         outputs=resolution
                 )
