@@ -1,6 +1,7 @@
-'''Extension for AUTOMATIC1111 called sd-webui-predefined_aspect_ratios.
+'''sd-webui-uncommon_aspect_ratios
+Extension for AUTOMATIC1111.
 
-Version 0.0.0.2
+Version 0.0.0.1
 '''
 # pylint: disable=invalid-name
 # pylint: disable=too-few-public-methods
