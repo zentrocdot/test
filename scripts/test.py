@@ -99,6 +99,7 @@ class AspectRatioScript(scripts.Script):
                 else:
                     resolution = [self.t2i_w, self.t2i_h]
                 def combine(x):
+                    print(x)
                     #y = ardict[x]
                     #bb.ar = y
                     bb.ar = float(x)
