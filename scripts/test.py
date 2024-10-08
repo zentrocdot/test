@@ -91,17 +91,17 @@ class AspectRatioScript(scripts.Script):
                 ardd = gr.Dropdown(arlist, label="Aspect Ratios", value="1.0")
                 btn = AspectRatioButton(ar=1.0, value="DO")
                 with contextlib.suppress(AttributeError):
-                    if is_img2img:
-                        resolution = [self.i2i_w, self.i2i_h]
-                    else:
-                        resolution = [self.t2i_w, self.t2i_h]
+                    #if is_img2img:
+                    #    resolution = [self.i2i_w, self.i2i_h]
+                    #else:
+                    #    resolution = [self.t2i_w, self.t2i_h]
                     def combine(x):      
                         btn.ar = ardict[x]
                         return btn.apply(512, 512)
                     btn.click(
                         combine,
-                        inputs=[ardd],
-                        outputs=resolution
+                        inputs=[ardd]
+                        #outputs=resolution
                     )
     
     # Class method after_component.
