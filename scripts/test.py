@@ -97,8 +97,9 @@ class AspectRatioScript(scripts.Script):
                 else:
                     resolution = [self.t2i_w, self.t2i_h]
                 def combine(x):
-                    y = ardict[x]
-                    bb.ar = y                    
+                    #y = ardict[x]
+                    #bb.ar = y
+                    bb.ar = x
                     return bb.apply(y, y)
                 bb.click(
                         combine,
