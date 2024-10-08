@@ -85,16 +85,22 @@ class AspectRatioScript(scripts.Script):
                 ["1.19:1", "1.25:1"], label="Aspect Ratios", value="")
             use_prompt_button = gr.Button("Apply", variant="primary", elem_id="use-prompt-button", tooltip="")
             thisdict = {"1.19:1": 1.19, "1.25:1": 1.25}
-            
             with contextlib.suppress(AttributeError):
                 if is_img2img:
                     resolution = [self.i2i_w, self.i2i_h]
                 else:
                     resolution = [self.t2i_w, self.t2i_h]
-                ardd = "1.19:1"  
+                ardd = "1.19:1"  inputs[0].select(fn=rs_change, inputs=inputs[0], outputs=inputs[1])
+                #b.click(dummy, dd, tb)
+                #def test():
+                #    return {t1: gr.update(visible=True, value="hi")}
+                def combine(ardd):
+                    (AspectRatioButton(ar=thisdict[ardd], value="")).apply,
+                    #print(input1)                
+                #btn.click(combine, inputs=[input1])             
                 use_prompt_button.click(
-                        (AspectRatioButton(ar=thisdict[ardd], value="")).apply,
-                        inputs=resolution,
+                        combine,
+                        inputs=ardd,
                         outputs=resolution
                 )
             
