@@ -89,16 +89,16 @@ class AspectRatioScript(scripts.Script):
         ):
           #with InputAccordion(False, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as enabled:
           with InputAccordion(True, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as disabled:
-            ardd = gr.Dropdown(arlist, label="Aspect Ratios", value="")
-            bb = AspectRatioButton(ar=1.0, value="DO")
+            ardd = gr.Dropdown(arlist, label="Aspect Ratios", value="1.0")
+            btn = AspectRatioButton(ar=1.0, value="DO")
             with contextlib.suppress(AttributeError):
                 if is_img2img:
                     resolution = [self.i2i_w, self.i2i_h]
                 else:
                     resolution = [self.t2i_w, self.t2i_h]
                 def combine(x):      
-                    bb.ar = ardict[x]
-                    return bb.apply(512, 512)
+                    btn.ar = ardict[x]
+                    return btn.apply(512, 512)
                 bb.click(
                         combine,
                         inputs=[ardd],
