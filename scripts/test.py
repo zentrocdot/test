@@ -88,7 +88,7 @@ class AspectRatioScript(scripts.Script):
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
           #with InputAccordion(False, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as enabled:
-          with InputAccordion(open=True, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as disabled:
+          with InputAccordion(True, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as disabled:
             ardd = gr.Dropdown(arlist, label="Aspect Ratios", value="")
             bb = AspectRatioButton(ar=1.0, value="DO")
             with contextlib.suppress(AttributeError):
