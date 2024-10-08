@@ -90,9 +90,10 @@ class AspectRatioScript(scripts.Script):
         with gr.Column(
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
-          with InputAccordion(False, label="Ranbooru", elem_id=self.elem_id("ra_enable")) as enabled:
+          with InputAccordion(False, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as enabled:
             booru = gr.Dropdown(
-                ["gelbooru", "rule34", "safebooru", "danbooru", "konachan", 'yande.re', 'aibooru', 'xbooru', 'e621'], label="Booru", value="gelbooru")
+                ["1.19:1", "1.25:1"], label="AR", value="ar")
+            
           with gr.Accordion(open=True, label='SD1.5', visible=True): 
             
             with gr.Row(
