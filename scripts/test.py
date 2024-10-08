@@ -102,7 +102,7 @@ class AspectRatioScript(scripts.Script):
                     else:
                         resolution = [self.t2i_w, self.t2i_h]
                     b.click(
-                        b.apply(1.0, 10, 10),
+                        b.apply(1.0, [10, 10]),
                         inputs=resolution,
                         outputs=resolution
                     )
