@@ -106,7 +106,7 @@ class AspectRatioScript(scripts.Script):
                 bb.click(
                         combine,
                         inputs=[ardd]
-                        #outputs=resolution
+                        outputs=resolution
                 )
             
           with gr.Accordion(open=True, label='SD1.5', visible=True): 
