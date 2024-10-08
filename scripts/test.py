@@ -30,6 +30,8 @@ _ar_labels_0 = ("1:1", "2:1", "3:2", "4:3", "5:3", "5:4", "6:5",
 _ar_labels_1 = ("1:1", "1:2", "2:3", "3:4", "3:5", "4:5", "5:6",
                             "5:7", "9:14", "9:15", "9:16", "10:16")
 
+thisdict = {"1.19:1": 1.19, "1.25:1": 1.25, "1.3:1": 1.3}
+
 # Define class AspectRatioButton.
 class  AspectRatioButton(ToolButton):
     '''Class for calculating the new Width and new Height for
@@ -45,6 +47,8 @@ class  AspectRatioButton(ToolButton):
         # Initialise height and width.
         w = _width
         h = _height
+        if isinstance(self.ar, str):
+            self.ar = thisdict[self.ar]
         print(self.ar)
         print(w, h)
         # Calculate new width and height.
@@ -82,7 +86,7 @@ class AspectRatioScript(scripts.Script):
             ardd = gr.Dropdown(["1.19:1", "1.25:1", "1.3:1"], label="Aspect Ratios", value="")
             #use_prompt_button = gr.Button("Apply", variant="primary", elem_id="use-prompt-button", tooltip="")
             bb = AspectRatioButton(ar=1.0, value="Apply")
-            thisdict = {"1.19:1": 1.19, "1.25:1": 1.25, "1.3:1": 1.3}
+            
             with contextlib.suppress(AttributeError):
                 if is_img2img:
                     resolution = [self.i2i_w, self.i2i_h]
