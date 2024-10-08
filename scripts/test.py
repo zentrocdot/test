@@ -99,7 +99,7 @@ class AspectRatioScript(scripts.Script):
                 def combine(x):      
                     btn.ar = ardict[x]
                     return btn.apply(512, 512)
-                bb.click(
+                btn.click(
                         combine,
                         inputs=[ardd],
                         outputs=resolution
