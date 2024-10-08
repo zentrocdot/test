@@ -21,23 +21,20 @@ from modules.ui_components import ToolButton, InputAccordion
 # Define module variables.
 _width = 512
 _height = 512
-_ar_values_0 = (1.0, 2.0, 3/2, 4/3, 5/3, 5/4, 6/5,
-                 7/5, 14/9, 15/9, 16/9, 16/10)
-_ar_values_1 = (1.0, 0.5, 2/3, 3/4, 3/5, 4/5, 5/6,
-                            5/7, 9/14, 9/15, 9/16, 10/16)
-_ar_labels_0 = ("1:1", "2:1", "3:2", "4:3", "5:3", "5:4", "6:5",
-                            "7:5", "14:9", "15:9", "16:9", "16:10")
-_ar_labels_1 = ("1:1", "1:2", "2:3", "3:4", "3:5", "4:5", "5:6",
-                            "5:7", "9:14", "9:15", "9:16", "10:16")
 
-ardict = {"1:1   ": 1.0,  "1.19:1": 1.19, "1.25:1": 1.25, "1.30:1": 1.30, 
+# Define module dict.
+ardict = {"1:1   ": 1.00, "1.19:1": 1.19, "1.25:1": 1.25, "1.30:1": 1.30, 
           "1.33:1": 1.33, "1.37:1": 1.37, "1.41:1": 1.41, "1.50:1": 1.50, 
           "1.59:1": 1.59, "1.60:1": 1.60, "1.66:1": 1.66, "1.75:1": 1.75, 
           "1.77:1": 1.77, "1.78:1": 1.78, "1.85:1": 1.85, "2.35:1": 2.35,
-          "2.37:1": 2.37, "2.38:1": 2.38, "2.39:1": 2.39, "2.40:1": 2.40} 
+          "2.37:1": 2.37, "2.38:1": 2.38, "2.39:1": 2.39, "2.40:1": 2.40,
+          "2.75:1": 2.75, "2.76:1": 2.76, "3.2:1 ": 3.20, "3.55:1": 3.55,
+          "3.58:1": 3.58, "3.6:1 ": 3.60, "12:5  ": 2.40, "18:5  ": 3.60,
+          "18:9  ": 2.00, "19.5:9": 2.17, "20:9  ": 2.22, "21:9  ": 2.33,
+          "22:9  ": 2.44, "32:9  ": 3.56, "36:10 ": 3.60} 
 
+# Create list.
 arlist = []
-
 for key, value in ardict.items():
     arlist.append(value)  
 
@@ -104,75 +101,10 @@ class AspectRatioScript(scripts.Script):
                         inputs=[ardd],
                         outputs=resolution
                 )
-       
-          '''with gr.Accordion(open=True, label='SD1.5', visible=True): 
-            
-            with gr.Row(
-                elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
-            ):
-                # Aspect ratio buttons line 1.
-                btns = [AspectRatioButton(ar=1.0, value="1:1")]
-                with contextlib.suppress(AttributeError):
-                    for b in btns:
-                        if is_img2img:
-                            resolution = [self.i2i_w, self.i2i_h]
-                        else:
-                            resolution = [self.t2i_w, self.t2i_h]
-                        b.click(
-                            b.apply,
-                            inputs=resolution,
-                            outputs=resolution
-                        )
-            # Loop over the row 1.
-            with gr.Row(
-                elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
-            ):
-                # Aspect ratio buttons line 1.
-                btns = [
-                    AspectRatioButton(ar=ar, value=label)
-                    for ar, label in zip(
-                        _ar_values_0,
-                        _ar_labels_0
-                    )
-                ]
-                with contextlib.suppress(AttributeError):
-                    for b in btns:
-                        if is_img2img:
-                            resolution = [self.i2i_w, self.i2i_h]
-                        else:
-                            resolution = [self.t2i_w, self.t2i_h]
-                        b.click(
-                            b.apply,
-                            inputs=resolution,
-                            outputs=resolution
-                        )
-            # Loop over the row 2.
-            with gr.Row(
-                elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
-            ):
-                # Aspect ratio buttons line 2.
-                btns = [
-                    AspectRatioButton(ar=ar, value=label)
-                    for ar, label in zip(
-                        _ar_values_1,
-                        _ar_labels_1
-                    )
-                ]
-                with contextlib.suppress(AttributeError):
-                    for b in btns:
-                        if is_img2img:
-                            resolution = [self.i2i_w, self.i2i_h]
-                        else:
-                            resolution = [self.t2i_w, self.t2i_h]
-                        b.click(
-                            b.apply,
-                            inputs=resolution,
-                            outputs=resolution
-                        )'''
     
     # Class method after_component.
-    # to generalize the code, detect if we are in txt2img tab or img2img tab, and then use the corresponding self variables
-    # so we can use the same code for both tabs
+    # To generalize the code, detect if we are in txt2img tab or img2img tab, and then
+    # use the corresponding self variables so we can use the same code for both tabs.
     def after_component(self, component, **kwargs):
         '''Class method after_component.'''
         if kwargs.get("elem_id") == "txt2img_width":
