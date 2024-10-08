@@ -92,7 +92,8 @@ class AspectRatioScript(scripts.Script):
                 #ardd = "1.19:1" 
                 def combine(x):
                     print(x)
-                    print(thisdict[x])
+                    y = thisdict[x]
+                    print(y)
                     #b = [AspectRatioButton(ar=1.0, value="1:1")]
                     #b.apply
                     (AspectRatioButton(ar=thisdict[x], value="1:1")).apply                        
