@@ -16,7 +16,7 @@ Version 0.0.0.2
 import contextlib
 import gradio as gr
 import modules.scripts as scripts
-from modules.ui_components import ToolButton
+from modules.ui_components import ToolButton, InputAccordion
 
 # Define module variables.
 _width = 512
