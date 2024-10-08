@@ -35,7 +35,7 @@ ardict = {"1.19:1": 1.19, "1.25:1": 1.25, "1.3:1": 1.3, "1.33:1": 1.33, "1.37:1"
 arlist = []
 
 for key, value in ardict.items():
-    arlist.appent(value)  
+    arlist.append(value)  
 
 # Define class AspectRatioButton.
 class  AspectRatioButton(ToolButton):
@@ -54,8 +54,8 @@ class  AspectRatioButton(ToolButton):
         h = _height
         if isinstance(self.ar, str):
             self.ar = thisdict[self.ar]
-        print(self.ar)
-        print(w, h)
+        #print(self.ar)
+        #print(w, h)
         # Calculate new width and height.
         if self.ar > 1.0:  # fixed height, change width
             w = self.ar * h
@@ -98,10 +98,10 @@ class AspectRatioScript(scripts.Script):
                 else:
                     resolution = [self.t2i_w, self.t2i_h]
                 def combine(x):
-                    print(x)
+                    #print(x)
                     y = thisdict[x]
                     bb.ar = y
-                    print(y)                      
+                    #print(y)                      
                     return bb.apply(y, y)
                 bb.click(
                         combine,
