@@ -58,10 +58,6 @@ class  AspectRatioButton(ToolButton):
         # Return the list with width and height.
         return retlst
 
-    #def reset(self, w, h):
-    #    '''Class method reset.'''
-    #    return [self.res, self.res]
-
 # Define class AspectRatioScript.
 class AspectRatioScript(scripts.Script):
     '''Class for selecting the aspect ratio.'''
@@ -96,7 +92,7 @@ class AspectRatioScript(scripts.Script):
                     print(y)
                     #b = [AspectRatioButton(ar=1.0, value="1:1")]
                     #b.apply
-                    (AspectRatioButton(ar=thisdict[x], value="1:1")).apply                        
+                    (AspectRatioButton(ar=y, value=x)).apply                        
                     return [x, thisdict[x]]
                 use_prompt_button.click(
                         combine,
