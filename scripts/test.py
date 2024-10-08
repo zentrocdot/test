@@ -110,7 +110,7 @@ class AspectRatioScript(scripts.Script):
                     #y = ardict[x]
                     #bb.ar = y
                     bb.ar = x
-                    return bb.apply(x, x)
+                    return bb.apply
                 bb.click(
                         combine,
                         inputs=[ardd]
