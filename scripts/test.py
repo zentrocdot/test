@@ -30,7 +30,12 @@ _ar_labels_0 = ("1:1", "2:1", "3:2", "4:3", "5:3", "5:4", "6:5",
 _ar_labels_1 = ("1:1", "1:2", "2:3", "3:4", "3:5", "4:5", "5:6",
                             "5:7", "9:14", "9:15", "9:16", "10:16")
 
-thisdict = {"1.19:1": 1.19, "1.25:1": 1.25, "1.3:1": 1.3}
+ardict = {"1.19:1": 1.19, "1.25:1": 1.25, "1.3:1": 1.3, "1.33:1": 1.33, "1.37:1": 1.37}
+
+arlist = []
+
+for key, value in ardict.items():
+    arlist.appent(value)  
 
 # Define class AspectRatioButton.
 class  AspectRatioButton(ToolButton):
@@ -83,7 +88,7 @@ class AspectRatioScript(scripts.Script):
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
           with InputAccordion(False, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as enabled:
-            ardd = gr.Dropdown(["1.19:1", "1.25:1", "1.3:1"], label="Aspect Ratios", value="")
+            ardd = gr.Dropdown(arlist, label="Aspect Ratios", value="")
             #use_prompt_button = gr.Button("Apply", variant="primary", elem_id="use-prompt-button", tooltip="")
             bb = AspectRatioButton(ar=1.0, value="Apply")
             
@@ -100,8 +105,8 @@ class AspectRatioScript(scripts.Script):
                     return bb.apply(y, y)
                 bb.click(
                         combine,
-                        inputs=[ardd],
-                        outputs=resolution
+                        inputs=[ardd]
+                        #outputs=resolution
                 )
             
           with gr.Accordion(open=True, label='SD1.5', visible=True): 
