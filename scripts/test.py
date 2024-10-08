@@ -91,8 +91,7 @@ class AspectRatioScript(scripts.Script):
         ):
           with InputAccordion(False, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as enabled:
             ardd = gr.Dropdown(arlist, label="Aspect Ratios", value="")
-            #use_prompt_button = gr.Button("Apply", variant="primary", elem_id="use-prompt-button", tooltip="")
-            bb = AspectRatioButton(ar=1.0, value="Apply")
+            bb = AspectRatioButton(ar=1.0, value="DO")
             with contextlib.suppress(AttributeError):
                 if is_img2img:
                     resolution = [self.i2i_w, self.i2i_h]
