@@ -86,6 +86,10 @@ class AspectRatioScript(scripts.Script):
             use_prompt_button = gr.Button("Use Aspect Ratio", variant="primary", elem_id="use-prompt-button", tooltip="")
             #btns = [AspectRatioButton(ar=1.0, value="1:1")]
             with contextlib.suppress(AttributeError):
+                if is_img2img:
+                    resolution = [self.i2i_w, self.i2i_h]
+                else:
+                    resolution = [self.t2i_w, self.t2i_h]
                 use_prompt_button.click(
                         [1.0, "1:1"],
                         inputs=resolution,
