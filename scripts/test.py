@@ -91,8 +91,9 @@ class AspectRatioScript(scripts.Script):
                     resolution = [self.t2i_w, self.t2i_h]
                 #ardd = "1.19:1" 
                 def combine(x):
-                    print(x) 
-                    (AspectRatioButton(ar=thisdict[x], value="")).apply,                         
+                    print(x)
+                    print(thisdict[x])
+                    (AspectRatioButton(ar=thisdict[x], value="")).apply                        
                 use_prompt_button.click(
                         combine,
                         inputs=[ardd],
