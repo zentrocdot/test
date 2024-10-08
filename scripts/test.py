@@ -87,7 +87,7 @@ class AspectRatioScript(scripts.Script):
             #btns = [AspectRatioButton(ar=1.0, value="1:1")]
             with contextlib.suppress(AttributeError):
                 use_prompt_button.click(
-                        b.apply,
+                        [1.0, "1:1"],
                         inputs=resolution,
                         outputs=resolution
                 )
