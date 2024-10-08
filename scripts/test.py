@@ -18,8 +18,20 @@ import gradio as gr
 import modules.scripts as scripts
 from modules.ui_components import ToolButton
 
-# Define class ARButton.
-class ARButton(ToolButton):
+# Define module variables.
+_width = 512
+_height = 512
+_ar_values_0 = (1.0, 2.0, 3/2, 4/3, 5/3, 5/4, 6/5,
+                 7/5, 14/9, 15/9, 16/9, 16/10)
+_ar_values_1 = (1.0, 0.5, 2/3, 3/4, 3/5, 4/5, 5/6,
+                            5/7, 9/14, 9/15, 9/16, 10/16)
+_ar_labels_0 = ("1:1", "2:1", "3:2", "4:3", "5:3", "5:4", "6:5",
+                            "7:5", "14:9", "15:9", "16:9", "16:10")
+_ar_labels_1 = ("1:1", "1:2", "2:3", "3:4", "3:5", "4:5", "5:6",
+                            "5:7", "9:14", "9:15", "9:16", "10:16")
+
+# Define class AspectRatioButton.
+class  AspectRatioButton(ToolButton):
     '''Class for calculating the new Width and new Height for
        use in the web UI from the chosen aspect ratio.
     '''
@@ -32,8 +44,8 @@ class ARButton(ToolButton):
     def apply(self):
         '''Class method apply.'''
         # Initialise height and width.
-        w = 512
-        h = 512
+        w = _width
+        h = _height
         # Calculate new width and height.
         if self.ar > 1.0:  # fixed height, change width
             w = self.ar * h
@@ -55,14 +67,14 @@ class ARButton(ToolButton):
 class AspectRatioScript(scripts.Script):
     '''Class for selecting the aspect ratio.'''
     def __init__(self, ar=1.0, **kwargs):
-        self.ar_values_0 = (1.0, 2.0, 3/2, 4/3, 5/3, 5/4, 6/5,
-                            7/5, 14/9, 15/9, 16/9, 16/10)
-        self.ar_values_1 = (1.0, 0.5, 2/3, 3/4, 3/5, 4/5, 5/6,
-                            5/7, 9/14, 9/15, 9/16, 10/16)
-        self.ar_labels_0 = ("1:1", "2:1", "3:2", "4:3", "5:3", "5:4", "6:5",
-                            "7:5", "14:9", "15:9", "16:9", "16:10")
-        self.ar_labels_1 = ("1:1", "1:2", "2:3", "3:4", "3:5", "4:5", "5:6",
-                            "5:7", "9:14", "9:15", "9:16", "10:16")
+        #self.ar_values_0 = (1.0, 2.0, 3/2, 4/3, 5/3, 5/4, 6/5,
+        #                    7/5, 14/9, 15/9, 16/9, 16/10)
+        #self.ar_values_1 = (1.0, 0.5, 2/3, 3/4, 3/5, 4/5, 5/6,
+        #                    5/7, 9/14, 9/15, 9/16, 10/16)
+        #self.ar_labels_0 = ("1:1", "2:1", "3:2", "4:3", "5:3", "5:4", "6:5",
+        #                    "7:5", "14:9", "15:9", "16:9", "16:10")
+        #self.ar_labels_1 = ("1:1", "1:2", "2:3", "3:4", "3:5", "4:5", "5:6",
+        #                    "5:7", "9:14", "9:15", "9:16", "10:16")
     
     def title(self):
         '''Class method title.'''
@@ -84,7 +96,7 @@ class AspectRatioScript(scripts.Script):
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ):
                 # Aspect ratio buttons line 1.
-                btns = [ARButton(ar=1.0, value="1:1")]
+                btns = [AspectRatioButton(ar=1.0, value="1:1")]
                 with contextlib.suppress(AttributeError):
                     for b in btns:
                         if is_img2img:
@@ -102,10 +114,12 @@ class AspectRatioScript(scripts.Script):
             ):
                 # Aspect ratio buttons line 1.
                 btns = [
-                    ARButton(ar=ar, value=label)
+                    AspectRatioButton(ar=ar, value=label)
                     for ar, label in zip(
-                        self.ar_values_0,
-                        self.ar_labels_0
+                        #self.ar_values_0,
+                        #elf.ar_labels_0
+                        _ar_values_0,
+                        _ar_labels_0
                     )
                 ]
                 with contextlib.suppress(AttributeError):
@@ -125,10 +139,12 @@ class AspectRatioScript(scripts.Script):
             ):
                 # Aspect ratio buttons line 2.
                 btns = [
-                    ARButton(ar=ar, value=label)
+                    AspectRatioButton(ar=ar, value=label)
                     for ar, label in zip(
-                        self.ar_values_1,
-                        self.ar_labels_1
+                        #self.ar_values_1,
+                        #self.ar_labels_1
+                        _ar_values_1,
+                        _ar_labels_1
                     )
                 ]
                 with contextlib.suppress(AttributeError):
@@ -143,7 +159,7 @@ class AspectRatioScript(scripts.Script):
                             outputs=resolution
                         )
     
-    # User defined method after_component.
+    # Class method after_component.
     def after_component(self, component, **kwargs):
         '''Class method after_component.'''
         if kwargs.get("elem_id") == "txt2img_width":
