@@ -92,7 +92,20 @@ class AspectRatioScript(scripts.Script):
         ):
           with InputAccordion(False, label="Uncommon Aspect Ratios", elem_id=self.elem_id("ra_enable")) as enabled:
             booru = gr.Dropdown(
-                ["1.19:1", "1.25:1"], label="AR", value="ar")
+                ["1.19:1", "1.25:1"], label="Aspect Ratio", value="aspectratio")
+
+            btns = [AspectRatioButton(ar=1.0, value="1:1")]
+            with contextlib.suppress(AttributeError):
+                for b in btns:
+                    if is_img2img:
+                        resolution = [self.i2i_w, self.i2i_h]
+                    else:
+                        resolution = [self.t2i_w, self.t2i_h]
+                    b.click(
+                        b.apply(1.0, 10, 10),
+                        inputs=resolution,
+                        outputs=resolution
+                    )
             
           with gr.Accordion(open=True, label='SD1.5', visible=True): 
             
