@@ -32,7 +32,8 @@ ardict = {"1:1   ": 1.00, "1.19:1": 1.19, "1.25:1": 1.25, "1.3:1 ": 1.30,
           "2.75:1": 2.75, "2.76:1": 2.76, "3.2:1 ": 3.20, "3.55:1": 3.55,
           "3.58:1": 3.58, "3.6:1 ": 3.60, "12:5  ": 2.40, "18:5  ": 3.60,
           "18:9  ": 2.00, "19.5:9": 2.17, "20:9  ": 2.22, "21:9  ": 2.33,
-          "22:9  ": 2.44, "32:9  ": 3.56, "36:10 ": 3.60} 
+          "22:9  ": 2.44, "32:9  ": 3.56, "36:10 ": 3.60
+          "1.0 ≙ 512 x 512 pixel": 1.0}
 
 # Declare the aspect ratio list.
 arlist = []
@@ -91,7 +92,7 @@ class AspectRatioScript(scripts.Script):
                 False, label="Uncommon Aspect Ratios", 
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ) as enabled:
-                ardd = gr.Dropdown(arlist, label="Aspect Ratios", value="1.0")
+                ardd = gr.Dropdown(arlist, label="Aspect Ratios", value="1.0 ≙ 512 x 512 pixel")
                 btn = AspectRatioButton(ar=1.0, value="DO")
                 with contextlib.suppress(AttributeError):
                     if is_img2img:
