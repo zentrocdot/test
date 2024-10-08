@@ -82,7 +82,7 @@ class AspectRatioScript(scripts.Script):
 
     def show(self, is_img2img):
         '''Class method show.'''
-        return scripts.AlwaysVisible
+        return scripts.AlwaysVisible  # hide this script in the Scripts dropdown
 
     def ui(self, is_img2img):
         '''Class method ui.'''
@@ -164,6 +164,8 @@ class AspectRatioScript(scripts.Script):
                         )
     
     # Class method after_component.
+    # to generalize the code, detect if we are in txt2img tab or img2img tab, and then use the corresponding self variables
+    # so we can use the same code for both tabs
     def after_component(self, component, **kwargs):
         '''Class method after_component.'''
         if kwargs.get("elem_id") == "txt2img_width":
