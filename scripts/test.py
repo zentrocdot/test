@@ -38,7 +38,7 @@ arlist = []
 
 # Create the aspect ratio list.
 for key, value in ardict.items():
-    arlist.append(value)  
+    arlist.append(key)  
 
 # Define class AspectRatioButton.
 class  AspectRatioButton(ToolButton):
