@@ -92,19 +92,19 @@ class AspectRatioScript(scripts.Script):
                 False, label="Uncommon Aspect Ratios", 
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ) as enabled:
-                ardd = gr.Dropdown(arlist, label="Aspect Ratios", value="1.0 ≙ 512 x 512 pixel")
+                arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1.0 ≙ 512 x 512 pixel")
                 btn = AspectRatioButton(ar=1.0, value="DO")
                 with contextlib.suppress(AttributeError):
                     if is_img2img:
                         imgres = [self.i2i_w, self.i2i_h]
                     else:
                         imgres = [self.t2i_w, self.t2i_h]
-                    def combine(x):      
-                        btn.ar = ardict[x]
-                        return btn.apply(512, 512)
+                    def update_button(arstr):      
+                        btn.ar = ardict[arstr]
+                        return btn.apply(_width, _height)
                     btn.click(
-                        combine,
-                        inputs=[ardd],
+                        update_button,
+                        inputs=[arval],
                         outputs=imgres
                     )
     
