@@ -65,16 +65,6 @@ class  AspectRatioButton(ToolButton):
 # Define class AspectRatioScript.
 class AspectRatioScript(scripts.Script):
     '''Class for selecting the aspect ratio.'''
-    #def __init__(self, ar=1.0, **kwargs):
-        #
-        #self.ar_values_0 = (1.0, 2.0, 3/2, 4/3, 5/3, 5/4, 6/5,
-        #                    7/5, 14/9, 15/9, 16/9, 16/10)
-        #self.ar_values_1 = (1.0, 0.5, 2/3, 3/4, 3/5, 4/5, 5/6,
-        #                    5/7, 9/14, 9/15, 9/16, 10/16)
-        #self.ar_labels_0 = ("1:1", "2:1", "3:2", "4:3", "5:3", "5:4", "6:5",
-        #                    "7:5", "14:9", "15:9", "16:9", "16:10")
-        #self.ar_labels_1 = ("1:1", "1:2", "2:3", "3:4", "3:5", "4:5", "5:6",
-        #                    "5:7", "9:14", "9:15", "9:16", "10:16")
     
     def title(self):
         '''Class method title.'''
@@ -98,11 +88,13 @@ class AspectRatioScript(scripts.Script):
             with contextlib.suppress(AttributeError):
                 for b in btns:
                     if is_img2img:
-                        resolution = [self.i2i_w, self.i2i_h]
+                        #resolution = [self.i2i_w, self.i2i_h]
+                        resolution = [aspectratio, aspectratio]
                     else:
-                        resolution = [self.t2i_w, self.t2i_h]
+                        #resolution = [self.t2i_w, self.t2i_h]
+                        resolution = [aspectratio, aspectratio]
                     b.click(
-                        b.apply(1.0, [10, 10]),
+                        b.apply,
                         inputs=resolution,
                         outputs=resolution
                     )
