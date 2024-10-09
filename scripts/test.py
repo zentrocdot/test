@@ -47,8 +47,8 @@ class AspectRatioScript(scripts.Script):
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
-                    wentry = gr.Number(label="Width")
-                    hentry = gr.Number(label="Height")
+                    wentry = gr.Number(label="Width", interactive=True)
+                    hentry = gr.Number(label="Height", interactive=True)
                     mybutton = gr.Button("Acquire Width and Height")          
                     with contextlib.suppress(AttributeError):
                         if is_img2img:
