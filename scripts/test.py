@@ -27,15 +27,13 @@ _height = 512
 ardict = {"1:1   ": 1.0,  "1.19:1": 1.19, "1.25:1": 1.25, "1.3:1 ": 1.3, 
           "1.33:1": 1.33, "1.37:1": 1.37, "1.41:1": 1.41, "1.5:1 ": 1.5, 
           "1.59:1": 1.59, "1.6:1 ": 1.6,  "1.66:1": 1.66, "1.75:1": 1.75, 
-          "1.77:1": 1.77, "1.78:1": 1.78, "1.85:1": 1.85, "2.35:1": 2.35,
-          "2.37:1": 2.37, "2.38:1": 2.38, "2.39:1": 2.39, "2.4 :1": 2.4,
-          "2.75:1": 2.75, "2.76:1": 2.76, "3:1   ": 3.0,  "3.2:1 ": 3.2,
-          "3.55:1": 3.55, "3.58:1": 3.58, "3.6:1 ": 3.6,  "12:5  ": 2.4,
-          "18:5  ": 3.6,  "18:9  ": 2.0,  "19.5:9": 2.17, "20:9  ": 2.22, 
-          "21:9  ": 2.33, "22:9  ": 2.44, "32:9  ": 3.56, "36:10 ": 3.6,
-          "RESET": 1.0}
-
-#  "1:1 ≙ 512 x 512 pixel": 1.0
+          "1.77:1": 1.77, "1.78:1": 1.78, "1.85:1": 1.85, "2:1   ": 2.0,
+          "2.35:1": 2.35, "2.37:1": 2.37, "2.38:1": 2.38, "2.39:1": 2.39,
+          "2.4 :1": 2.4,  "2.75:1": 2.75, "2.76:1": 2.76, "3:1   ": 3.0, 
+          "3.2:1 ": 3.2,  "3.55:1": 3.55, "3.58:1": 3.58, "3.6:1 ": 3.6, 
+          "4:1   ": 4.0,  "12:5  ": 2.4,  "18:5  ": 3.6,  "18:9  ": 2.0, 
+          "19.5:9": 2.17, "20:9  ": 2.22, "21:9  ": 2.33, "22:9  ": 2.44,
+          "32:9  ": 3.56, "36:10 ": 3.6}
 
 # Declare the aspect ratio list.
 arlist = []
@@ -94,8 +92,10 @@ class AspectRatioScript(scripts.Script):
                 False, label="Common and Uncommon Aspect Ratios", 
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ) as enabled:
-                arval = gr.Dropdown(arlist, label="Aspect Ratios", value="RESET")
-                btn = AspectRatioButton(ar=1.0, value="APPLY")
+                arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1:1")
+                rst = AspectRatioButton(ar=1.0, value="Reset")
+                btn = AspectRatioButton(ar=1.0, value="Apply")
+                chg = AspectRatioButton(ar=1.0, value="Change Orientation")
                 with contextlib.suppress(AttributeError):
                     if is_img2img:
                         imgres = [self.i2i_w, self.i2i_h]
