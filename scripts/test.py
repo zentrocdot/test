@@ -129,10 +129,13 @@ class AspectRatioScript(scripts.Script):
                         outputs=imgres
                     )
     # Class method after_component.
-    # This is to generalize the code. Detect if one is in txt2img tab or img2img tab, and then
-    # use the corresponding self variables so we can use the same code for both tabs.
     def after_component(self, component, **kwargs):
-        '''Class method after_component.'''
+        '''Class method after_component.
+
+        This method is used to generalize the existing code. It is detected if 
+        one is in the txt2img tab or the img2img tab. Then the corresponding self
+        variables can be used in the same code for both tabs.
+        '''
         if kwargs.get("elem_id") == "txt2img_width":
             self.t2i_w = component
         if kwargs.get("elem_id") == "txt2img_height":
