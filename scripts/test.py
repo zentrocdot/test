@@ -20,8 +20,8 @@ import modules.scripts as scripts
 from modules.ui_components import ToolButton, InputAccordion
 
 # Define module variables.
-_width = 512
-_height = 512
+#_width = 512
+#_height = 512
      
 # Define class AspectRatioScript.
 class AspectRatioScript(scripts.Script):
@@ -29,7 +29,7 @@ class AspectRatioScript(scripts.Script):
     
     def title(self):
         '''Class method title.'''
-        return "Aspect Ratio Selector"
+        return "Aspect Ratio Calculator"
 
     def show(self, is_img2img):
         '''Class method show.'''
@@ -49,8 +49,7 @@ class AspectRatioScript(scripts.Script):
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
-                  mybutton = gr.Button("Test", tooltip="")
-                        
+                  mybutton = gr.Button("Test", tooltip="")          
                   with contextlib.suppress(AttributeError):
                     if is_img2img:
                         imgres = [self.i2i_w, self.i2i_h]
