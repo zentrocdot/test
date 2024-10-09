@@ -41,8 +41,20 @@ class AspectRatioScript(scripts.Script):
                 False, label="Aspect Ratio Calculator", 
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ) as enabled:
+                def update_number1(x,y):
+                        if x > y:
+                            z = x/y
+                            if float(z).is_integer():
+                                z = int(z)                                 
+                            ret = str(z) + ":1"                   
+                        elif x <= y:
+                             z = y/x
+                             if float(z).is_integer():
+                                z = int(z)
+                             ret = "1:" + str(z)    
+                        return str(ret)
                 arvalue = gr.Textbox(value="N/A", placeholder="Blablaba",
-                    lines=1, label="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
+                    lines=1, label="Calculated aspect ratio from Width/Height", interactive=False, inputs=update_number1(1,1)
                 )
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
