@@ -59,7 +59,7 @@ class AspectRatioScript(scripts.Script):
                         imgres = [self.t2i_w, self.t2i_h]
                     def update_number(x,y):
                         ret = x/y                   
-                        return ret                   
+                        return str(ret) + ":1"                   
                     mybutton.click(update_number, inputs=imgres, outputs=arvalue)               
           
     # Class method after_component.
@@ -67,8 +67,8 @@ class AspectRatioScript(scripts.Script):
         '''Class method after_component.
 
         This method is used to generalize the existing code. It is detected if 
-        one is in the txt2img tab or the img2img tab. Then the corresponding self
-        variables can be used in the same code for both tabs.
+        one is in the txt2img tab or in the img2img tab. Then the corresponding 
+        self variables can be used in the same code for both tabs.
         '''
         if kwargs.get("elem_id") == "txt2img_width":
             self.t2i_w = component
