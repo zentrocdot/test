@@ -102,12 +102,15 @@ class AspectRatioScript(scripts.Script):
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ) as enabled:
                 arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1:1")
+
+                save_button = gr.Button("Test", tooltip="Save the prompt to your prompts list.")
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
                   rst = AspectRatioButton(ar=1.0, value="Reset")
                   btn = AspectRatioButton(ar=1.0, value="Apply")
                   chg = AspectRatioButton(ar=1.0, value="Change Orientation")
+                          
                   with contextlib.suppress(AttributeError):
                     if is_img2img:
                         imgres = [self.i2i_w, self.i2i_h]
@@ -144,7 +147,7 @@ class AspectRatioScript(scripts.Script):
                     def test():
                         print(self.t2i_w, self.t2i_h)
                         print(self.i2i_w, self.i2i_h)           
-                    save_button = gr.Button("Test", tooltip="Save the prompt to your prompts list.")
+                    
                     save_button.click( test, inputs=imgres, outputs=imgres)       
           
     # Class method after_component.
