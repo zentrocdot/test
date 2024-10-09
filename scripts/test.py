@@ -93,6 +93,9 @@ class AspectRatioScript(scripts.Script):
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ) as enabled:
                 arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1:1")
+              with gr.Row(
+                   elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
+              ):
                 rst = AspectRatioButton(ar=1.0, value="Reset")
                 btn = AspectRatioButton(ar=1.0, value="Apply")
                 chg = AspectRatioButton(ar=1.0, value="Change Orientation")
