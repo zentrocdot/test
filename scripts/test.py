@@ -17,11 +17,11 @@ Version 0.0.0.1
 import contextlib
 import gradio as gr
 import modules.scripts as scripts
-from modules.ui_components import ToolButton, InputAccordion
+from modules.ui_components import InputAccordion
    
 # Define class AspectRatioScript.
 class AspectRatioScript(scripts.Script):
-    '''Class for selecting the aspect ratio.'''
+    '''Class for calculating the aspect ratio.'''
     
     def title(self):
         '''Class method title.'''
@@ -41,8 +41,7 @@ class AspectRatioScript(scripts.Script):
                 False, label="Aspect Ratio Calculator", 
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ) as enabled:
-                arvalue = "1:1"
-                arvalue = gr.Textbox(value="No Go",
+                arvalue = gr.Textbox(value="N/A", placeholder="Blablaba",
                     lines=1, label="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
                 )
                 with gr.Row(
