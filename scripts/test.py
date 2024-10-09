@@ -114,7 +114,7 @@ class AspectRatioScript(scripts.Script):
                     )
                     def update_rst(arstr):      
                         rst.ar = 1.0
-                        return btn.apply(_width, _height)
+                        return rst.apply(_width, _height)
                     rst.click(
                         update_button,
                         inputs=[arval],
@@ -122,7 +122,7 @@ class AspectRatioScript(scripts.Script):
                     )
                     def update_chg(arstr):      
                         chg.ar = 1/ardict[arstr]
-                        return btn.apply(_width, _height)
+                        return chg.apply(_width, _height)
                     chg.click(
                         update_button,
                         inputs=[arval],
