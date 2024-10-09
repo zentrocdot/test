@@ -45,7 +45,7 @@ class AspectRatioScript(scripts.Script):
                 False, label="Utilised Aspect Ratios (Landscape Orientation)", 
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ) as enabled:
-                arvalue = gr.Number(label="Aspect ratio calculated from W/H", value=-1, interactive=False, render=True)
+                arvalue = gr.Number(label="Aspect ratio calculated from Width/Height", value=-1, interactive=False, render=True)
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
