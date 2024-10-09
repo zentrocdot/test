@@ -145,8 +145,10 @@ class AspectRatioScript(scripts.Script):
                     print(self.t2i_w, self.t2i_h)
                     print(self.i2i_w, self.i2i_h)
                     def test():
+                        print("START")      
                         print(self.t2i_w, self.t2i_h)
-                        print(self.i2i_w, self.i2i_h)           
+                        print(self.i2i_w, self.i2i_h)
+                        print("END")      
                     
                     save_button.click( test, inputs=imgres, outputs=imgres)       
           
