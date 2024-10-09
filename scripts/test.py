@@ -146,13 +146,14 @@ class AspectRatioScript(scripts.Script):
                     )
                     def lala(x,y):
                         print("x=", x, "y=", y)   
-                              
+                        ret = x + " x " + y      
                         #btn.prtval      
                         #print("START")      
                         #print(self.t2i_w, self.t2i_h)
                         #print(self.i2i_w, self.i2i_h)
                         #print("END")
-                        return (x,y)     
+                        #return (x,y)     
+                        return ret    
                     
                     test1 = mybutton.click(lala, inputs=imgres, outputs=average)       
                     print(test1)        
