@@ -140,8 +140,6 @@ class AspectRatioScript(scripts.Script):
                         inputs=[arval],
                         outputs=imgres
                     )
-                    print(imgres[0])
-                    print(imgres[1])
                     print(self.t2i_w, self.t2i_h)
                     print(self.i2i_w, self.i2i_h)
                     def test():
