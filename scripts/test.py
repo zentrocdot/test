@@ -142,7 +142,8 @@ class AspectRatioScript(scripts.Script):
                     )
                     print(self.t2i_w, self.t2i_h)
                     print(self.i2i_w, self.i2i_h)
-                    def test():
+                    def test(x):
+                        print(x)       
                         print("START")      
                         print(self.t2i_w, self.t2i_h)
                         print(self.i2i_w, self.i2i_h)
