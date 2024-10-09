@@ -139,8 +139,8 @@ class AspectRatioScript(scripts.Script):
                     )
                     print(imgres[0])
                     print(imgres[1])
-                    print([self.t2i_w, self.t2i_h])
-                    print([self.i2i_w, self.i2i_h])
+                    print(self.t2i_w, self.t2i_h)
+                    print(self.i2i_w, self.i2i_h)
           
     # Class method after_component.
     def after_component(self, component, **kwargs):
