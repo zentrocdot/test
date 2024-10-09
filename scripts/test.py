@@ -113,15 +113,15 @@ class AspectRatioScript(scripts.Script):
                         outputs=imgres
                     )
                     def update_rst(arstr):      
-                        btn.ar = 1.0
+                        rst.ar = 1.0
                         return btn.apply(_width, _height)
                     rst.click(
                         update_button,
                         inputs=[arval],
                         outputs=imgres
                     )
-                    def update_rst(arstr):      
-                        btn.ar = 1/ardict[arstr]
+                    def update_chg(arstr):      
+                        chg.ar = 1/ardict[arstr]
                         return btn.apply(_width, _height)
                     chg.click(
                         update_button,
