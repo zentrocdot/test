@@ -18,11 +18,7 @@ import contextlib
 import gradio as gr
 import modules.scripts as scripts
 from modules.ui_components import ToolButton, InputAccordion
-
-# Define module variables.
-#_width = 512
-#_height = 512
-     
+   
 # Define class AspectRatioScript.
 class AspectRatioScript(scripts.Script):
     '''Class for selecting the aspect ratio.'''
@@ -58,10 +54,16 @@ class AspectRatioScript(scripts.Script):
                     else:
                         imgres = [self.t2i_w, self.t2i_h]
                     def update_number(x,y):
-                        if x > y: 
-                            ret = str(x/y) + ":1"                   
-                        elif x < y:    
-                             ret = "1:" + str(y/x)
+                        if x > y:
+                            z = x/y
+                            if float(z).is_integer():
+                                z = int(z)                                 
+                            ret = str(z) + ":1"                   
+                        elif x < y:
+                             z = y/x
+                             if float(z).is_integer():
+                                z = int(z)
+                             ret = "1:" + str(z)
                         return str(ret)               
                     mybutton.click(update_number, inputs=imgres, outputs=arvalue)               
           
