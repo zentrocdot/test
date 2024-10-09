@@ -110,7 +110,7 @@ class AspectRatioScript(scripts.Script):
                   rst = AspectRatioButton(ar=1.0, value="Reset")
                   btn = AspectRatioButton(ar=1.0, value="Apply")
                   chg = AspectRatioButton(ar=1.0, value="Change Orientation")
-                  save_button = gr.Button("Test", tooltip="")
+                  mybutton = gr.Button("Test", tooltip="")
                           
                   with contextlib.suppress(AttributeError):
                     if is_img2img:
@@ -141,17 +141,17 @@ class AspectRatioScript(scripts.Script):
                         inputs=[arval],
                         outputs=imgres
                     )
-                    print(self.t2i_w, self.t2i_h)
-                    print(self.i2i_w, self.i2i_h)
+                    #print(self.t2i_w, self.t2i_h)
+                    #print(self.i2i_w, self.i2i_h)
                     def lala(x):
                         print(x)       
-                        print("START")      
+                        #print("START")      
                         #print(self.t2i_w, self.t2i_h)
                         #print(self.i2i_w, self.i2i_h)
-                        print("END")
+                        #print("END")
                         return x      
                     
-                    save_button.click(lala, inputs=imgres, outputs=imgres)       
+                    mybutton.click(lala, inputs="test", outputs="test")       
           
     # Class method after_component.
     def after_component(self, component, **kwargs):
