@@ -151,7 +151,7 @@ class AspectRatioScript(scripts.Script):
                         #print("END")
                         return x      
                     
-                    mybutton.click(lala("aa"), inputs=imgres, outputs=imgres)       
+                    mybutton.click(lala(imgres), inputs=imgres, outputs=imgres)       
           
     # Class method after_component.
     def after_component(self, component, **kwargs):
