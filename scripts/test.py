@@ -79,6 +79,9 @@ class  AspectRatioButton(ToolButton):
         # Return the list with width and height.
         return retlst
 
+    def prtval(self, w, h):
+        print(w, h)          
+
 # Define class AspectRatioScript.
 class AspectRatioScript(scripts.Script):
     '''Class for selecting the aspect ratio.'''
@@ -141,10 +144,9 @@ class AspectRatioScript(scripts.Script):
                         inputs=[arval],
                         outputs=imgres
                     )
-                    #print(self.t2i_w, self.t2i_h)
-                    #print(self.i2i_w, self.i2i_h)
                     def lala(x):
-                        print(x)       
+                        print(x)   
+                        bb.prtval      
                         #print("START")      
                         #print(self.t2i_w, self.t2i_h)
                         #print(self.i2i_w, self.i2i_h)
