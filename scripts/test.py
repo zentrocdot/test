@@ -151,7 +151,7 @@ class AspectRatioScript(scripts.Script):
                         #print("END")
                         return x      
                     
-                    mybutton.click(lala, inputs="test", outputs="test")       
+                    mybutton.click(lala("aa"), inputs="test", outputs="test")       
           
     # Class method after_component.
     def after_component(self, component, **kwargs):
