@@ -103,13 +103,14 @@ class AspectRatioScript(scripts.Script):
             ) as enabled:
                 arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1:1")
 
-                save_button = gr.Button("Test", tooltip="Save the prompt to your prompts list.")
+                
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
                   rst = AspectRatioButton(ar=1.0, value="Reset")
                   btn = AspectRatioButton(ar=1.0, value="Apply")
                   chg = AspectRatioButton(ar=1.0, value="Change Orientation")
+                  save_button = gr.Button("Test", tooltip="")
                           
                   with contextlib.suppress(AttributeError):
                     if is_img2img:
@@ -142,14 +143,15 @@ class AspectRatioScript(scripts.Script):
                     )
                     print(self.t2i_w, self.t2i_h)
                     print(self.i2i_w, self.i2i_h)
-                    def test(x):
+                    def lala(x):
                         print(x)       
                         print("START")      
-                        print(self.t2i_w, self.t2i_h)
-                        print(self.i2i_w, self.i2i_h)
-                        print("END")      
+                        #print(self.t2i_w, self.t2i_h)
+                        #print(self.i2i_w, self.i2i_h)
+                        print("END")
+                        return x      
                     
-                    save_button.click( test, inputs=imgres, outputs=imgres)       
+                    save_button.click(lala, inputs=imgres, outputs=imgres)       
           
     # Class method after_component.
     def after_component(self, component, **kwargs):
