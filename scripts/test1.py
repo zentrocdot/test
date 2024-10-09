@@ -64,7 +64,7 @@ class AspectRatioScript(scripts.Script):
                                 if float(z).is_integer():
                                     z = int(z)
                                 ret = "1:" + str(z)    
-                           return str(ret)
+                            return str(ret)
                         mybutton.click(update_number, inputs=imgres, outputs=arvalue)               
           
     # Class method after_component.
