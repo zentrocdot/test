@@ -51,53 +51,17 @@ class AspectRatioScript(scripts.Script):
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
-                  rst = AspectRatioButton(ar=1.0, value="Reset")
-                  btn = AspectRatioButton(ar=1.0, value="Apply")
-                  chg = AspectRatioButton(ar=1.0, value="Change Orientation")
                   mybutton = gr.Button("Test", tooltip="")
-                          
+                        
                   with contextlib.suppress(AttributeError):
                     if is_img2img:
                         imgres = [self.i2i_w, self.i2i_h]
                     else:
                         imgres = [self.t2i_w, self.t2i_h]
-                    def update_button(arstr):      
-                        btn.ar = ardict[arstr]
-                        return btn.apply(_width, _height)
-                    btn.click(
-                        update_button,
-                        inputs=[arval],
-                        outputs=imgres
-                    )
-                    def update_rst(arstr):      
-                        rst.ar = 1.0
-                        return rst.apply(_width, _height)
-                    rst.click(
-                        update_rst,
-                        inputs=[arval],
-                        outputs=imgres
-                    )
-                    def update_chg(arstr):      
-                        chg.ar = 1/ardict[arstr]
-                        return chg.apply(_width, _height)
-                    chg.click(
-                        update_chg,
-                        inputs=[arval],
-                        outputs=imgres
-                    )
                     def lala(x,y):
-                        print("x=", x, "y=", y)   
-                        ret = x/y      
-                        #btn.prtval      
-                        #print("START")      
-                        #print(self.t2i_w, self.t2i_h)
-                        #print(self.i2i_w, self.i2i_h)
-                        #print("END")
-                        #return (x,y)     
-                        return ret    
-                    
-                    test1 = mybutton.click(lala, inputs=imgres, outputs=arvalue)       
-                    print(test1)        
+                        ret = x/y                   
+                        return ret                   
+                    mybutton.click(lala, inputs=imgres, outputs=arvalue)               
           
     # Class method after_component.
     def after_component(self, component, **kwargs):
