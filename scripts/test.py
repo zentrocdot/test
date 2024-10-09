@@ -144,8 +144,8 @@ class AspectRatioScript(scripts.Script):
                         inputs=[arval],
                         outputs=imgres
                     )
-                    def lala(x):
-                        print(x)   
+                    def lala(x,y):
+                        print(x,y)   
                         #btn.prtval      
                         #print("START")      
                         #print(self.t2i_w, self.t2i_h)
