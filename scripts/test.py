@@ -146,7 +146,7 @@ class AspectRatioScript(scripts.Script):
                     )
                     def lala(x):
                         print(x)   
-                        btn.prtval      
+                        #btn.prtval      
                         #print("START")      
                         #print(self.t2i_w, self.t2i_h)
                         #print(self.i2i_w, self.i2i_h)
