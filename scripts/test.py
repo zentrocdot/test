@@ -145,7 +145,7 @@ class AspectRatioScript(scripts.Script):
                         outputs=imgres
                     )
                     def lala(x,y):
-                        print(x,y)   
+                        print("x=", x, "y=", y)   
                         #btn.prtval      
                         #print("START")      
                         #print(self.t2i_w, self.t2i_h)
