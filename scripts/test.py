@@ -106,7 +106,7 @@ class AspectRatioScript(scripts.Script):
             ) as enabled:
                 arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1:1")
 
-                average = gr.Number(label="Current W/H Avg", value=0, interactive=False, render=True)
+                arvalue = gr.Number(label="Aspect ratio calculated from W/H", value=0, interactive=False, render=True)
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
@@ -155,7 +155,7 @@ class AspectRatioScript(scripts.Script):
                         #return (x,y)     
                         return ret    
                     
-                    test1 = mybutton.click(lala, inputs=imgres, outputs=average)       
+                    test1 = mybutton.click(lala, inputs=imgres, outputs=arvalue)       
                     print(test1)        
           
     # Class method after_component.
