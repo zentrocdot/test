@@ -41,44 +41,31 @@ class AspectRatioScript(scripts.Script):
                 False, label="Aspect Ratio Calculator", 
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ) as enabled:
-                def update_number1(x,y):
-                        if x > y:
-                            z = x/y
-                            if float(z).is_integer():
-                                z = int(z)                                 
-                            ret = str(z) + ":1"                   
-                        elif x <= y:
-                             z = y/x
-                             if float(z).is_integer():
-                                z = int(z)
-                             ret = "1:" + str(z)    
-                        return str(ret)
-                arvalue = gr.Textbox(value="N/A", placeholder="Blablaba",
-                    lines=1, label="Calculated aspect ratio from Width/Height", interactive=False, inputs=update_number1(1,1)
+                arvalue = gr.Textbox(value="N/A", lines=1,
+                    label="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
                 )
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
-                  mybutton = gr.Button("Acquire Width and Height", tooltip="")          
-                  with contextlib.suppress(AttributeError):
-                    if is_img2img:
-                        imgres = [self.i2i_w, self.i2i_h]
-                    else:
-                        imgres = [self.t2i_w, self.t2i_h]
-                    def update_number(x,y):
-                        if x > y:
-                            z = x/y
-                            if float(z).is_integer():
-                                z = int(z)                                 
-                            ret = str(z) + ":1"                   
-                        elif x <= y:
-                             z = y/x
-                             if float(z).is_integer():
-                                z = int(z)
-                             ret = "1:" + str(z)    
-                        return str(ret)
-                        update_number(1,1)
-                    mybutton.click(update_number, inputs=imgres, outputs=arvalue)               
+                    mybutton = gr.Button("Acquire Width and Height")          
+                    with contextlib.suppress(AttributeError):
+                        if is_img2img:
+                            imgres = [self.i2i_w, self.i2i_h]
+                        else:
+                            imgres = [self.t2i_w, self.t2i_h]
+                        def update_number(x,y):
+                            if x > y:
+                                z = x/y
+                                if float(z).is_integer():
+                                    z = int(z)                                 
+                                ret = str(z) + ":1"                   
+                            elif x <= y:
+                                z = y/x
+                                if float(z).is_integer():
+                                    z = int(z)
+                                ret = "1:" + str(z)    
+                           return str(ret)
+                        mybutton.click(update_number, inputs=imgres, outputs=arvalue)               
           
     # Class method after_component.
     def after_component(self, component, **kwargs):
