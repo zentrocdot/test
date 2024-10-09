@@ -106,7 +106,7 @@ class AspectRatioScript(scripts.Script):
             ) as enabled:
                 arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1:1")
 
-                
+                arc_average = gr.Number(label="Current W/H Avg.", value=0, interactive=False, render=True)
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
