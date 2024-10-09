@@ -89,7 +89,7 @@ class AspectRatioScript(scripts.Script):
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
             with InputAccordion(
-                False, label="Common and Uncommon Aspect Ratios", 
+                False, label="Utilised Aspect Ratios (Landscape Orientation)", 
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ) as enabled:
                 arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1:1")
