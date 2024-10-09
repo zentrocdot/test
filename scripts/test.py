@@ -112,7 +112,16 @@ class AspectRatioScript(scripts.Script):
                         inputs=[arval],
                         outputs=imgres
                     )
-    
+                    rst.click(
+                        update_button,
+                        inputs=[arval],
+                        outputs=imgres
+                    )
+                    chg.click(
+                        update_button,
+                        inputs=[arval],
+                        outputs=imgres
+                    )
     # Class method after_component.
     # This is to generalize the code. Detect if one is in txt2img tab or img2img tab, and then
     # use the corresponding self variables so we can use the same code for both tabs.
