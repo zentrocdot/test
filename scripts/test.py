@@ -49,7 +49,7 @@ class AspectRatioScript(scripts.Script):
                 ):
                     wentry = gr.Number(label="Width", interactive=True)
                     hentry = gr.Number(label="Height", interactive=True)
-                    mybutton = gr.Button("Acquire Width and Height")          
+                    mybutton = gr.Button("Calculate Aspect Ratio")          
                     with contextlib.suppress(AttributeError):
                         if is_img2img:
                             imgres = [self.i2i_w, self.i2i_h]
@@ -67,7 +67,7 @@ class AspectRatioScript(scripts.Script):
                                     z = int(z)
                                 ret = "1:" + str(z)    
                             return str(ret)
-                        mybutton.click(update_number, inputs=imgres, outputs=arvalue)               
+                        mybutton.click(update_number, inputs=[wentry, hentry], outputs=arvalue)               
           
     # Class method after_component.
     def after_component(self, component, **kwargs):
