@@ -137,6 +137,8 @@ class AspectRatioScript(scripts.Script):
                         inputs=[arval],
                         outputs=imgres
                     )
+                    print(imgres)
+          
     # Class method after_component.
     def after_component(self, component, **kwargs):
         '''Class method after_component.
