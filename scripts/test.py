@@ -45,20 +45,20 @@ class AspectRatioScript(scripts.Script):
                 False, label="Utilised Aspect Ratios (Landscape Orientation)", 
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ) as enabled:
-                arvalue = gr.Number(label="Aspect ratio calculated from W/H", value=0, interactive=False, render=True)
+                arvalue = gr.Number(label="Aspect ratio calculated from W/H", value=-1, interactive=False, render=True)
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
-                  mybutton = gr.Button("Test", tooltip="")          
+                  mybutton = gr.Button("Acquire Width and Height", tooltip="")          
                   with contextlib.suppress(AttributeError):
                     if is_img2img:
                         imgres = [self.i2i_w, self.i2i_h]
                     else:
                         imgres = [self.t2i_w, self.t2i_h]
-                    def lala(x,y):
+                    def update_number(x,y):
                         ret = x/y                   
                         return ret                   
-                    mybutton.click(lala, inputs=imgres, outputs=arvalue)               
+                    mybutton.click(update_number, inputs=imgres, outputs=arvalue)               
           
     # Class method after_component.
     def after_component(self, component, **kwargs):
