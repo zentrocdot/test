@@ -146,14 +146,14 @@ class AspectRatioScript(scripts.Script):
                     )
                     def lala(x):
                         print(x)   
-                        bb.prtval      
+                        btn.prtval      
                         #print("START")      
                         #print(self.t2i_w, self.t2i_h)
                         #print(self.i2i_w, self.i2i_h)
                         #print("END")
                         return x      
                     
-                    mybutton.click(lala, inputs=[arval], outputs=imgres)       
+                    mybutton.click(lala, inputs=imgres, outputs=imgres)       
           
     # Class method after_component.
     def after_component(self, component, **kwargs):
