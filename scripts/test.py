@@ -68,7 +68,7 @@ class AspectRatioScript(scripts.Script):
                 label="Aspect Ratio Calculator",
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio',
                 open=False
-            ) as enabled:
+            ):
                 arvalue = gr.Textbox(value=update_number(512,512), lines=1,
                     interactive=False, inputs=None,
                     label="Calculated aspect ratio from Width/Height"
