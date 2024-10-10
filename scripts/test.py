@@ -20,10 +20,9 @@ from modules.ui_components import InputAccordion
 _prec = 2
 
 def update_prec(prec):
-    #global _prec
-    #_prec = int(prec)
-    #return _prec
-    return int(prec)
+    global _prec
+    _prec = int(prec)
+    return prec
 
 # Function update_number()
 def update_number(x,y):
@@ -93,7 +92,7 @@ class AspectRatioScript(scripts.Script):
                     mybutton = gr.Button("Calculate Aspect Ratio")
                     with contextlib.suppress(AttributeError):
                         #imgres = self.image_resolution(is_img2img)
-                        prec.input(update_prec, inputs=[prec], outputs=[_prec])
+                        prec.input(update_prec, inputs=[prec], outputs=[prec])
                         mybutton.click(update_number, inputs=[wentry, hentry], outputs=arvalue)
 
     # Class method after_component.
