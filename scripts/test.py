@@ -70,8 +70,8 @@ class AspectRatioScript(scripts.Script):
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
                     # Create two numeric fields and one button. 
-                    wentry = gr.Number(label="Width", interactive=True, scale=int)
-                    hentry = gr.Number(label="Height", interactive=True, scale=int)
+                    wentry = gr.Number(label="Width", interactive=True)
+                    hentry = gr.Number(label="Height", interactive=True)
                     mybutton = gr.Button("Calculate Aspect Ratio")          
                     with contextlib.suppress(AttributeError):
                         imgres = self.image_resolution()
