@@ -86,6 +86,7 @@ class AspectRatioScript(scripts.Script):
                     hentry = gr.Number(label="Height", interactive=True)
                     mybutton = gr.Button("Calculate Aspect Ratio")
                     def update_prec():
+                        print(_prec)
                         _prec = prec
                         return _prec
                     with contextlib.suppress(AttributeError):
