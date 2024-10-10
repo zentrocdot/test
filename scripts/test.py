@@ -18,7 +18,28 @@ import contextlib
 import gradio as gr
 import modules.scripts as scripts
 from modules.ui_components import InputAccordion
-   
+
+# Get image resolution.
+def image_resolution():
+    if is_img2img:
+        imgres = [self.i2i_w, self.i2i_h]
+    else:
+        imgres = [self.t2i_w, self.t2i_h]
+    return imgres
+
+def update_number(x,y):
+    if x > y:
+        z = x/y
+        if float(z).is_integer():
+            z = int(z)                                 
+        ret = str(z) + ":1"                   
+    elif x <= y:
+        z = y/x
+        if float(z).is_integer():
+            z = int(z)
+        ret = "1:" + str(z)    
+    return str(ret)
+
 # Define class AspectRatioScript.
 class AspectRatioScript(scripts.Script):
     '''Class for calculating the aspect ratio.'''
@@ -29,44 +50,36 @@ class AspectRatioScript(scripts.Script):
 
     def show(self, is_img2img):
         '''Class method show.'''
-        return scripts.AlwaysVisible  # hide this script in the Scripts dropdown
+        return scripts.AlwaysVisible  # Hide this script in the Scripts dropdown
 
     def ui(self, is_img2img):
         '''Class method ui.'''
-        # Loop over the columns.
+        # Create a column.
         with gr.Column(
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
+            # Create an accordion. 
             with InputAccordion(
                 False, label="Aspect Ratio Calculator", 
                 elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
             ) as enabled:
-                arvalue = gr.Textbox(value="N/A", lines=1,
-                    label="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
+                arvalue = gr.Textbox(value="N/A", lines=1, interactive=False, inputs=None,
+                    label="Calculated aspect ratio from Width/Height"
                 )
+                # Create a row.
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
+                    # Create two numeric fields and one button. 
                     wentry = gr.Number(label="Width", interactive=True)
                     hentry = gr.Number(label="Height", interactive=True)
                     mybutton = gr.Button("Calculate Aspect Ratio")          
                     with contextlib.suppress(AttributeError):
-                        if is_img2img:
-                            imgres = [self.i2i_w, self.i2i_h]
-                        else:
-                            imgres = [self.t2i_w, self.t2i_h]
-                        def update_number(x,y):
-                            if x > y:
-                                z = x/y
-                                if float(z).is_integer():
-                                    z = int(z)                                 
-                                ret = str(z) + ":1"                   
-                            elif x <= y:
-                                z = y/x
-                                if float(z).is_integer():
-                                    z = int(z)
-                                ret = "1:" + str(z)    
-                            return str(ret)
+                        imgres = image_resolution()
+                        #if is_img2img:
+                        #    imgres = [self.i2i_w, self.i2i_h]
+                        #else:
+                        #    imgres = [self.t2i_w, self.t2i_h]
                         mybutton.click(update_number, inputs=[wentry, hentry], outputs=arvalue)               
           
     # Class method after_component.
