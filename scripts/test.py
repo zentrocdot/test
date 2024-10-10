@@ -20,6 +20,7 @@ from modules.ui_components import InputAccordion
 _prec = 2
 
 def update_prec(prec):
+    print(prec)
     _prec = prec
     return prec
 
