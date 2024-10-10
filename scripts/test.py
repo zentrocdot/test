@@ -1,4 +1,4 @@
-'''sd-webui-calc_aspect_ratio
+'''sd-webui-aspect_ratio_calc
 Extension for AUTOMATIC1111.
 
 Version 0.0.0.1
@@ -58,10 +58,11 @@ class AspectRatioScript(scripts.Script):
         with gr.Column(
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
-            # Create an accordion.
+            # Create an InputAccordion.
             with InputAccordion(
-                False, label="Aspect Ratio Calculator",
-                elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
+                label="Aspect Ratio Calculator",
+                elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio',
+                open=False
             ) as enabled:
                 arvalue = gr.Textbox(value=update_number(512,512), lines=1,
                     interactive=False, inputs=None,
@@ -72,11 +73,11 @@ class AspectRatioScript(scripts.Script):
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
                     # Create two numeric fields and one button.
-                    wentry = gr.Number(label="Width", interactive=True, precision=0)
-                    hentry = gr.Number(label="Height", interactive=True, precision=0)
+                    wentry = gr.Number(label="Width", interactive=True)
+                    hentry = gr.Number(label="Height", interactive=True)
                     mybutton = gr.Button("Calculate Aspect Ratio")
                     with contextlib.suppress(AttributeError):
-                        imgres = self.image_resolution(is_img2img)
+                        #imgres = self.image_resolution(is_img2img)
                         mybutton.click(update_number, inputs=[wentry, hentry], outputs=arvalue)
 
     # Class method after_component.
