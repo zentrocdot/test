@@ -90,7 +90,7 @@ class AspectRatioScript(scripts.Script):
                         return _prec
                     with contextlib.suppress(AttributeError):
                         #imgres = self.image_resolution(is_img2img)
-                        Dropdown.input(update_prec, inputs=prec, Outputs=_prec)
+                        gr.Dropdown.input(update_prec, inputs=prec, Outputs=_prec)
                         mybutton.click(update_number, inputs=[wentry, hentry], outputs=arvalue)
 
     # Class method after_component.
