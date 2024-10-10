@@ -74,9 +74,9 @@ class AspectRatioScript(scripts.Script):
                     )
                     prec = gr.Dropdown([0,1,2,3,4,5,6,7,8], label="Precision", value="2")          
                     # Create a row.
-                    with gr.Row(
-                        elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
-                    ):
+                with gr.Row(
+                    elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
+                ):
                         # Create two numeric fields and one button.
                         wentry = gr.Number(label="Width", interactive=True)
                         hentry = gr.Number(label="Height", interactive=True)
