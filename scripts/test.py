@@ -73,6 +73,7 @@ class AspectRatioScript(scripts.Script):
                     interactive=False, inputs=None,
                     label="Calculated aspect ratio from Width/Height"
                 )
+                prec = gr.Dropdown(value=[0,1,2,3,4,5,6,7,8])
                 # Create a row.
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
