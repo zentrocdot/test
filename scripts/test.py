@@ -12,11 +12,12 @@ Version 0.0.0.1
 # pylint: disable=attribute-defined-outside-init
 
 # Import the Python modules.
-import contextlib
-from modules.ui_components import InputAccordion
 import gradio as gr
 import modules.scripts as scripts
+import contextlib
+from modules.ui_components import InputAccordion
 
+# Function update_number()
 def update_number(x,y):
     '''Helper function update number.'''
     if x > y:
