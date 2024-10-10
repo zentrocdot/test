@@ -19,14 +19,6 @@ import gradio as gr
 import modules.scripts as scripts
 from modules.ui_components import InputAccordion
 
-# Get image resolution.
-def image_resolution(is_img2img):
-    if is_img2img:
-        imgres = [self.i2i_w, self.i2i_h]
-    else:
-        imgres = [self.t2i_w, self.t2i_h]
-    return imgres
-
 def update_number(x,y):
     if x > y:
         z = x/y
@@ -52,6 +44,13 @@ class AspectRatioScript(scripts.Script):
         '''Class method show.'''
         return scripts.AlwaysVisible  # Hide this script in the Scripts dropdown
 
+    def image_resolution(self, is_img2img):
+        if is_img2img:
+            imgres = [self.i2i_w, self.i2i_h]
+        else:
+            imgres = [self.t2i_w, self.t2i_h]
+        return imgres
+
     def ui(self, is_img2img):
         '''Class method ui.'''
         # Create a column.
@@ -75,7 +74,7 @@ class AspectRatioScript(scripts.Script):
                     hentry = gr.Number(label="Height", interactive=True, scale=int)
                     mybutton = gr.Button("Calculate Aspect Ratio")          
                     with contextlib.suppress(AttributeError):
-                        imgres = image_resolution(is_img2img)
+                        imgres = self.image_resolution()
                         #if is_img2img:
                         #    imgres = [self.i2i_w, self.i2i_h]
                         #else:
