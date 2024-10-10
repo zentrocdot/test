@@ -85,8 +85,12 @@ class AspectRatioScript(scripts.Script):
                     wentry = gr.Number(label="Width", interactive=True)
                     hentry = gr.Number(label="Height", interactive=True)
                     mybutton = gr.Button("Calculate Aspect Ratio")
+                    def update_prec():
+                        _prec = prec
+                        return _prec
                     with contextlib.suppress(AttributeError):
                         #imgres = self.image_resolution(is_img2img)
+                        Dropdown.input(update_prec, inputs=prec, Outputs=_prec)
                         mybutton.click(update_number, inputs=[wentry, hentry], outputs=arvalue)
 
     # Class method after_component.
