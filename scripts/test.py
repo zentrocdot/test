@@ -19,6 +19,10 @@ from modules.ui_components import InputAccordion
 
 _prec = 2
 
+def update_prec(prec):
+    _prec = prec
+    return prec
+
 # Function update_number()
 def update_number(x,y):
     '''Helper function update number.'''
@@ -85,9 +89,6 @@ class AspectRatioScript(scripts.Script):
                     wentry = gr.Number(label="Width", interactive=True)
                     hentry = gr.Number(label="Height", interactive=True)
                     mybutton = gr.Button("Calculate Aspect Ratio")
-                    def update_prec(prec):
-                        _prec = prec
-                        return _prec
                     with contextlib.suppress(AttributeError):
                         #imgres = self.image_resolution(is_img2img)
                         prec.input(update_prec, inputs=[prec], outputs=[prec])
