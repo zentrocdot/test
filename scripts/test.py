@@ -20,7 +20,7 @@ import modules.scripts as scripts
 from modules.ui_components import InputAccordion
 
 # Get image resolution.
-def image_resolution():
+def image_resolution(is_img2img):
     if is_img2img:
         imgres = [self.i2i_w, self.i2i_h]
     else:
@@ -75,7 +75,7 @@ class AspectRatioScript(scripts.Script):
                     hentry = gr.Number(label="Height", interactive=True)
                     mybutton = gr.Button("Calculate Aspect Ratio")          
                     with contextlib.suppress(AttributeError):
-                        imgres = image_resolution()
+                        imgres = image_resolution(is_img2img)
                         #if is_img2img:
                         #    imgres = [self.i2i_w, self.i2i_h]
                         #else:
@@ -87,9 +87,9 @@ class AspectRatioScript(scripts.Script):
         '''Class method after_component.
 
         This method is used to generalize the existing programme code. It is
-        detected if one is in the txt2img tab or in the img2img tab. Then the
-        corresponding self variables can be used in the same programme code 
-        for both tabs.
+        detected if one is in the 'txt2img' tab or in the 'img2img' tab in the 
+        web UI. Then the corresponding self variables can be used in the same
+        programme code for both tabs.
         '''
         if kwargs.get("elem_id") == "txt2img_width":
             self.t2i_w = component
