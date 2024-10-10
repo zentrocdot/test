@@ -21,8 +21,7 @@ _prec = 2
 
 def update_prec(prec):
     global _prec
-    print(prec)
-    _prec = prec
+    _prec = int(prec)
     return prec
 
 # Function update_number()
