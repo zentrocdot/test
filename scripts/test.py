@@ -73,17 +73,17 @@ class AspectRatioScript(scripts.Script):
                         label="Calculated aspect ratio from Width/Height"
                     )
                     prec = gr.Dropdown([0,1,2,3,4,5,6,7,8], label="Precision", value="2")          
-                    # Create a row.
+                # Create a row.
                 with gr.Row(
                     elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
                 ):
-                        # Create two numeric fields and one button.
-                        wentry = gr.Number(label="Width", interactive=True)
-                        hentry = gr.Number(label="Height", interactive=True)
-                        mybutton = gr.Button("Calculate Aspect Ratio")
-                        with contextlib.suppress(AttributeError):
-                            #imgres = self.image_resolution(is_img2img)
-                            mybutton.click(update_number, inputs=[wentry, hentry], outputs=arvalue)
+                    # Create two numeric fields and one button.
+                    wentry = gr.Number(label="Width", interactive=True)
+                    hentry = gr.Number(label="Height", interactive=True)
+                    mybutton = gr.Button("Calculate Aspect Ratio")
+                    with contextlib.suppress(AttributeError):
+                        #imgres = self.image_resolution(is_img2img)
+                        mybutton.click(update_number, inputs=[wentry, hentry], outputs=arvalue)
 
     # Class method after_component.
     def after_component(self, component, **kwargs):
