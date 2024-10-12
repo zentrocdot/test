@@ -118,6 +118,7 @@ class ResolutionCalcScript(scripts.Script):
                                 _IsExact = True      
                             return rb_state
                         rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
+                        round_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
                 with gr.Row(elem_id=css_row):
                     calc_btn = gr.Button(value="Calculate", elem_id=css_button)
                     with contextlib.suppress(AttributeError):
