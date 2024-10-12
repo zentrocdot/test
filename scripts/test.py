@@ -120,6 +120,7 @@ class AspectRatioScript(scripts.Script):
                 with gr.Row(elem_id=css_row):
                     ar_input = gr.Textbox(value="1:1", render=True, label="Aspect Ratio")     
                     calc_btn = gr.Button(label="Calculate")
+                    adopt_btn = gr.Button(label="Adopt")
                     with contextlib.suppress(AttributeError):
                         imgres = self.image_resolution(is_img2img)
                         def update_button(arstr):
