@@ -134,11 +134,11 @@ class ResolutionCalcScript(scripts.Script):
                             return rb_state
                         rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
                 with gr.Row(elem_id=css_row):
-                    newbtn = [AspectRatioButton(ar=1.0, value="Apply")]
+                    btns = [AspectRatioButton(ar=1.0, value="Apply")]
                     with contextlib.suppress(AttributeError):
-                        for b in newbtn:
+                        for b in btns:
                             imgres = self.image_resolution(is_img2img)
-                            b.click(b.apply, inputs=[wx, hy], outputs=[imgres])
+                            b.click(b.apply, inputs=[wx, hy], outputs=imgres)
             
     # Class method after_component.
     def after_component(self, component, **kwargs):
