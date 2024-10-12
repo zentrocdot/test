@@ -30,7 +30,7 @@ def width_height(ar):
     fac1, fac2 = ar.split(":")
     height = 512
     width = float(fac1) * height / float(fac2)
-    if _IsExact = True:
+    if _IsExact == True:
       if float(width).is_integer():
         width, height = (int(width), int(height))
       else:
@@ -42,7 +42,6 @@ def width_height(ar):
                 break
         width, height = (int(width), int(new_height))
     return (width, height)
-
 
 # Define class AspectRatioButton.
 class  AspectRatioButton(ToolButton):
@@ -123,9 +122,9 @@ class ResolutionCalcScript(scripts.Script):
                         calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[arcalc_input])
                         change_rb(rb_state):
                             global IsExact
-                            if rb_state = "Off"
+                            if rb_state == "Off"
                                 _IsExact = False
-                            elif rb_state = "On":
+                            elif rb_state == "On":
                                 _IsExact = True      
                             return 
                         rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[])
