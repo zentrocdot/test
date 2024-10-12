@@ -48,7 +48,7 @@ def width_height(ar):
             width, height = (int(width), int(new_height))
     if switch == True:
         width, height = height, width
-    if _IsRound = True:
+    if _IsRound == True:
         width, height = list(map(round, [width, height]))
     return (width, height)
 
