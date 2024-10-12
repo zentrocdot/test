@@ -115,10 +115,11 @@ class AspectRatioScript(scripts.Script):
                 label="Common Landscape Aspect Ratios", 
                 elem_id=css_acc
             ) as enabled:
-                arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1:1")
-                exact = gr.Textbox(value="exact", lines=1, render=True,
-                        interactive=True,
-                        label="Calculated aspect ratio is:")
+                with gr.Row(elem_id=css_row):      
+                    arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1:1")
+                    exact = gr.Textbox(value="exact", lines=1, render=True,
+                            interactive=True,
+                            label="Calculated aspect ratio is:")
                 with gr.Row(elem_id=css_row):
                     rst = AspectRatioButton(ar=1.0, value="Reset")
                     btn = AspectRatioButton(ar=1.0, value="Apply")
