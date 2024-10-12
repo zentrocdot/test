@@ -112,9 +112,9 @@ class AspectRatioScript(scripts.Script):
                 elem_id=css_acc
             ) as enabled:
                 with gr.Row(elem_id=css_row):      
-                    wx = gr.Number(value=0, lines=1, render=True,
+                    wx = gr.Number(value=0, render=True,
                             interactive=True, label="Calculation of Width/Height")
-                    hy = gr.Number(value=0, lines=1, render=True,
+                    hy = gr.Number(value=0, render=True,
                             interactive=True, label="Calculation of Width/Height")
                 with gr.Row(elem_id=css_row):
                     rst = AspectRatioButton(ar=1.0, value="Reset")
