@@ -136,7 +136,7 @@ class AspectRatioScript(scripts.Script):
                                 retval = "exact"          
                             return retval          
                         btn.click(update_button, inputs=[arval], outputs=imgres)
-                        btn.click(update_button, inputs=[arval], outputs=exact)      
+                        btn.click(check_calc, inputs=[arval], outputs=exact)      
                         def update_rst0(arstr): 
                             rst.ar = 1.0
                             return rst.apply(_width, _height)
