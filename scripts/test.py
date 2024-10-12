@@ -49,7 +49,6 @@ def width_height(ar):
     if switch == True:
         width, height = height, width
     if _IsRound == True:
-        print("Gotcha!")
         width, height = round(width, 0), round(height, 0)
     return (width, height)
 
