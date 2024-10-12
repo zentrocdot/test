@@ -64,8 +64,8 @@ class  AspectRatioButton(ToolButton):
         '''Class method apply.'''
         print(w, h)
         # Initialise height and width.
-        w = _width
-        h = _height
+        #w = _width
+        #h = _height
         # Calculate new width and height.
         #if self.ar > 1.0:  # fixed height, change width
         #    w = self.ar * h
@@ -75,7 +75,7 @@ class  AspectRatioButton(ToolButton):
         #    min_dim = min([w, h])
         #    w, h = min_dim, min_dim
         # Create a new list.
-        retlst = list(map(round, [w, h]))
+        retlst = list(map(round, [self.wx, self.hy]))
         # Return the list with width and height.
         return retlst
 
