@@ -28,19 +28,34 @@ _IsExact = False
 
 def width_height(ar):
     fac1, fac2 = ar.split(":")
-    height = 512
-    width = float(fac1) * height / float(fac2)
-    if _IsExact == True:
-        if float(width).is_integer():
-            width, height = (int(width), int(height))
-        else:
-            new_height = height
-            while True:
-                new_height += 2
-                width = float(fac1) * new_height / float(fac2)
-                if float(width).is_integer():
-                    break
-            width, height = (int(width), int(new_height))
+    if fac1 > fac2:
+        height = 512
+        width = float(fac1) * height / float(fac2)
+        if _IsExact == True:
+            if float(width).is_integer():
+                width, height = (int(width), int(height))
+            else:
+                new_height = height
+                while True:
+                    new_height += 2
+                    width = float(fac1) * new_height / float(fac2)
+                    if float(width).is_integer():
+                        break
+                width, height = (int(width), int(new_height))
+    else:
+        width = 512
+        height = float(fac1) * height / float(fac2)
+        if _IsExact == True:
+            if float(height).is_integer():
+                width, height = (int(width), int(height))
+            else:
+                new_width = width
+                while True:
+                    new_width += 2
+                    height = float(fac1) * new_width / float(fac2)
+                    if float(height).is_integer():
+                        break
+                width, height = (int(width), int(new_height))
     return (width, height)
 
 # Define class AspectRatioButton.
@@ -52,6 +67,7 @@ class  AspectRatioButton(ToolButton):
         '''Class init method.'''
         super().__init__(**kwargs)
         self.ar = ar
+        
     def apply(self, w, h):
         '''Class method apply.'''
         # Return the list with width and height.
