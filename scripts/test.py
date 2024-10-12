@@ -107,9 +107,9 @@ class ResolutionCalcScript(scripts.Script):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", 
                                               placeholder="Enter aspect ratio here")
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation",
-                                         info=" ", key="RB1")
+                                         info="of Width/Height", key="RB1")
                     round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Round result",
-                                            info=" ", key="RB2")
+                                            info="of Width/Height", key="RB2")
                     with contextlib.suppress(AttributeError):
                         def change_rb(rb_state):
                             global _IsExact
