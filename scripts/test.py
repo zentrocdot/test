@@ -128,9 +128,9 @@ class ResolutionCalcScript(scripts.Script):
                             return x
                         def adopt_value_x(x, y):
                             return y
-                        calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[arcalc_input])
-                        calc_btn.click(adopt_value_x, inputs=[_IsWidth, _IsHeight], outputs=[wx])
-                        calc_btn.click(adopt_value_y, inputs=[_IsWidth, _IsHeight], outputs=[hy])
+                        calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[wx, hy])
+                        #calc_btn.click(adopt_value_x, inputs=[_IsWidth, _IsHeight], outputs=[wx])
+                        #calc_btn.click(adopt_value_y, inputs=[_IsWidth, _IsHeight], outputs=[hy])
                         #adopt_btn.click(adopt_value_x, inputs=[_IsWidth, _IsHeight], outputs=[wx])
                         #adopt_btn.click(adopt_value_y, inputs=[_IsWidth, _IsHeight], outputs=[hy])
                         def change_rb(rb_state):
