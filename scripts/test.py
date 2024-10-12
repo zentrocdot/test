@@ -26,7 +26,7 @@ _width = 512
 _height = 512
 
 # Define the list with the aspect ratios.
-arraw = ["1:1", "1.5:1", "2:1", "2.4:1", "3:1", "3:2", "3.2:1", "3.6:1", "4:1",
+arlist = ["1:1", "1.5:1", "2:1", "2.4:1", "3:1", "3:2", "3.2:1", "3.6:1", "4:1",
          "4:3", "5:1", "5:3", "5:4", "6:1", "6:5", "7:1", "7:4", "7:5", "7:5.5",
          "8:5", "9:16", "10:12", "11:5", "12:5", "13:18", "13:19", "14:9", "15:9",
          "16:9", "16:10", "17:22", "18:5", "18:9", "18.5:9", "19.5:9", "20:9",
@@ -39,17 +39,17 @@ arraw = ["1:1", "1.5:1", "2:1", "2.4:1", "3:1", "3:2", "3.2:1", "3.6:1", "4:1",
 
 # Create an dictionary.
 ardict = dict()
-for ele in arraw:
+for ele in arlist:
     templist = ele.split(":")
     fval = float(templist[0]) / float(templist[1])       
     ardict[str(ele)] = fval 
 
 # Declare the aspect ratio list.
-arlist = []
+#arlist = []
 
 # Create the aspect ratio list.
-for key, value in ardict.items():
-    arlist.append(key)  
+#for key, value in ardict.items():
+#    arlist.append(key)  
 
 # Define class AspectRatioButton.
 class  AspectRatioButton(ToolButton):
