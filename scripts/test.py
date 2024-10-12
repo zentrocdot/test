@@ -116,32 +116,6 @@ class AspectRatioScript(scripts.Script):
                     adopt_btn = gr.Button(label="Adopt")
                     with contextlib.suppress(AttributeError):
                         imgres = self.image_resolution(is_img2img)
-                        def update_button(arstr):
-                            btn.ar = ardict[arstr]
-                            return btn.apply(_width, _height)
-                        def check_calc(arstr):    
-                            retval = "ROUNDED"      
-                            ar = ardict[arstr]
-                            x = 512
-                            y = x * ar
-                            print(x, y)      
-                            if float(y).is_integer():
-                                retval = "EXACT"       
-                            return retval          
-                        btn.click(update_button, inputs=[arval], outputs=imgres)
-                        btn.click(check_calc, inputs=[arval], outputs=exact)      
-                        def update_rst0(arstr): 
-                            rst.ar = 1.0
-                            return rst.apply(_width, _height)
-                        def update_rst1(arstr): 
-                            rst = "1:1"
-                            return rst
-                        rst.click(update_rst0, inputs=[arval], outputs=imgres)
-                        rst.click(update_rst1, inputs=[arval], outputs=[arval])
-                        def update_chg(arstr):
-                            chg.ar = 1/ardict[arstr]
-                            return chg.apply(_width, _height)
-                        chg.click(update_chg, inputs=[arval], outputs=imgres
                     )
     # Class method after_component.
     def after_component(self, component, **kwargs):
