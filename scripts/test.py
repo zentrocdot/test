@@ -118,9 +118,10 @@ class ResolutionCalcScript(scripts.Script):
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation")    
                 with gr.Row(elem_id=css_row):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", placeholder="Enter aspect ratio here")     
-                    calc_btn = gr.Button(value="Calculate", elem_id=css_button)
+                    calc_btn = gr.Button(value="Calculate", elem_id=css_button)               
+                with gr.Row(elem_id=css_row):
                     adopt_btn = AspectRatioButton(ar=1.0, value="Apply")
-                    with contextlib.suppress(AttributeError):
+                with contextlib.suppress(AttributeError):
                         imgres = self.image_resolution(is_img2img)
                         def calc_value(ar_str):
                             print(ar_str) 
