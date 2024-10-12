@@ -72,9 +72,9 @@ class  AspectRatioButton(ToolButton):
         #    min_dim = min([w, h])
         #    w, h = min_dim, min_dim
         # Create a new list.
-        #retlst = list(map(round, [w, h]))
+        retlst = list(map(round, [w, h]))
         # Return the list with width and height.
-        return [w, h]
+        return retlst
 
 # Define class AspectRatioScript.
 class ResolutionCalcScript(scripts.Script):
