@@ -97,7 +97,6 @@ class AspectRatioScript(scripts.Script):
                     adopt_btn = gr.Button(value="Adopt")
                     with contextlib.suppress(AttributeError):
                         imgres = self.image_resolution(is_img2img)
-                    )
     # Class method after_component.
     def after_component(self, component, **kwargs):
         '''Class method after_component.
