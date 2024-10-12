@@ -28,36 +28,25 @@ _IsExact = False
 
 def width_height(ar):
     fac1, fac2 = ar.split(":")
+    switch = False
     if fac1 < fac2:
+        switch = True
         fac1, fac2 = fac2, fac1    
     height = 512
     width = float(fac1) * height / float(fac2)
     if _IsExact == True:
-            if float(width).is_integer():
-                width, height = (int(width), int(height))
-            else:
-                new_height = height
-                while True:
-                    new_height += 2
-                    width = float(fac1) * new_height / float(fac2)
-                    if float(width).is_integer():
-                        break
-                width, height = (int(width), int(new_height))
-    #else:
-    #    fac1, fac2 = fac2, fac1
-    #    width = 512
-    #    height = float(fac1) * width / float(fac2)
-    #    if _IsExact == True:
-    #        if float(height).is_integer():
-    #            width, height = (int(width), int(height))
-    #        else:
-    #            new_width = width
-    #            while True:
-    #                new_width += 2
-    #                height = float(fac1) * new_width / float(fac2)
-    #                if float(height).is_integer():
-    #                    break
-    #            width, height = (int(width), int(new_width))
+        if float(width).is_integer():
+            width, height = (int(width), int(height))
+        else:
+            new_height = height
+            while True:
+                new_height += 2
+                width = float(fac1) * new_height / float(fac2)
+                if float(width).is_integer():
+                    break
+            width, height = (int(width), int(new_height))
+    if switch == True:
+        width, height = height, width     
     return (width, height)
 
 # Define class AspectRatioButton.
