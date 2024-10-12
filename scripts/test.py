@@ -126,7 +126,6 @@ class ResolutionCalcScript(scripts.Script):
                             x, y = width_height(ar_str)
                             return (x, y)
                         calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[wx, hy])
-                        #adopt_btn.click(adopt_btn, inputs=[wx, hy], outputs=[])
                         def change_rb(rb_state):
                             global _IsExact
                             if rb_state == "Off":
@@ -136,8 +135,7 @@ class ResolutionCalcScript(scripts.Script):
                             return rb_state
                         rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
                 with gr.Row(elem_id=css_row):
-                    newbtn = [AspectRatioButton(ar=1.0, value="1:1")]
-                    #adopt_btn = AspectRatioButton(ar=1.0, value="Apply")
+                    newbtn = [AspectRatioButton(ar=1.0, value="Apply")]
                     with contextlib.suppress(AttributeError):
                         for b in newbtn:
                             b.click(b.apply, inputs=[wx, hy], outputs=[])
