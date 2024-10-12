@@ -133,7 +133,6 @@ class AspectRatioScript(scripts.Script):
         css_acc = f'{"img" if is_img2img else "txt"}2img_accordion_aspect_ratio' 
         css_col = f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         css_row = f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
-        css_txt = f'{"img" if is_img2img else "txt"}2img_text_aspect_ratio'
         # Loop over the columns.
         with gr.Column(elem_id=css_col):
             with InputAccordion(value=False,
@@ -142,7 +141,7 @@ class AspectRatioScript(scripts.Script):
             ) as enabled:
                 with gr.Row(elem_id=css_row):      
                     arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1:1")
-                    exact = gr.Textbox(value="EXACT", lines=1, render=True, elem_id=css_txt,
+                    exact = gr.Textbox(value="EXACT", lines=1, render=True,
                             interactive=True, label="Calculation of Width/Height")
                 with gr.Row(elem_id=css_row):
                     rst = AspectRatioButton(ar=1.0, value="Reset")
