@@ -117,7 +117,6 @@ class ResolutionCalcScript(scripts.Script):
                 with gr.Row(elem_id=css_row):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", placeholder="Enter aspect ratio here")     
                     calc_btn = gr.Button(value="Calculate")
-                    buttons, apply_functions = create_aspect_ratio_buttons(zip(self.aspect_ratios, self.aspect_ratio_labels))
                     adopt_btn = AspectRatioButton(ar=1.0, value="Apply")
                     with contextlib.suppress(AttributeError):
                         imgres = self.image_resolution(is_img2img)
