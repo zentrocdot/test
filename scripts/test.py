@@ -120,7 +120,6 @@ class ResolutionCalcScript(scripts.Script):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", placeholder="Enter aspect ratio here")     
                     calc_btn = gr.Button(value="Calculate", elem_id=css_button) 
                     with contextlib.suppress(AttributeError):
-                        imgres = self.image_resolution(is_img2img)
                         def calc_value(ar_str):
                             print(ar_str) 
                             x, y = width_height(ar_str)
@@ -138,7 +137,8 @@ class ResolutionCalcScript(scripts.Script):
                     newbtn = [AspectRatioButton(ar=1.0, value="Apply")]
                     with contextlib.suppress(AttributeError):
                         for b in newbtn:
-                            b.click(b.apply, inputs=[wx, hy], outputs=[])
+                            imgres = self.image_resolution(is_img2img)
+                            b.click(b.apply, inputs=[wx, hy], outputs=[imgres])
             
     # Class method after_component.
     def after_component(self, component, **kwargs):
