@@ -122,8 +122,8 @@ class ResolutionCalcScript(scripts.Script):
                         imgres = self.image_resolution(is_img2img)
                         def calc_value(ar_str):
                             print(ar_str) 
-                            print(width_height(ar_str))
-                            return ar_str
+                            x, y = width_height(ar_str)
+                            return (x, y)
                         def adopt_value_x(x, y):
                             return x
                         def adopt_value_x(x, y):
