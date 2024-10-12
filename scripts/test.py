@@ -137,7 +137,7 @@ class AspectRatioScript(scripts.Script):
                             y = x * ar
                             print(y)      
                             if float(y).is_integer():
-                                retval = "exact"   
+                                retval = "EXACT"   
                                 #_exact = "EXACT"      
                             return retval          
                         btn.click(update_button, inputs=[arval], outputs=imgres)
