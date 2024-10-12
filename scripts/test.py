@@ -35,16 +35,16 @@ def width_height(ar):
     height = 512
     width = float(fac1) * height / float(fac2)
     if _IsExact == True:
-      if float(width).is_integer():
-        width, height = (int(width), int(height))
-      else:
-        new_height = height
-        while True:
-            new_height += 2
-            width = float(fac1) * new_height / float(fac2)
-            if float(width).is_integer():
-                break
-        width, height = (int(width), int(new_height))
+        if float(width).is_integer():
+            width, height = (int(width), int(height))
+        else:
+            new_height = height
+            while True:
+                new_height += 2
+                width = float(fac1) * new_height / float(fac2)
+                if float(width).is_integer():
+                    break
+            width, height = (int(width), int(new_height))
         _IsWidth, _IsHeight = (int(width), int(new_height))
     return (width, height)
 
@@ -57,26 +57,11 @@ class  AspectRatioButton(ToolButton):
         '''Class init method.'''
         super().__init__(**kwargs)
         self.ar = ar
-        self.wx = 512
-        self.wy = 512
+        #self.wx = 512
+        #self.wy = 512
 
     def apply(self, w, h):
         '''Class method apply.'''
-        #print(w, h)
-        # Initialise height and width.
-        #w = _width
-        #h = _height
-        # Calculate new width and height.
-        #if self.ar > 1.0:  # fixed height, change width
-        #    w = self.ar * h
-        #elif self.ar < 1.0:  # fixed width, change height
-        #    h = w / self.ar
-        #else:  # set minimum dimension to both
-        #    min_dim = min([w, h])
-        #    w, h = min_dim, min_dim
-        # Create a new list.
-        #print(self.wx, self.hy)
-        #retlst = list(map(round, [self.wx, self.hy]))
         # Return the list with width and height.
         return [w, h]
 
