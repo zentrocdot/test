@@ -118,10 +118,8 @@ class ResolutionCalcScript(scripts.Script):
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation")    
                 with gr.Row(elem_id=css_row):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", placeholder="Enter aspect ratio here")     
-                    calc_btn = gr.Button(value="Calculate", elem_id=css_button)               
-                with gr.Row(elem_id=css_row):
-                    adopt_btn = AspectRatioButton(ar=1.0, value="Apply")
-                with contextlib.suppress(AttributeError):
+                    calc_btn = gr.Button(value="Calculate", elem_id=css_button) 
+                    with contextlib.suppress(AttributeError):
                         imgres = self.image_resolution(is_img2img)
                         def calc_value(ar_str):
                             print(ar_str) 
@@ -137,6 +135,13 @@ class ResolutionCalcScript(scripts.Script):
                                 _IsExact = True      
                             return rb_state
                         rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
+                with gr.Row(elem_id=css_row):
+                    newbtn = [AspectRatioButton(ar=1.0, value="1:1")]
+                    #adopt_btn = AspectRatioButton(ar=1.0, value="Apply")
+                    with contextlib.suppress(AttributeError):
+                        for b in btns:
+                            b.click(b.apply, inputs=[wx, hy], outputs=[])
+            
     # Class method after_component.
     def after_component(self, component, **kwargs):
         '''Class method after_component.
