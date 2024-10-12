@@ -43,8 +43,9 @@ def width_height(ar):
                         break
                 width, height = (int(width), int(new_height))
     else:
+        fac1, fac2 = fac2, fac1
         width = 512
-        height = float(fac2) * width / float(fac1)
+        height = float(fac1) * width / float(fac2)
         if _IsExact == True:
             if float(height).is_integer():
                 width, height = (int(width), int(height))
@@ -52,7 +53,7 @@ def width_height(ar):
                 new_width = width
                 while True:
                     new_width += 2
-                    height = float(fac2) * new_width / float(fac1)
+                    height = float(fac1) * new_width / float(fac2)
                     if float(height).is_integer():
                         break
                 width, height = (int(width), int(new_width))
