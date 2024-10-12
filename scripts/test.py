@@ -119,11 +119,11 @@ class ResolutionCalcScript(scripts.Script):
                                 _IsExact = True      
                             return rb_state
                         def change_round(rb_state):
-                            global _IsExact
+                            global _IsRound
                             if rb_state == "Off":
-                                _IsExact = False
+                                _IsRound = False
                             elif rb_state == "On":
-                                _IsExact = True      
+                                _IsRound = True      
                             return rb_state    
                         rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
                         round_on_off.change(change_round, inputs=[rb_on_off], outputs=[rb_on_off])
