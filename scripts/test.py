@@ -25,12 +25,8 @@ from modules.ui_components import ToolButton, InputAccordion
 _width = 512
 _height = 512
 _IsExact = False
-#_IsWidth = 512
-#_IsHeight = 512
 
 def width_height(ar):
-    #global _IsWidth
-    #global _IsHeight
     fac1, fac2 = ar.split(":")
     height = 512
     width = float(fac1) * height / float(fac2)
@@ -45,7 +41,6 @@ def width_height(ar):
                 if float(width).is_integer():
                     break
             width, height = (int(width), int(new_height))
-        #_IsWidth, _IsHeight = (int(width), int(new_height))
     return (width, height)
 
 # Define class AspectRatioButton.
@@ -101,8 +96,10 @@ class ResolutionCalcScript(scripts.Script):
                     hy = gr.Number(value=None, label="", render=True, visible=True,
                                    show_label=False, interactive=False, info="Height")  
                 with gr.Row(elem_id=css_row):
-                    arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", placeholder="Enter aspect ratio here")
-                    rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="", info="Exact Calculation")
+                    arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", 
+                                              placeholder="Enter aspect ratio here")
+                    rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="",
+                                         info="Exact Calculation")
                     with contextlib.suppress(AttributeError):
                         def change_rb(rb_state):
                             global _IsExact
