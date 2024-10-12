@@ -92,7 +92,7 @@ class AspectRatioScript(scripts.Script):
                             interactive=False, label="Height")
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation")    
                 with gr.Row(elem_id=css_row):
-                    ar_input = gr.Textbox(value="1:1", render=True, label="Aspect Ratio")     
+                    ar_input = gr.Textbox(value="", label="Aspect Ratio")     
                     calc_btn = gr.Button(value="Calculate")
                     adopt_btn = gr.Button(value="Adopt")
                     with contextlib.suppress(AttributeError):
