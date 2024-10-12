@@ -46,7 +46,6 @@ def width_height(ar):
                     break
             width, height = (int(width), int(new_height))
     if switch == True:
-        print("Gotcha")
         width, height = height, width     
     return (width, height)
 
