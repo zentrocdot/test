@@ -87,9 +87,9 @@ class ResolutionCalcScript(scripts.Script):
             ) as enabled:
                 with gr.Row(elem_id=css_row):      
                     wx = gr.Number(value=0, render=True, visible=True,
-                            interactive=False, label="Width")
+                            interactive=False, info="Width")
                     hy = gr.Number(value=0, render=True, visible=True,
-                            interactive=False, label="Height")
+                            interactive=False, info="Height")
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation")    
                 with gr.Row(elem_id=css_row):
                     arcalc_input = gr.Textbox(value="1:1", info="Aspect Ratio", label="")     
