@@ -90,7 +90,7 @@ class AspectRatioScript(scripts.Script):
                             interactive=True, label="Calculation of Width/Height")
                     hy = gr.Number(value=0, render=True, visible=True,
                             interactive=True, label="Calculation of Width/Height")
-                    rb_on_off = gr.Radio(choices=["On", "Off"], value="Off" label="Exact Calculation")    
+                    rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation")    
                 with gr.Row(elem_id=css_row):
                     ar_input = gr.Textbox(value="1:1", render=True, label="Aspect Ratio")     
                     calc_btn = gr.Button(value="Calculate")
