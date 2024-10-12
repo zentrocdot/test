@@ -25,6 +25,23 @@ from modules.ui_components import ToolButton, InputAccordion
 _width = 512
 _height = 512
 
+def width_height(ar):
+    fac1, fac2 = ar.split(":")
+    height = 512
+    width = float(fac1) * height / float(fac2)
+    if float(width).is_integer():
+        width, height = (int(width), int(height))
+    else:
+        new_height = height
+        while True:
+            new_height += 2
+            width = float(fac1) * new_height / float(fac2)
+            if float(width).is_integer():
+                break
+        width, height = (int(width), int(new_height))
+    return (width, height)
+
+
 # Define class AspectRatioButton.
 class  AspectRatioButton(ToolButton):
     '''Class for calculating the new Width and new Height for
@@ -99,6 +116,7 @@ class ResolutionCalcScript(scripts.Script):
                         imgres = self.image_resolution(is_img2img)
                         def calc_value(ar_str):
                             print(ar_str) 
+                            print(width_height(ar_str))
                             return ar_str
                         calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[arcalc_input])
     # Class method after_component.
