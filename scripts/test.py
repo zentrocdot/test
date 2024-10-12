@@ -24,7 +24,6 @@ from modules.ui_components import ToolButton, InputAccordion
 # Define module variables.
 _width = 512
 _height = 512
-#_exact = "exact"
 
 arlist = ["1:1", "1.5:1", "2:1", "2.4:1"]
 
@@ -33,7 +32,6 @@ for ele in arlist:
     templist = ele.split(":")
     fval = float(templist[0]) / float(templist[1])       
     ardict[str(ele)] = fval 
-
 
 ''' # Define the module aspect ratio dictionary.
 ardict = {"1:1    ": 1.0,     "1.5:1  ": 1.5,     "2:1   ": 2.0,     "2.4:1": 2.4, 
