@@ -61,8 +61,8 @@ class  AspectRatioButton(ToolButton):
     def apply(self, w, h):
         '''Class method apply.'''
         # Initialise height and width.
-        w = _width
-        h = _height
+        #w = _width
+        #h = _height
         # Calculate new width and height.
         if self.ar > 1.0:  # fixed height, change width
             w = self.ar * h
@@ -117,7 +117,8 @@ class ResolutionCalcScript(scripts.Script):
                 with gr.Row(elem_id=css_row):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", placeholder="Enter aspect ratio here")     
                     calc_btn = gr.Button(value="Calculate")
-                    adopt_btn = gr.Button(value="Adopt")
+                    buttons, apply_functions = create_aspect_ratio_buttons(zip(self.aspect_ratios, self.aspect_ratio_labels))
+                    adopt_btn = AspectRatioButton(ar=1.0, value="Apply")
                     with contextlib.suppress(AttributeError):
                         imgres = self.image_resolution(is_img2img)
                         def calc_value(ar_str):
@@ -127,7 +128,7 @@ class ResolutionCalcScript(scripts.Script):
                         def adopt_value(x, y):
                             return (x, Y)
                         calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[wx, hy])
-                        adopt_btn.click(adopt_value, inputs=[wx, hy], outputs=[res_switch_btn])
+                        adopt_btn.click(adopt_value, inputs=[wx, hy], outputs=[wx, hy])
                         def change_rb(rb_state):
                             global _IsExact
                             if rb_state == "Off":
