@@ -122,7 +122,7 @@ class ResolutionCalcScript(scripts.Script):
                         calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[arcalc_input])
                         def change_rb(rb_state):
                             global IsExact
-                            if rb_state == "Off"
+                            if rb_state == "Off":
                                 _IsExact = False
                             elif rb_state == "On":
                                 _IsExact = True      
