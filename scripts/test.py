@@ -29,7 +29,7 @@ _IsExact = False
 def width_height(ar):
     fac1, fac2 = ar.split(":")
     if fac1 < fac2:
-        width, height = height, width    
+        fac1, fac2 = fac2, fac1    
     height = 512
     width = float(fac1) * height / float(fac2)
     if _IsExact == True:
