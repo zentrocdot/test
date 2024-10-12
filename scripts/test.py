@@ -57,9 +57,6 @@ class  AspectRatioButton(ToolButton):
         '''Class init method.'''
         super().__init__(**kwargs)
         self.ar = ar
-        #self.wx = 512
-        #self.wy = 512
-
     def apply(self, w, h):
         '''Class method apply.'''
         # Return the list with width and height.
@@ -105,7 +102,7 @@ class ResolutionCalcScript(scripts.Script):
                             interactive=False, info="Height")  
                 with gr.Row(elem_id=css_row):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", placeholder="Enter aspect ratio here")
-                    rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation")
+                    rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="", info="Exact Calculation")
                     with contextlib.suppress(AttributeError):
                         def change_rb(rb_state):
                             global _IsExact
