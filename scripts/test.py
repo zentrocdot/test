@@ -24,14 +24,16 @@ from modules.ui_components import ToolButton, InputAccordion
 # Define module variables.
 _width = 512
 _height = 512
+_IsExact = False
 
 def width_height(ar):
     fac1, fac2 = ar.split(":")
     height = 512
     width = float(fac1) * height / float(fac2)
-    if float(width).is_integer():
+    if _IsExact = True:
+      if float(width).is_integer():
         width, height = (int(width), int(height))
-    else:
+      else:
         new_height = height
         while True:
             new_height += 2
@@ -119,6 +121,14 @@ class ResolutionCalcScript(scripts.Script):
                             print(width_height(ar_str))
                             return ar_str
                         calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[arcalc_input])
+                        change_rb(rb_state):
+                            global IsExact
+                            if rb_state = "Off"
+                                _IsExact = False
+                            elif rb_state = "On":
+                                _IsExact = True      
+                            return 
+                        rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[])
     # Class method after_component.
     def after_component(self, component, **kwargs):
         '''Class method after_component.
