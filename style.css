@@ -37,9 +37,6 @@
 
 #txt2img_button_aspect_ratio,
 #img2img_button_aspect_ratio {
-        vertical-align: bottom;
-	vertical-align: text-bottom; 
-	height: 40px; 
 	margin: 0px;
 	gap: 10px !important;
 	max-width: unset !important;
