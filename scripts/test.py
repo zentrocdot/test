@@ -116,13 +116,10 @@ class AspectRatioScript(scripts.Script):
                             interactive=True, label="Calculation of Width/Height")
                     hy = gr.Number(value=0, render=True, visible=True,
                             interactive=True, label="Calculation of Width/Height")
-                    rb = gr.Radio(["On/Off"], label="Exact Calculation"),
-        g     
+                    rb_on_off = gr.Radio(["On/Off"], label="Exact Calculation")    
                 with gr.Row(elem_id=css_row):
-                    ar = gr.Textbox(value="1:1", render=True, label="Aspect Ratio")     
-                    rst = AspectRatioButton(ar=1.0, value="Reset")
-                    btn = AspectRatioButton(ar=1.0, value="Apply")
-                    chg = AspectRatioButton(ar=1.0, value="Change Orientation")
+                    ar_input = gr.Textbox(value="1:1", render=True, label="Aspect Ratio")     
+                    calc_btn = gr.Button(label="Calculate")
                     with contextlib.suppress(AttributeError):
                         imgres = self.image_resolution(is_img2img)
                         def update_button(arstr):
