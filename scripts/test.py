@@ -134,7 +134,8 @@ class AspectRatioScript(scripts.Script):
                             retval = "rounded"      
                             ar = ardict[arstr]
                             x = 512
-                            y = x * ar      
+                            y = x * ar
+                            print(y)      
                             if float(y).is_integer():
                                 retval = "exact"   
                                 _exact = "exact"      
