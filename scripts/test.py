@@ -60,6 +60,7 @@ class  AspectRatioButton(ToolButton):
 
     def apply(self, w, h):
         '''Class method apply.'''
+        print(w, h)
         # Initialise height and width.
         #w = _width
         #h = _height
