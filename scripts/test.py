@@ -118,8 +118,7 @@ class AspectRatioScript(scripts.Script):
                 with gr.Row(elem_id=css_row):      
                     arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1:1")
                     exact = gr.Textbox(value="exact", lines=1, render=True,
-                            interactive=True,
-                            label="Calculated aspect ratio is:")
+                            interactive=True, label="Calculated aspect ratio is:")
                 with gr.Row(elem_id=css_row):
                     rst = AspectRatioButton(ar=1.0, value="Reset")
                     btn = AspectRatioButton(ar=1.0, value="Apply")
@@ -129,7 +128,16 @@ class AspectRatioScript(scripts.Script):
                         def update_button(arstr):
                             btn.ar = ardict[arstr]
                             return btn.apply(_width, _height)
+                        def check_calc(arstr):   
+                            retval = "rounded      
+                            ar = ardict[arstr]
+                            x = 512
+                            y = x * ar      
+                            if float(y).is_integer():
+                                retval = "exact"          
+                            return retval          
                         btn.click(update_button, inputs=[arval], outputs=imgres)
+                        btn.click(update_button, inputs=[arval], outputs=exact)      
                         def update_rst0(arstr): 
                             rst.ar = 1.0
                             return rst.apply(_width, _height)
