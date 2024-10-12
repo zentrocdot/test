@@ -107,6 +107,8 @@ class ResolutionCalcScript(scripts.Script):
                                               placeholder="Enter aspect ratio here")
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="",
                                          info="Exact Calculation")
+                    round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="",
+                                            info="Round result")
                     with contextlib.suppress(AttributeError):
                         def change_rb(rb_state):
                             global _IsExact
