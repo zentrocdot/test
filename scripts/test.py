@@ -74,7 +74,7 @@ class  AspectRatioButton(ToolButton):
         # Create a new list.
         #retlst = list(map(round, [w, h]))
         # Return the list with width and height.
-        return (w, h)
+        return [w, h]
 
 # Define class AspectRatioScript.
 class ResolutionCalcScript(scripts.Script):
