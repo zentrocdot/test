@@ -118,7 +118,7 @@ class AspectRatioScript(scripts.Script):
                 with gr.Row(elem_id=css_row):      
                     arval = gr.Dropdown(arlist, label="Aspect Ratios", value="1:1")
                     exact = gr.Textbox(value="EXACT", lines=1, render=True,
-                            interactive=True, label="Calculation of Aspect Ratio")
+                            interactive=True, label="Calculation of Width/Height")
                 with gr.Row(elem_id=css_row):
                     rst = AspectRatioButton(ar=1.0, value="Reset")
                     btn = AspectRatioButton(ar=1.0, value="Apply")
