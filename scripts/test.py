@@ -24,6 +24,7 @@ from modules.ui_components import ToolButton, InputAccordion
 # Define module variables.
 _width = 512
 _height = 512
+_exact = "exact"
 
 # Define the module aspect ratio dictionary.
 ardict = {"1:1    ": 1.0,     "1.5:1  ": 1.5,     "2:1   ": 2.0,     "2.4:1": 2.4, 
@@ -127,13 +128,16 @@ class AspectRatioScript(scripts.Script):
                         def update_button(arstr):
                             btn.ar = ardict[arstr]
                             return btn.apply(_width, _height)
-                        def check_calc(arstr):   
+                        def check_calc(arstr):
+                            global _exact 
+                            _exact = "rounded"      
                             retval = "rounded"      
                             ar = ardict[arstr]
                             x = 512
                             y = x * ar      
                             if float(y).is_integer():
-                                retval = "exact"          
+                                retval = "exact"   
+                                _exact = "exact"      
                             return retval          
                         btn.click(update_button, inputs=[arval], outputs=imgres)
                         btn.click(check_calc, inputs=[arval], outputs=exact)      
