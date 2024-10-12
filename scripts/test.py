@@ -47,7 +47,9 @@ def width_height(ar):
                     break
             width, height = (int(width), int(new_height))
     if switch == True:
-        width, height = height, width     
+        width, height = height, width
+    if _IsRound = True:
+        width, height = list(map(round, [width, height]))
     return (width, height)
 
 # Define class AspectRatioButton.
