@@ -102,6 +102,7 @@ class ResolutionCalcScript(scripts.Script):
         css_acc = f'{"img" if is_img2img else "txt"}2img_accordion_aspect_ratio' 
         css_col = f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         css_row = f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
+        css_button = f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
         # Loop over the columns.
         with gr.Column(elem_id=css_col):
             with InputAccordion(value=False,
@@ -116,7 +117,7 @@ class ResolutionCalcScript(scripts.Script):
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation")    
                 with gr.Row(elem_id=css_row):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", placeholder="Enter aspect ratio here")     
-                    calc_btn = gr.Button(value="Calculate")
+                    calc_btn = gr.Button(value="Calculate", elem_id=css_button)
                     adopt_btn = AspectRatioButton(ar=1.0, value="Apply")
                     with contextlib.suppress(AttributeError):
                         imgres = self.image_resolution(is_img2img)
@@ -125,7 +126,7 @@ class ResolutionCalcScript(scripts.Script):
                             x, y = width_height(ar_str)
                             return (x, y)
                         def adopt_value(x, y):
-                            return (x, Y)
+                            return (x, y)
                         calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[wx, hy])
                         adopt_btn.click(adopt_value, inputs=[wx, hy], outputs=[wx, hy])
                         def change_rb(rb_state):
