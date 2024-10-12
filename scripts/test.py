@@ -124,15 +124,10 @@ class ResolutionCalcScript(scripts.Script):
                             print(ar_str) 
                             x, y = width_height(ar_str)
                             return (x, y)
-                        def adopt_value_x(x, y):
-                            return x
-                        def adopt_value_x(x, y):
-                            return y
+                        def adopt_value(x, y):
+                            return (x, Y)
                         calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[wx, hy])
-                        #calc_btn.click(adopt_value_x, inputs=[_IsWidth, _IsHeight], outputs=[wx])
-                        #calc_btn.click(adopt_value_y, inputs=[_IsWidth, _IsHeight], outputs=[hy])
-                        #adopt_btn.click(adopt_value_x, inputs=[_IsWidth, _IsHeight], outputs=[wx])
-                        #adopt_btn.click(adopt_value_y, inputs=[_IsWidth, _IsHeight], outputs=[hy])
+                        adopt_btn.click(adopt_value, inputs=[wx, wy], outputs=[slider, slider])
                         def change_rb(rb_state):
                             global _IsExact
                             if rb_state == "Off":
