@@ -75,7 +75,7 @@ class  AspectRatioButton(ToolButton):
         #    min_dim = min([w, h])
         #    w, h = min_dim, min_dim
         # Create a new list.
-         print(self.wx, self.hy)
+        print(self.wx, self.hy)
         retlst = list(map(round, [self.wx, self.hy]))
         # Return the list with width and height.
         return retlst
