@@ -64,17 +64,17 @@ class  AspectRatioButton(ToolButton):
         #w = _width
         #h = _height
         # Calculate new width and height.
-        if self.ar > 1.0:  # fixed height, change width
-            w = self.ar * h
-        elif self.ar < 1.0:  # fixed width, change height
-            h = w / self.ar
-        else:  # set minimum dimension to both
-            min_dim = min([w, h])
-            w, h = min_dim, min_dim
+        #if self.ar > 1.0:  # fixed height, change width
+        #    w = self.ar * h
+        #elif self.ar < 1.0:  # fixed width, change height
+        #    h = w / self.ar
+        #else:  # set minimum dimension to both
+        #    min_dim = min([w, h])
+        #    w, h = min_dim, min_dim
         # Create a new list.
-        retlst = list(map(round, [w, h]))
+        #retlst = list(map(round, [w, h]))
         # Return the list with width and height.
-        return retlst
+        return (w, h)
 
 # Define class AspectRatioScript.
 class ResolutionCalcScript(scripts.Script):
@@ -102,7 +102,7 @@ class ResolutionCalcScript(scripts.Script):
         css_acc = f'{"img" if is_img2img else "txt"}2img_accordion_aspect_ratio' 
         css_col = f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         css_row = f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
-        css_button = f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
+        css_button = f'{"img" if is_img2img else "txt"}2img_button_aspect_ratio'
         # Loop over the columns.
         with gr.Column(elem_id=css_col):
             with InputAccordion(value=False,
