@@ -55,7 +55,7 @@ def width_height(ar):
                     height = float(fac1) * new_width / float(fac2)
                     if float(height).is_integer():
                         break
-                width, height = (int(width), int(new_height))
+                width, height = (int(width), int(new_width))
     return (width, height)
 
 # Define class AspectRatioButton.
