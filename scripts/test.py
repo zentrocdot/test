@@ -54,12 +54,12 @@ class  AspectRatioButton(ToolButton):
         return retlst
 
 # Define class AspectRatioScript.
-class AspectRatioScript(scripts.Script):
-    '''Class for selecting the aspect ratio.'''
+class ResolutionCalcScript(scripts.Script):
+    '''Class for calculation the resolution.'''
     
     def title(self):
         '''Class method title.'''
-        return "Aspect Ratio Selector"
+        return "Resolution Calculator"
 
     def show(self, is_img2img):
         '''Class method show.'''
