@@ -114,7 +114,6 @@ class ResolutionCalcScript(scripts.Script):
                         rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
                 with gr.Row(elem_id=css_row):
                     calc_btn = gr.Button(value="Calculate", elem_id=css_button)
-                    calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[wx, hy])
                     with contextlib.suppress(AttributeError):
                         def calc_value(ar_str):
                             x, y = width_height(ar_str)
