@@ -25,6 +25,7 @@ from modules.ui_components import ToolButton, InputAccordion
 _width = 512
 _height = 512
 _IsExact = False
+_IsRound = False
 
 def width_height(ar):
     fac1, fac2 = ar.split(":")
@@ -106,9 +107,9 @@ class ResolutionCalcScript(scripts.Script):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", 
                                               placeholder="Enter aspect ratio here")
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="",
-                                         info="Exact Calculation")
+                                         info="Exact Calculation", key="RB1")
                     round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="",
-                                            info="Round result")
+                                            info="Round result", key="RB2")
                     with contextlib.suppress(AttributeError):
                         def change_rb(rb_state):
                             global _IsExact
@@ -117,8 +118,15 @@ class ResolutionCalcScript(scripts.Script):
                             elif rb_state == "On":
                                 _IsExact = True      
                             return rb_state
+                        def change_round(rb_state):
+                            global _IsExact
+                            if rb_state == "Off":
+                                _IsExact = False
+                            elif rb_state == "On":
+                                _IsExact = True      
+                            return rb_state    
                         rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
-                        round_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
+                        round_on_off.change(change_round, inputs=[rb_on_off], outputs=[rb_on_off])
                 with gr.Row(elem_id=css_row):
                     calc_btn = gr.Button(value="Calculate", elem_id=css_button)
                     with contextlib.suppress(AttributeError):
