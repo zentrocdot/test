@@ -92,7 +92,7 @@ class ResolutionCalcScript(scripts.Script):
                             interactive=False, label="Height")
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation")    
                 with gr.Row(elem_id=css_row):
-                    ar_input = gr.Textbox(value="", label="Aspect Ratio")     
+                    arcalc_input = gr.Textbox(value="", label="")     
                     calc_btn = gr.Button(value="Calculate")
                     adopt_btn = gr.Button(value="Adopt")
                     with contextlib.suppress(AttributeError):
