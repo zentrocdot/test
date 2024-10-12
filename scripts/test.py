@@ -49,7 +49,7 @@ def width_height(ar):
     if switch == True:
         width, height = height, width
     if _IsRound == True:
-        width, height = list(map(round, [width, height]))
+        width, height = round(width, 0), round(height, 0)
     return (width, height)
 
 # Define class AspectRatioButton.
@@ -110,7 +110,7 @@ class ResolutionCalcScript(scripts.Script):
                                               placeholder="Enter aspect ratio here")
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation",
                                          info="of Width/Height", key="RB1")
-                    round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Round result",
+                    round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Round Result",
                                             info="of Width/Height", key="RB2")
                     with contextlib.suppress(AttributeError):
                         def change_rb(rb_state):
