@@ -102,17 +102,11 @@ class ResolutionCalcScript(scripts.Script):
                     wx = gr.Number(value=None, label="", render=True, visible=True, show_label=False,
                             interactive=False, info="Width")
                     hy = gr.Number(value=None, label="", render=True, visible=True, show_label=False,
-                            interactive=False, info="Height")
-                    rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation")    
+                            interactive=False, info="Height")  
                 with gr.Row(elem_id=css_row):
-                    arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", placeholder="Enter aspect ratio here")     
-                    calc_btn = gr.Button(value="Calculate", elem_id=css_button) 
+                    arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", placeholder="Enter aspect ratio here")
+                    rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation")
                     with contextlib.suppress(AttributeError):
-                        def calc_value(ar_str):
-                            #print(ar_str) 
-                            x, y = width_height(ar_str)
-                            return (x, y)
-                        calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[wx, hy])
                         def change_rb(rb_state):
                             global _IsExact
                             if rb_state == "Off":
@@ -122,12 +116,18 @@ class ResolutionCalcScript(scripts.Script):
                             return rb_state
                         rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
                 with gr.Row(elem_id=css_row):
-                    btns = [AspectRatioButton(ar=1.0, value="Apply")]
+                    calc_btn = gr.Button(value="Calculate", elem_id=css_button)
+                    calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[wx, hy])
+                    with contextlib.suppress(AttributeError):
+                        def calc_value(ar_str):
+                            x, y = width_height(ar_str)
+                            return (x, y)
+                        calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[wx, hy])
+                with gr.Row(elem_id=css_row):    
+                    btns = [AspectRatioButton(ar=1.0, value="Apply")]     
                     with contextlib.suppress(AttributeError):
                         for b in btns:
                             imgres = self.image_resolution(is_img2img)
-                            #b.wx = wx
-                            #b.hy = hy
                             b.click(b.apply, inputs=[wx, hy], outputs=imgres)
             
     # Class method after_component.
