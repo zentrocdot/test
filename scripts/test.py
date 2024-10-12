@@ -57,6 +57,8 @@ class  AspectRatioButton(ToolButton):
         '''Class init method.'''
         super().__init__(**kwargs)
         self.ar = ar
+        self.wx = 512
+        self.wy = 512
 
     def apply(self, wx, hy):
         '''Class method apply.'''
