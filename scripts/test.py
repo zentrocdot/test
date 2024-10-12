@@ -25,8 +25,12 @@ from modules.ui_components import ToolButton, InputAccordion
 _width = 512
 _height = 512
 _IsExact = False
+_IsWidth = 512
+_IsHeight = 512
 
 def width_height(ar):
+    global _IsWidth
+    global _IsHeight
     fac1, fac2 = ar.split(":")
     height = 512
     width = float(fac1) * height / float(fac2)
@@ -41,6 +45,7 @@ def width_height(ar):
             if float(width).is_integer():
                 break
         width, height = (int(width), int(new_height))
+        _IsWidth, _IsHeight = (int(width), int(new_height))
     return (width, height)
 
 # Define class AspectRatioButton.
@@ -119,15 +124,23 @@ class ResolutionCalcScript(scripts.Script):
                             print(ar_str) 
                             print(width_height(ar_str))
                             return ar_str
+                        def adopt_value_x(x, y):
+                            return x
+                        def adopt_value_x(x, y):
+                            return y
                         calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[arcalc_input])
+                        calc_btn.click(adopt_value_x, inputs=[_IsWidth, _IsHeight], outputs=[wx])
+                        calc_btn.click(adopt_value_y, inputs=[_IsWidth, _IsHeight], outputs=[hy])
+                        #adopt_btn.click(adopt_value_x, inputs=[_IsWidth, _IsHeight], outputs=[wx])
+                        #adopt_btn.click(adopt_value_y, inputs=[_IsWidth, _IsHeight], outputs=[hy])
                         def change_rb(rb_state):
                             global _IsExact
                             if rb_state == "Off":
                                 _IsExact = False
                             elif rb_state == "On":
                                 _IsExact = True      
-                            return 
-                        rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[])
+                            return rb_state
+                        rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
     # Class method after_component.
     def after_component(self, component, **kwargs):
         '''Class method after_component.
