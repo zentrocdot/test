@@ -97,6 +97,10 @@ class ResolutionCalcScript(scripts.Script):
                     adopt_btn = gr.Button(value="Adopt")
                     with contextlib.suppress(AttributeError):
                         imgres = self.image_resolution(is_img2img)
+                        def calc_value(ar_str):
+                            print(ar_str) 
+                            return ar_str
+                        calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[arcalc_input])
     # Class method after_component.
     def after_component(self, component, **kwargs):
         '''Class method after_component.
