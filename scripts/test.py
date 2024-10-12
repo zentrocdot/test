@@ -87,9 +87,9 @@ class AspectRatioScript(scripts.Script):
             ) as enabled:
                 with gr.Row(elem_id=css_row):      
                     wx = gr.Number(value=0, render=True, visible=True,
-                            interactive=True, label="Calculation of Width/Height")
+                            interactive=False, label="Width")
                     hy = gr.Number(value=0, render=True, visible=True,
-                            interactive=True, label="Calculation of Width/Height")
+                            interactive=False, label="Height")
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation")    
                 with gr.Row(elem_id=css_row):
                     ar_input = gr.Textbox(value="1:1", render=True, label="Aspect Ratio")     
