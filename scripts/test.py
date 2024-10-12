@@ -60,7 +60,7 @@ class  AspectRatioButton(ToolButton):
         self.wx = 512
         self.wy = 512
 
-    def apply(self, wx, hy):
+    def apply(self, w, h):
         '''Class method apply.'''
         print(w, h)
         # Initialise height and width.
@@ -75,6 +75,7 @@ class  AspectRatioButton(ToolButton):
         #    min_dim = min([w, h])
         #    w, h = min_dim, min_dim
         # Create a new list.
+         print(self.wx, self.hy)
         retlst = list(map(round, [self.wx, self.hy]))
         # Return the list with width and height.
         return retlst
@@ -140,6 +141,8 @@ class ResolutionCalcScript(scripts.Script):
                     with contextlib.suppress(AttributeError):
                         for b in btns:
                             imgres = self.image_resolution(is_img2img)
+                            b.wx = wx
+                            b.hy = hy
                             b.click(b.apply, inputs=imgres, outputs=imgres)
             
     # Class method after_component.
