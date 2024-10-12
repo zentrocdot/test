@@ -139,7 +139,7 @@ class ResolutionCalcScript(scripts.Script):
                     newbtn = [AspectRatioButton(ar=1.0, value="1:1")]
                     #adopt_btn = AspectRatioButton(ar=1.0, value="Apply")
                     with contextlib.suppress(AttributeError):
-                        for b in btns:
+                        for b in newbtn:
                             b.click(b.apply, inputs=[wx, hy], outputs=[])
             
     # Class method after_component.
