@@ -86,9 +86,9 @@ class ResolutionCalcScript(scripts.Script):
                 elem_id=css_acc
             ) as enabled:
                 with gr.Row(elem_id=css_row):      
-                    wx = gr.Number(value=0, render=True, visible=True, show_label=False,
+                    wx = gr.Number(value=None, render=True, visible=True, show_label=False,
                             interactive=False, info="Width")
-                    hy = gr.Number(value=0, render=True, visible=True, show_label=False,
+                    hy = gr.Number(value=None, render=True, visible=True, show_label=False,
                             interactive=False, info="Height")
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation")    
                 with gr.Row(elem_id=css_row):
