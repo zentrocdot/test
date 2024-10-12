@@ -1,7 +1,7 @@
-'''sd-webui-uncommon_aspect_ratios
+'''sd-webui-aspect_ratio2width_height
 Extension for AUTOMATIC1111.
 
-Version 0.0.0.2
+Version 0.0.0.1
 '''
 # pylint: disable=invalid-name
 # pylint: disable=too-few-public-methods
@@ -43,13 +43,6 @@ for ele in arlist:
     templist = ele.split(":")
     fval = float(templist[0]) / float(templist[1])       
     ardict[str(ele)] = fval 
-
-# Declare the aspect ratio list.
-#arlist = []
-
-# Create the aspect ratio list.
-#for key, value in ardict.items():
-#    arlist.append(key)  
 
 # Define class AspectRatioButton.
 class  AspectRatioButton(ToolButton):
@@ -133,8 +126,7 @@ class AspectRatioScript(scripts.Script):
                             y = x * ar
                             print(x, y)      
                             if float(y).is_integer():
-                                retval = "EXACT"   
-                                #_exact = "EXACT"      
+                                retval = "EXACT"       
                             return retval          
                         btn.click(update_button, inputs=[arval], outputs=imgres)
                         btn.click(check_calc, inputs=[arval], outputs=exact)      
