@@ -35,8 +35,3 @@
 	max-width: unset !important;
 }
 
-#txt2img_text_aspect_ratio,
-#img2img_text_aspect_ratio {
-    width: 30%;  
-}
-
