@@ -127,7 +127,7 @@ class ResolutionCalcScript(scripts.Script):
                         def adopt_value(x, y):
                             return (x, Y)
                         calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[wx, hy])
-                        adopt_btn.click(adopt_value, inputs=[wx, hy], outputs=[slider, slider])
+                        #adopt_btn.click(adopt_value, inputs=[wx, hy], outputs=[slider, slider])
                         def change_rb(rb_state):
                             global _IsExact
                             if rb_state == "Off":
