@@ -52,7 +52,7 @@ def width_height(ar):
                 new_width = width
                 while True:
                     new_width += 2
-                    height = float(fac1) * new_width / float(fac2)
+                    height = float(fac2) * new_width / float(fac1)
                     if float(height).is_integer():
                         break
                 width, height = (int(width), int(new_width))
