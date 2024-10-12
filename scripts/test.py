@@ -120,7 +120,7 @@ class AspectRatioScript(scripts.Script):
         # Loop over the columns.
         with gr.Column(elem_id=css_col):
             with InputAccordion(value=False,
-                label="Common Landscape Aspect Ratios", 
+                label="Common Landscape Aspect Ratios 1", 
                 elem_id=css_acc
             ) as enabled:
                 with gr.Row(elem_id=css_row):      
