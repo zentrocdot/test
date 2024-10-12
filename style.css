@@ -35,3 +35,9 @@
 	max-width: unset !important;
 }
 
+#txt2img_button_aspect_ratio,
+#img2img_button_aspect_ratio {
+	margin: 0px;
+	gap: 10px !important;
+	max-width: unset !important;
+}
