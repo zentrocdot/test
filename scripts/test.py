@@ -137,7 +137,7 @@ class ResolutionCalcScript(scripts.Script):
                         round_on_off.change(change_round, inputs=[round_on_off], outputs=[round_on_off])
                 # Create a new row with a button.
                 with gr.Row(elem_id=css_row):
-                    calc_btn = gr.Button(value="Calculate", elem_id=css_button)
+                    calc_btn = gr.Button(value="Calculate")
                     with contextlib.suppress(AttributeError):
                         def calc_value(ar_str):
                             x, y = width_height(ar_str)
