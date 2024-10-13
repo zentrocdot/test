@@ -54,11 +54,9 @@ def width_height(ar):
         width, height = round(width, 0), round(height, 0)
     return (width, height)
 
-# Define class AspectRatioButton.
-class  AspectRatioButton(ToolButton):
-    '''Class for calculating the new Width and new Height for
-       use in the web UI from the chosen aspect ratio.
-    '''
+# Define class WidthHeightButton.
+class  WidthHeightButton(ToolButton):
+    '''New button class.'''
     def __init__(self, ar=1.0, **kwargs):
         '''Class init method.'''
         super().__init__(**kwargs)
@@ -69,7 +67,7 @@ class  AspectRatioButton(ToolButton):
         # Return the list with width and height.
         return [w, h]
 
-# Define class AspectRatioScript.
+# Define class ResolutionCalcScript.
 class ResolutionCalcScript(scripts.Script):
     '''Class for calculation the resolution.'''
     
@@ -111,30 +109,30 @@ class ResolutionCalcScript(scripts.Script):
                 with gr.Row(elem_id=css_row):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", 
                                               placeholder="Enter aspect ratio here", 
-                                              min_width=150, scale=4)
-                    rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", 
+                                              min_width=170, scale=4)
+                    ec_on_off = gr.Radio(choices=["On", "Off"], value="Off", 
                                          label="Exact Calculation", info="of Width/Height",
-                                         scale=2, min_width=50)
-                    round_on_off = gr.Radio(choices=["On", "Off"], value="Off",
-                                            label="Rounding", info="of Width/Height",
-                                            scale=2, min_width=50)
+                                         scale=2, min_width=7)
+                    rv_on_off = gr.Radio(choices=["On", "Off"], value="Off",
+                                         label="Rounding", info="of Width/Height",
+                                         scale=2, min_width=70)
                     with contextlib.suppress(AttributeError):
-                        def change_rb(rb_state):
+                        def change_ec(rb_state):
                             global _IsExact
                             if rb_state == "Off":
                                 _IsExact = False
                             elif rb_state == "On":
                                 _IsExact = True      
                             return rb_state
-                        def change_round(rb_state):
+                        def change_rv(rb_state):
                             global _IsRound
                             if rb_state == "Off":
                                 _IsRound = False
                             elif rb_state == "On":
                                 _IsRound = True      
                             return rb_state    
-                        rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
-                        round_on_off.change(change_round, inputs=[round_on_off], outputs=[round_on_off])
+                        ec_on_off.change(change_ec, inputs=[rb_on_off], outputs=[rb_on_off])
+                        rv_on_off.change(change_rv, inputs=[rv_on_off], outputs=[rv_on_off])
                 # Create a new row with a button.
                 with gr.Row(elem_id=css_row):
                     calc_btn = gr.Button(value="Calculate")
@@ -145,7 +143,7 @@ class ResolutionCalcScript(scripts.Script):
                         calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[wx, hy])
                 # Create a new row with a button.        
                 with gr.Row(elem_id=css_row):    
-                    btns = [AspectRatioButton(ar=1.0, value="Apply")]     
+                    btns = [WidthHeightButton(ar=1.0, value="Apply")]     
                     with contextlib.suppress(AttributeError):
                         for b in btns:
                             imgres = self.image_resolution(is_img2img)
