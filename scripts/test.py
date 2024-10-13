@@ -95,26 +95,29 @@ class ResolutionCalcScript(scripts.Script):
         css_acc = f'{"img" if is_img2img else "txt"}2img_accordion_aspect_ratio' 
         css_col = f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         css_row = f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
-        css_button = f'{"img" if is_img2img else "txt"}2img_button_aspect_ratio'
-        css_radio = f'{"img" if is_img2img else "txt"}2img_radiobutton_aspect_ratio'
-        # Loop over the columns.
+        # Create a column.
         with gr.Column(elem_id=css_col):
             with InputAccordion(value=False,
                 label="Aspect Ratio to Width/Height", 
                 elem_id=css_acc
             ) as enabled:
+                # Create a new row with two number fields.
                 with gr.Row(elem_id=css_row):      
                     wx = gr.Number(value=None, label="", render=True, visible=True,
                                    show_label=False, interactive=False, info="Width")
                     hy = gr.Number(value=None, label="", render=True, visible=True,
-                                   show_label=False, interactive=False, info="Height")  
+                                   show_label=False, interactive=False, info="Height") 
+                # Create a new row with a textbox and two radio buttons.    
                 with gr.Row(elem_id=css_row):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", 
-                                              placeholder="Enter aspect ratio here", min_width=200, scale=4)
-                    rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation",
-                                         info="of Width/Height", scale=2, min_width=50)
-                    round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Rounding",
-                                            info="of Width/Height", scale=2, min_width=50)
+                                              placeholder="Enter aspect ratio here", 
+                                              min_width=150, scale=8)
+                    rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", 
+                                         label="Exact Calculation", info="of Width/Height",
+                                         scale=1, min_width=50)
+                    round_on_off = gr.Radio(choices=["On", "Off"], value="Off",
+                                            label="Rounding", info="of Width/Height",
+                                            scale=1, min_width=50)
                     with contextlib.suppress(AttributeError):
                         def change_rb(rb_state):
                             global _IsExact
@@ -132,6 +135,7 @@ class ResolutionCalcScript(scripts.Script):
                             return rb_state    
                         rb_on_off.change(change_rb, inputs=[rb_on_off], outputs=[rb_on_off])
                         round_on_off.change(change_round, inputs=[round_on_off], outputs=[round_on_off])
+                # Create a new row with a button.
                 with gr.Row(elem_id=css_row):
                     calc_btn = gr.Button(value="Calculate", elem_id=css_button)
                     with contextlib.suppress(AttributeError):
@@ -139,6 +143,7 @@ class ResolutionCalcScript(scripts.Script):
                             x, y = width_height(ar_str)
                             return (x, y)
                         calc_btn.click(calc_value, inputs=[arcalc_input], outputs=[wx, hy])
+                # Create a new row with a button.        
                 with gr.Row(elem_id=css_row):    
                     btns = [AspectRatioButton(ar=1.0, value="Apply")]     
                     with contextlib.suppress(AttributeError):
