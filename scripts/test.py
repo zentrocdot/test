@@ -131,7 +131,7 @@ class ResolutionCalcScript(scripts.Script):
                             elif rb_state == "On":
                                 _IsRound = True      
                             return rb_state    
-                        ec_on_off.change(change_ec, inputs=[rb_on_off], outputs=[rb_on_off])
+                        ec_on_off.change(change_ec, inputs=[ec_on_off], outputs=[ec_on_off])
                         rv_on_off.change(change_rv, inputs=[rv_on_off], outputs=[rv_on_off])
                 # Create a new row with a button.
                 with gr.Row(elem_id=css_row):
