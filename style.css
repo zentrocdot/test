@@ -41,8 +41,3 @@
 	gap: 10px !important;
 	max-width: unset !important;
 }
-
-#txt2img_radiobutton_aspect_ratio,
-#img2img_radiobutton_aspect_ratio {
-	float: right;
-}
