@@ -45,7 +45,7 @@
 #txt2img_radiobutton_aspect_ratio,
 #img2img_radiobutton_aspect_ratio {
 	margin: 0px;
-	horizontal-align: right;
+	horizontal-align: right !important;
 	gap: 0px !important;
 	max-width: unset !important;
 }
