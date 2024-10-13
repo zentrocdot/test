@@ -111,14 +111,14 @@ class ResolutionCalcScript(scripts.Script):
                 with gr.Row(elem_id=css_row):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", 
                                               placeholder="Enter aspect ratio here")
-                    #rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation",
-                    #                     info="of Width/Height", key="RB1", elem_id=css_radio)
-                    #round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Rounding",
-                    #                        info="of Width/Height", key="RB2", elem_id=css_radio)
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation",
-                                         info="of Width/Height", key="RB1", scale=1, min_width=100)
+                                         info="of Width/Height", elem_id=css_radio)
                     round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Rounding",
-                                            info="of Width/Height", key="RB2", scale=1, min_width=100)
+                                            info="of Width/Height", elem_id=css_radio)
+                    #rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation",
+                    #                     info="of Width/Height", key="RB1", scale=1, min_width=100)
+                    #round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Rounding",
+                    #                        info="of Width/Height", key="RB2", scale=1, min_width=100)
                     with contextlib.suppress(AttributeError):
                         def change_rb(rb_state):
                             global _IsExact
