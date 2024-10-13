@@ -24,6 +24,8 @@ from modules.ui_components import ToolButton, InputAccordion
 # Define module variables.
 _width = 512
 _height = 512
+
+# Define global variables.
 _IsExact = False
 _IsRound = False
 
@@ -94,6 +96,7 @@ class ResolutionCalcScript(scripts.Script):
         css_col = f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         css_row = f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
         css_button = f'{"img" if is_img2img else "txt"}2img_button_aspect_ratio'
+        css_radio = f'{"img" if is_img2img else "txt"}2img_radiobutton_aspect_ratio'
         # Loop over the columns.
         with gr.Column(elem_id=css_col):
             with InputAccordion(value=False,
@@ -109,9 +112,9 @@ class ResolutionCalcScript(scripts.Script):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", 
                                               placeholder="Enter aspect ratio here")
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation",
-                                         info="of Width/Height", key="RB1")
+                                         info="of Width/Height", key="RB1", elem_id=css_radio)
                     round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Rounding",
-                                            info="of Width/Height", key="RB2")
+                                            info="of Width/Height", key="RB2", elem_id=css_radio)
                     with contextlib.suppress(AttributeError):
                         def change_rb(rb_state):
                             global _IsExact
