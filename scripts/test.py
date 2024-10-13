@@ -111,7 +111,7 @@ class ResolutionCalcScript(scripts.Script):
                 with gr.Row(elem_id=css_row):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", 
                                               placeholder="Enter aspect ratio here", 
-                                              min_width=150, scale=8)
+                                              min_width=150, scale=3)
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", 
                                          label="Exact Calculation", info="of Width/Height",
                                          scale=1, min_width=50)
