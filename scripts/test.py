@@ -112,7 +112,7 @@ class ResolutionCalcScript(scripts.Script):
                     arcalc_input = gr.Textbox(value="", info="Aspect Ratio", label="", 
                                               placeholder="Enter aspect ratio here")
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation",
-                                         info="of Width/Height", key="RB1", elem_id=css_radio)
+                                         info="of Width/Height", key="RB1", elem_id=css_radio, min_width=30)
                     round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Rounding",
                                             info="of Width/Height", key="RB2", elem_id=css_radio)
                     with contextlib.suppress(AttributeError):
