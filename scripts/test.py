@@ -116,9 +116,9 @@ class ResolutionCalcScript(scripts.Script):
                     #round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Rounding",
                     #                        info="of Width/Height", key="RB2", elem_id=css_radio)
                     rb_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Exact Calculation",
-                                         info="of Width/Height", key="RB1")
+                                         info="of Width/Height", key="RB1", scale=2)
                     round_on_off = gr.Radio(choices=["On", "Off"], value="Off", label="Rounding",
-                                            info="of Width/Height", key="RB2")
+                                            info="of Width/Height", key="RB2", scale=2)
                     with contextlib.suppress(AttributeError):
                         def change_rb(rb_state):
                             global _IsExact
