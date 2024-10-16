@@ -25,8 +25,6 @@ from pathlib import Path
 import json
 from modules import script_callbacks
 
-relative_path = "/home/hades/ssd-sandisk/stable-diffusion-webui"
-
 def on_ui_tabs():
     with gr.Blocks(analytics_enabled=False) as ui_component:
         with gr.Tab("Lora"):
