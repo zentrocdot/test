@@ -84,7 +84,7 @@ def get_lora(lora_file):
 # Function load_lora_metadata().
 def load_lora_metadata(input_file: str):
     '''Function load_lora_metadata().'''
-    if selected_model := get_lora(input_file):
+    if selected_model := get_lora(lora_dict.get(input_file)):
         if metadata := models.read_metadata_from_safetensors(selected_model):
             return json.dumps(metadata, indent=4, ensure_ascii=False)
         return 'No metadata'
