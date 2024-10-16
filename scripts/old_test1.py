@@ -48,15 +48,15 @@ def on_ui_tabs():
     with gr.Blocks(analytics_enabled=False) as ui_component:    
         # Create a new row. 
         with gr.Row():
-            input_file = gr.Dropdown(fast_lora_scan(lora_path, [".safetensors"]), label="Lora")
+            input_file = gr.Dropdown(fast_lora_scan(lora_path,
+                                     [".safetensors"]), label="Lora")
             create_refresh_button(input_file, get_lora_list,
                                   lambda: {"choices": fast_lora_scan(lora_path, [".safetensors"])},
                                   "metadata_utils_refresh_1")
         with gr.Row():
-            json_input = gr.Code(lines=10, label="Metadata as JSON",
-                                 language="json")
+            json_input = gr.Code(lines=10, label="Metadata as JSON", language="json")
             input_file.change(
-                fn=on_button_load_metadata_lora,
+                fn=load_lora_metadata,
                 inputs=[input_file], outputs=[json_input]
             )
     return [(ui_component, "Metadata Viewer", "metadata_viewer_tab")]
@@ -69,8 +69,8 @@ def get_lora(lora_file):
         return None
     return os.path.join(lora_path, lora_file)
 
-def on_button_load_metadata_lora(input_file: str):
-    '''Function on_button_load_metadata_lora().'''
+def load_lora_metadata(input_file: str):
+    '''Function load_lora_metadata().'''
     if selected_model := get_lora(input_file):
         if metadata := models.read_metadata_from_safetensors(selected_model):
             return json.dumps(metadata, indent=4, ensure_ascii=False)
