@@ -42,9 +42,9 @@ def get_loras():
             elif os.path.isdir(os.path.join(global_path, item)):
                 out_list.extend(get_recursive(os.path.join(path, item)))
         return out_list
-    lora_list = get_recursive()
+    lora_list = get_recursive("")
 
-#list_loras()
+#get_loras()
 
 print(lora_list)
 
