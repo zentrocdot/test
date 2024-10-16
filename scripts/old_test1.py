@@ -9,7 +9,6 @@ Version 0.0.0.1
 # pylint: disable=trailing-whitespace
 # pylint: disable=line-too-long
 # pylint: disable=no-member
-# pylint: disable=unbalanced-tuple-unpacking
 
 # Import the Python modules.
 import os
@@ -20,9 +19,11 @@ import modules.shared
 from modules.ui import create_refresh_button
 from modules import script_callbacks
 
+# Get LoRA path.
 lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
 
-def fast_lora_scan(lora_dir, ext):  # lora_dir: str, ext: list
+# Function lora_scan().
+def lora_scan(lora_dir, ext):  # lora_dir: str, ext: list
     '''Fast file scan for LoRAs.'''
     subdirs, files = [], []
     for f in os.scandir(lora_dir):
@@ -38,22 +39,23 @@ def fast_lora_scan(lora_dir, ext):  # lora_dir: str, ext: list
     files.sort(reverse=False)
     return subdirs, files
 
+# Function get_lora_list().
 def get_lora_list():
     '''Simple function for use with components.'''
     lora_list = []
     _, lora_list = fast_lora_scan(lora_path, [".safetensors"])
     return lora_list
 
+# Function on_ui_tabs().
 def on_ui_tabs():
     '''Method on_ui_tabs()'''
     # Create a new block.
     with gr.Blocks(analytics_enabled=False) as ui_component:    
         # Create a new row. 
         with gr.Row():
-            input_file = gr.Dropdown(fast_lora_scan(lora_path,
-                                     [".safetensors"]), label="Lora")
+            input_file = gr.Dropdown(get_lora_list())
             create_refresh_button(input_file, get_lora_list,
-                                  lambda: {"choices": fast_lora_scan(lora_path, [".safetensors"])},
+                                  lambda: {"choices": get_lora_list()},
                                   "metadata_utils_refresh_1")
         with gr.Row():
             json_input = gr.Code(lines=10, label="Metadata as JSON", language="json")
