@@ -13,6 +13,7 @@ Version 0.0.0.1
 # pylint: disable=unused-argument
 # pylint: disable=too-many-instance-attributes
 # pylint: disable=no-self-use
+# pylint: disable=line-too-long
 
 # Import the Python modules.
 import os
@@ -21,7 +22,6 @@ import gradio as gr
 import modules.sd_models as models
 import modules.shared
 from modules.ui import create_refresh_button
-#from pathlib import Path
 from modules import script_callbacks
 
 lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
