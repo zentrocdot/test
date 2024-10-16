@@ -34,6 +34,17 @@ class AspectRatioScript(scripts.Script):
     def ui(self, is_img2img):
         '''Class method ui.'''
         # Loop over the columns.
+        with gr.Blocks(analytics_enabled=False) as ui_component:
+        with gr.Tab("Checkpoint"):
+            with gr.Row():
+                input_file = gr.Dropdown(models.checkpoint_tiles(), label="Checkpoint")
+                create_refresh_button(input_file, models.list_models,
+                                      lambda: {"choices": models.checkpoint_tiles()}, "metadata_utils_refresh_1")
+
+                button = gr.Button(value="Set Metadata", variant="primary")
+
+            gr.HTML("<p style=\"text-align:center;color:red\">Warning! Changing the metadata of "
+                    "your checkpoint also changes it's hash</p>")
         with gr.Column(
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
