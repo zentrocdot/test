@@ -40,7 +40,9 @@ def fast_lora_scan(lora_dir, ext):  # lora_dir: str, ext: list
 
 def get_lora_list():
     '''Simple function for use with components.'''
-    return fast_lora_scan(lora_path, [".safetensors"])
+    lora_list = []
+    _, lora_list = fast_lora_scan(lora_path, [".safetensors"])
+    return lora_list
 
 def on_ui_tabs():
     '''Method on_ui_tabs()'''
