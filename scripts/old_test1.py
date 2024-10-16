@@ -25,12 +25,19 @@ from pathlib import Path
 import json
 from modules import script_callbacks
 
+import modules.sd_models as models
+import os
+
+import modules.shared
+
+lora_list = []
+lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
+
 def list_loras():
     global lora_list
     if not os.path.isdir(lora_path):
         print("failed")
         return
-
     def list_recursive(path: str) -> list[str]:
         out = []
         global_path = os.path.join(lora_path, path)
@@ -39,9 +46,7 @@ def list_loras():
                 out.append(os.path.join(path, item))
             elif os.path.isdir(os.path.join(global_path, item)):
                 out.extend(list_recursive(os.path.join(path, item)))
-
         return out
-
     lora_list = list_recursive("")
 
 def on_ui_tabs():
