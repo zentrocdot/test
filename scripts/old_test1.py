@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''sd-webui-meta_data_viewer
+'''sd-webui-simple-meta_data_viewer
 Extension for AUTOMATIC1111.
 
 Version 0.0.0.1
@@ -25,11 +25,31 @@ from pathlib import Path
 import json
 from modules import script_callbacks
 
+def list_loras():
+    global lora_list
+    if not os.path.isdir(lora_path):
+        print("failed")
+        return
+
+    def list_recursive(path: str) -> list[str]:
+        out = []
+        global_path = os.path.join(lora_path, path)
+        for item in os.listdir(global_path):
+            if os.path.isfile(os.path.join(global_path, item)):
+                out.append(os.path.join(path, item))
+            elif os.path.isdir(os.path.join(global_path, item)):
+                out.extend(list_recursive(os.path.join(path, item)))
+
+        return out
+
+    lora_list = list_recursive("")
+
 def on_ui_tabs():
     # Create a new block.
     with gr.Blocks(analytics_enabled=False) as ui_component:    
         # Create a new row. 
         with gr.Row():
+                #input_file = gr.Dropdown(file_utils.lora_tiles(), label="Lora")
                 input_file = gr.Dropdown(file_utils.lora_tiles(), label="Lora")
                 create_refresh_button(input_file, file_utils.list_loras,
                                       lambda: {"choices": file_utils.lora_tiles()},
