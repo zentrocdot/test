@@ -15,14 +15,14 @@ Version 0.0.0.1
 # pylint: disable=no-self-use
 
 # Import the Python modules.
+import os
+import json
 import gradio as gr
 import modules.sd_models as models
 import modules.shared
 from modules.ui import create_refresh_button
-from pathlib import Path
-import json
+#from pathlib import Path
 from modules import script_callbacks
-import os
 
 lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
 
@@ -49,17 +49,17 @@ def on_ui_tabs():
     with gr.Blocks(analytics_enabled=False) as ui_component:    
         # Create a new row. 
         with gr.Row():
-                input_file = gr.Dropdown(fast_lora_scan(lora_path, [".safetensors"]), label="Lora")
-                create_refresh_button(input_file, get_lora_list,
-                                      lambda: {"choices": fast_lora_scan(lora_path, [".safetensors"])},
-                                      "metadata_utils_refresh_1")
+            input_file = gr.Dropdown(fast_lora_scan(lora_path, [".safetensors"]), label="Lora")
+            create_refresh_button(input_file, get_lora_list,
+                                  lambda: {"choices": fast_lora_scan(lora_path, [".safetensors"])},
+                                  "metadata_utils_refresh_1")
         with gr.Row():
-                json_input = gr.Code(lines=10, label="Metadata as JSON",
-                                     language="json")
-                input_file.change(
-                    fn=on_button_load_metadata_lora,
-                    inputs=[input_file], outputs=[json_input]
-                )
+            json_input = gr.Code(lines=10, label="Metadata as JSON",
+                                 language="json")
+            input_file.change(
+                fn=on_button_load_metadata_lora,
+                inputs=[input_file], outputs=[json_input]
+            )
     return [(ui_component, "Metadata Viewer", "metadata_viewer_tab")]
 
 script_callbacks.on_ui_tabs(on_ui_tabs)
