@@ -14,6 +14,18 @@ Version 0.0.0.1
 # pylint: disable=too-many-instance-attributes
 # pylint: disable=no-self-use
 
+import Tkinter
+import tkFileDialog
+import os
+
+root = Tkinter.Tk()
+root.withdraw() #use to hide tkinter window
+
+currdir = os.getcwd()
+
+#if len(tempdir) > 0:
+#    print "You chose %s" % tempdir
+
 # Import the Python modules.
 import gradio as gr
 import modules.sd_models as models
@@ -31,11 +43,7 @@ def on_ui_tabs():
     with gr.Blocks(analytics_enabled=False) as ui_component:
         with gr.Tab("Checkpoint"):
             with gr.Row():
-                file = gr.FileExplorer(
-                    glob="**/components/*.py",
-                    root_dir=relative_path,
-                    ignore_glob="**/__init__.py",
-        )
+                tempdir = tkFileDialog.askdirectory(parent=root, initialdir=currdir, title='Please select a directory')            
             with gr.Row():
                 input_file = gr.Dropdown(models.checkpoint_tiles(), label="Checkpoint")
                 create_refresh_button(input_file, models.list_models,
