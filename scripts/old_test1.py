@@ -80,7 +80,7 @@ def on_ui_tabs():
 
             button.click(on_button_lora_wrapper, inputs=[input_file, new_name, json_input])
 
-    return [(ui_component, "Metadata Utils", "metadata_utils_tab")]
+    return [(ui_component, "Metadata Viewer", "metadata_viewer_tab")]
 
 script_callbacks.on_ui_tabs(on_ui_tabs)
 
