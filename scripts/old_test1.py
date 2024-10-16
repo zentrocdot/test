@@ -34,16 +34,16 @@ def get_loras():
     if not os.path.isdir(lora_path):
         print("No valid path")
         return []
-    def list_recursive(path: str) -> list[str]:
+    def get_recursive(path: str):
         out = []
         global_path = os.path.join(lora_path, path)
         for item in os.listdir(global_path):
             if os.path.isfile(os.path.join(global_path, item)):
                 out.append(os.path.join(path, item))
             elif os.path.isdir(os.path.join(global_path, item)):
-                out.extend(list_recursive(os.path.join(path, item)))
+                out.extend(get_recursive(os.path.join(path, item)))
         return out
-    lora_list = list_recursive("")
+    lora_list = get_recursive()
 
 #list_loras()
 
