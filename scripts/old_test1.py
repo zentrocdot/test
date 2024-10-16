@@ -26,6 +26,7 @@ import os
 
 lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
 
+'''
 lora_list = []
 
 def get_loras():
@@ -53,6 +54,7 @@ def lora_lists():
     #if len(lora_list) == 0:
     get_loras()
     return lora_list
+'''    
 
 def fast_lora_scan(dir, ext):  # dir: str, ext: list
     subfolders, files = [], []
@@ -61,15 +63,18 @@ def fast_lora_scan(dir, ext):  # dir: str, ext: list
             subfolders.append(f.path)
         if f.is_file():
             if os.path.splitext(f.name)[1].lower() in ext:
-                files.append(f.path)
+                #files.append(f.path)
+                files.append(os.path.basename(f).path)
     for dir in list(subfolders):
         sf, f = run_fast_scandir(dir, ext)
         subfolders.extend(sf)
         files.extend(f)
     return files
 
-files = fast_lora_scan(lora_path, [".safetensors"])
-print(files)
+#basename = os.path.basename(filepath)
+
+#files = fast_lora_scan(lora_path, [".safetensors"])
+#print(files)
 
 def on_ui_tabs():
     # Create a new block.
