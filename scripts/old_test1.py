@@ -55,7 +55,10 @@ def on_ui_tabs():
         # Create a new row. 
         with gr.Row():
                 #input_file = gr.Dropdown(file_utils.lora_tiles(), label="Lora")
-                input_file = gr.Dropdown(file_utils.lora_tiles(), label="Lora")
+                input_file = gr.Dropdown(lora_files(), label="Lora")
+                #create_refresh_button(input_file, file_utils.list_loras,
+                #                      lambda: {"choices": file_utils.lora_tiles()},
+                #                      "metadata_utils_refresh_1")
                 create_refresh_button(input_file, file_utils.list_loras,
                                       lambda: {"choices": file_utils.lora_tiles()},
                                       "metadata_utils_refresh_1")
