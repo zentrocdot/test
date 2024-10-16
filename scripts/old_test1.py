@@ -54,7 +54,7 @@ def lora_lists():
     get_loras()
     return lora_list
 
-def run_fast_scandir(dir, ext):    # dir: str, ext: list
+def fast_lora_scan(dir, ext):  # dir: str, ext: list
     subfolders, files = [], []
     for f in os.scandir(dir):
         if f.is_dir():
@@ -66,9 +66,9 @@ def run_fast_scandir(dir, ext):    # dir: str, ext: list
         sf, f = run_fast_scandir(dir, ext)
         subfolders.extend(sf)
         files.extend(f)
-    return subfolders, files
+    return files
 
-subfolders, files = run_fast_scandir(lora_path, [".safetensors"])
+files = fast_lora_scan(lora_path, [".safetensors"])
 print(files)
 
 def on_ui_tabs():
@@ -76,7 +76,7 @@ def on_ui_tabs():
     with gr.Blocks(analytics_enabled=False) as ui_component:    
         # Create a new row. 
         with gr.Row():
-                input_file = gr.Dropdown(lora_lists(), label="Lora")
+                input_file = gr.Dropdown(fast_lora_scan(lora_path, [".safetensors"]), label="Lora")
                 create_refresh_button(input_file, get_loras,
                                       lambda: {"choices": lora_lists()},
                                       "metadata_utils_refresh_1")
