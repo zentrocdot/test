@@ -27,16 +27,17 @@ from modules import script_callbacks
 lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
 
 def fast_lora_scan(dir, ext):  # dir: str, ext: list
-    subfolders, files = [], []
+    '''Fast scan for LoRAs.'''
+    subdirs, files = [], []
     for f in os.scandir(dir):
         if f.is_dir():
-            subfolders.append(f.path)
+            subdirs.append(f.path)
         if f.is_file():
             if os.path.splitext(f.name)[1].lower() in ext:
                 files.append(f.name)
     for dir in list(subfolders):
         sf, f = run_fast_scandir(dir, ext)
-        subfolders.extend(sf)
+        subdirs.extend(sf)
         files.extend(f)
     files.sort(reverse=False)
     return files
