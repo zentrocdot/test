@@ -27,7 +27,7 @@ from modules import script_callbacks
 lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
 
 def fast_lora_scan(dir, ext):  # dir: str, ext: list
-    '''Fast scan for LoRAs.'''
+    '''Fast file scan for LoRAs.'''
     subdirs, files = [], []
     for f in os.scandir(dir):
         if f.is_dir():
@@ -43,9 +43,11 @@ def fast_lora_scan(dir, ext):  # dir: str, ext: list
     return files
 
 def get_lora_list():
+    '''Simple function for use with components.'''
     return fast_lora_scan(lora_path, [".safetensors"])
 
 def on_ui_tabs():
+    '''Method on_ui_tabs()'''
     # Create a new block.
     with gr.Blocks(analytics_enabled=False) as ui_component:    
         # Create a new row. 
