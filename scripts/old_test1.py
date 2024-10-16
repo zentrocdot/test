@@ -26,13 +26,16 @@ import json
 from modules import script_callbacks
 
 def on_ui_tabs():
-    with gr.Blocks(analytics_enabled=False) as ui_component:
-        with gr.Tab("Lora"):
-            with gr.Row():
+    # Create a new block.
+    with gr.Blocks(analytics_enabled=False) as ui_component:    
+        # Create a new tab.
+        #with gr.Tab("Lora"):
+        #    # Create a new row. 
+        with gr.Row():
                 input_file = gr.Dropdown(file_utils.lora_tiles(), label="Lora")
                 create_refresh_button(input_file, file_utils.list_loras,
                                       lambda: {"choices": file_utils.lora_tiles()}, "metadata_utils_refresh_1")
-            with gr.Row():
+        with gr.Row():
                 json_input = gr.Code(lines=10,
                                      label="Metadata as JSON", language="json")
                 input_file.change(
@@ -58,6 +61,7 @@ def on_button_load_metadata_lora(input_file: str):
         return 'No metadata'
     return 'Model not found'
 
+'''
 def on_button_lora_wrapper(input_file: str, new_name: str, json_input: str):
     on_button(input_file, new_name, json_input, True)
 
@@ -92,3 +96,4 @@ def log(message):
     gr.Info(message)
     print("\n" + message)
     self.image.append(component)
+'''
