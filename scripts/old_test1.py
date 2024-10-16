@@ -25,6 +25,7 @@ from modules import script_callbacks
 import os
 
 lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
+print(lora_path)
 
 lora_list = []
 
@@ -44,20 +45,21 @@ def list_loras():
         return out
     lora_list = list_recursive("")
 
+list_loras()
+
 def lora_tiles():
     global lora_list
     if len(lora_list) == 0:
         list_loras()
     return lora_list
 
-list_loras()
-
 def on_ui_tabs():
     # Create a new block.
     with gr.Blocks(analytics_enabled=False) as ui_component:    
         # Create a new row. 
         with gr.Row():
-                input_file = gr.Dropdown(lora_tiles(), label="Lora")
+                #input_file = gr.Dropdown(lora_tiles(), label="Lora")
+                input_file = gr.Dropdown(lora_list(), label="Lora")
                 create_refresh_button(input_file, list_loras,
                                       lambda: {"choices": lora_tiles()},
                                       "metadata_utils_refresh_1")
@@ -72,14 +74,14 @@ def on_ui_tabs():
 
 script_callbacks.on_ui_tabs(on_ui_tabs)
 
-def get_lora(lora):
-    if not os.path.isfile(os.path.join(lora_path, lora)):
+def get_lora(lora_file):
+    if not os.path.isfile(os.path.join(lora_path, lora_file)):
         return None
-    return os.path.join(lora_path, lora)
+    return os.path.join(lora_path, lora_file)
 
 def on_button_load_metadata_lora(input_file: str):
     if selected_model := get_lora(input_file):
         if metadata := models.read_metadata_from_safetensors(selected_model):
             return json.dumps(metadata, indent=4, ensure_ascii=False)
         return 'No metadata'
-    return 'Model not found'
+    return 'No Model'
