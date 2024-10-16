@@ -32,8 +32,8 @@ lora_list = []
 def list_loras():
     global lora_list
     if not os.path.isdir(lora_path):
-        print("failed")
-        return
+        print("No valid path")
+        return []
     def list_recursive(path: str) -> list[str]:
         out = []
         global_path = os.path.join(lora_path, path)
@@ -59,7 +59,7 @@ def on_ui_tabs():
         # Create a new row. 
         with gr.Row():
                 #input_file = gr.Dropdown(lora_tiles(), label="Lora")
-                input_file = gr.Dropdown(lora_list(), label="Lora")
+                input_file = gr.Dropdown(list_loras(), label="Lora")
                 create_refresh_button(input_file, list_loras,
                                       lambda: {"choices": lora_tiles()},
                                       "metadata_utils_refresh_1")
