@@ -60,7 +60,7 @@ def on_ui_tabs():
                 #                      lambda: {"choices": file_utils.lora_tiles()},
                 #                      "metadata_utils_refresh_1")
                 create_refresh_button(input_file, file_utils.list_loras,
-                                      lambda: {"choices": file_utils.lora_tiles()},
+                                      lambda: {"choices": list_loras()},
                                       "metadata_utils_refresh_1")
         with gr.Row():
                 json_input = gr.Code(lines=10,
