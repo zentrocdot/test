@@ -131,7 +131,7 @@ def on_button(input_file: str, new_name: str, json_input: str, lora: bool = Fals
 def log(message):
     gr.Info(message)
     print("\n" + message)
-            self.image.append(component)
+        self.image.append(component)
         if kwargs.get("elem_id") == "inpaint_sketch":
             self.image.append(component)
         if kwargs.get("elem_id") == "img_inpaint_base":
