@@ -19,8 +19,8 @@ import gradio as gr
 import modules.scripts as scripts
 from modules.ui_components import InputAccordion
    
-# Define class AspectRatioScript.
-class AspectRatioScript(scripts.Script):
+# Define class MetaDataViewer.
+class MetaDataViewer(scripts.Script):
     '''Class for calculating the aspect ratio.'''
     
     def title(self):
@@ -33,50 +33,19 @@ class AspectRatioScript(scripts.Script):
 
     def ui(self, is_img2img):
         '''Class method ui.'''
-        # Loop over the columns.
+        # Create a block.
         with gr.Blocks(analytics_enabled=False) as ui_component:
-        with gr.Tab("Checkpoint"):
-            with gr.Row():
-                input_file = gr.Dropdown(models.checkpoint_tiles(), label="Checkpoint")
-                create_refresh_button(input_file, models.list_models,
+            with gr.Tab("Checkpoint"):
+                with gr.Row():
+                    input_file = gr.Dropdown(models.checkpoint_tiles(), label="Checkpoint")
+                    create_refresh_button(input_file, models.list_models,
                                       lambda: {"choices": models.checkpoint_tiles()}, "metadata_utils_refresh_1")
 
-                button = gr.Button(value="Set Metadata", variant="primary")
+                    button = gr.Button(value="Set Metadata", variant="primary")
 
-            gr.HTML("<p style=\"text-align:center;color:red\">Warning! Changing the metadata of "
+                gr.HTML("<p style=\"text-align:center;color:red\">Warning! Changing the metadata of "
                     "your checkpoint also changes it's hash</p>")
-        with gr.Column(
-            elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
-        ):
-            with InputAccordion(
-                False, label="Aspect Ratio Calculator", 
-                elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
-            ) as enabled:
-                arvalue = gr.Textbox(value="N/A", lines=1,
-                    label="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
-                )
-                with gr.Row(
-                    elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
-                ):
-                    mybutton = gr.Button("Acquire Width and Height")          
-                    with contextlib.suppress(AttributeError):
-                        if is_img2img:
-                            imgres = [self.i2i_w, self.i2i_h]
-                        else:
-                            imgres = [self.t2i_w, self.t2i_h]
-                        def update_number(x,y):
-                            if x > y:
-                                z = x/y
-                                if float(z).is_integer():
-                                    z = int(z)                                 
-                                ret = str(z) + ":1"                   
-                            elif x <= y:
-                                z = y/x
-                                if float(z).is_integer():
-                                    z = int(z)
-                                ret = "1:" + str(z)    
-                            return str(ret)
-                        mybutton.click(update_number, inputs=imgres, outputs=arvalue)               
+                      
           
     # Class method after_component.
     def after_component(self, component, **kwargs):
