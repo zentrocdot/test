@@ -14,10 +14,6 @@ Version 0.0.0.1
 # pylint: disable=too-many-instance-attributes
 # pylint: disable=no-self-use
 
-#from pyfilemanager import FileManager
-
-from showinfm import show_in_file_manager
-
 # Import the Python modules.
 import gradio as gr
 import modules.sd_models as models
@@ -33,35 +29,6 @@ relative_path = "/home/hades/ssd-sandisk/stable-diffusion-webui"
 
 def on_ui_tabs():
     with gr.Blocks(analytics_enabled=False) as ui_component:
-        with gr.Tab("Checkpoint"):
-            with gr.Row():
-                #fm = FileManager(relative_path, exclude_hidden=True)  
-                show_in_file_manager(relative_path)
-            with gr.Row():
-                input_file = gr.Dropdown(models.checkpoint_tiles(), label="Checkpoint")
-                create_refresh_button(input_file, models.list_models,
-                                      lambda: {"choices": models.checkpoint_tiles()}, "metadata_utils_refresh_1")
-
-                button = gr.Button(value="Set Metadata", variant="primary")
-
-            gr.HTML("<p style=\"text-align:center;color:red\">Warning! Changing the metadata of "
-                    "your checkpoint also changes it's hash</p>")
-
-            with gr.Row():
-                new_name = gr.Textbox(
-                    placeholder='(Optional) Enter new checkpoint name. If omitted, appends "_md" to name',
-                    max_lines=1, label="New Name")
-
-            with gr.Row():
-                json_input = gr.Code(lines=10,
-                                     label="Metadata as JSON", language="json")
-                input_file.change(
-                    fn=on_button_load_metadata,
-                    inputs=[input_file],
-                    outputs=[json_input]
-                )
-
-            button.click(on_button, inputs=[input_file, new_name, json_input])
         with gr.Tab("Lora"):
             with gr.Row():
                 input_file = gr.Dropdown(file_utils.lora_tiles(), label="Lora")
