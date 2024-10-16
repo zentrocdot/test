@@ -53,7 +53,6 @@ def lora_lists():
     #if len(lora_list) == 0:
     get_loras()
     return lora_list
-  
 
 def fast_lora_scan(dir, ext):  # dir: str, ext: list
     subfolders, files = [], []
