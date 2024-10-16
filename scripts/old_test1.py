@@ -32,17 +32,6 @@ def on_ui_tabs():
                 input_file = gr.Dropdown(file_utils.lora_tiles(), label="Lora")
                 create_refresh_button(input_file, file_utils.list_loras,
                                       lambda: {"choices": file_utils.lora_tiles()}, "metadata_utils_refresh_1")
-
-                button = gr.Button(value="Set Metadata", variant="primary")
-
-            gr.HTML("<p style=\"text-align:center;color:red\">Warning! Changing the metadata of "
-                    "your model also changes it's hash</p>")
-
-            with gr.Row():
-                new_name = gr.Textbox(
-                    placeholder='(Optional) Enter new model name. If omitted, appends "_md" to name',
-                    max_lines=1, label="New Name")
-
             with gr.Row():
                 json_input = gr.Code(lines=10,
                                      label="Metadata as JSON", language="json")
@@ -51,9 +40,7 @@ def on_ui_tabs():
                     inputs=[input_file],
                     outputs=[json_input]
                 )
-
             button.click(on_button_lora_wrapper, inputs=[input_file, new_name, json_input])
-
     return [(ui_component, "Metadata Viewer", "metadata_viewer_tab")]
 
 script_callbacks.on_ui_tabs(on_ui_tabs)
