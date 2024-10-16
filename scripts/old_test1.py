@@ -61,8 +61,8 @@ def on_ui_tabs():
         # Create a new row. 
         with gr.Row():
                 input_file = gr.Dropdown(lora_lists(), label="Lora")
-                create_refresh_button(input_file, list_loras,
-                                      lambda: {"choices": lora_tiles()},
+                create_refresh_button(input_file, get_loras,
+                                      lambda: {"choices": lora_lists()},
                                       "metadata_utils_refresh_1")
         with gr.Row():
                 json_input = gr.Code(lines=10, label="Metadata as JSON",
