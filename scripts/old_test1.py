@@ -49,18 +49,26 @@ def list_loras():
         return out
     lora_list = list_recursive("")
 
+def lora_tiles():
+    global lora_list
+    if len(lora_list) == 0:
+        list_loras()
+    return lora_list
+
+list_loras()
+
 def on_ui_tabs():
     # Create a new block.
     with gr.Blocks(analytics_enabled=False) as ui_component:    
         # Create a new row. 
         with gr.Row():
                 #input_file = gr.Dropdown(file_utils.lora_tiles(), label="Lora")
-                input_file = gr.Dropdown(list_loras(), label="Lora")
+                input_file = gr.Dropdown(lora_tiles(), label="Lora")
                 #create_refresh_button(input_file, file_utils.list_loras,
                 #                      lambda: {"choices": file_utils.lora_tiles()},
                 #                      "metadata_utils_refresh_1")
-                create_refresh_button(input_file, file_utils.list_loras,
-                                      lambda: {"choices": list_loras()},
+                create_refresh_button(input_file, list_loras,
+                                      lambda: {"choices": lora_tiles()()},
                                       "metadata_utils_refresh_1")
         with gr.Row():
                 json_input = gr.Code(lines=10,
