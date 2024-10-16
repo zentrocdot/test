@@ -16,6 +16,8 @@ Version 0.0.0.1
 
 from pyfilemanager import FileManager
 
+#from showinfm import show_in_file_manager
+
 # Import the Python modules.
 import gradio as gr
 import modules.sd_models as models
@@ -33,7 +35,8 @@ def on_ui_tabs():
     with gr.Blocks(analytics_enabled=False) as ui_component:
         with gr.Tab("Checkpoint"):
             with gr.Row():
-                fm = FileManager(r'relative_path', exclude_hidden=True)          
+                fm = FileManager(relative_path, exclude_hidden=True)  
+                #show_in_file_manager('/home/user/file.txt')
             with gr.Row():
                 input_file = gr.Dropdown(models.checkpoint_tiles(), label="Checkpoint")
                 create_refresh_button(input_file, models.list_models,
