@@ -34,12 +34,12 @@ class MetaDataViewer(scripts.Script):
     def ui(self, is_img2img):
         '''Class method ui.'''
         # Create a block.
-        with gr.Blocks(analytics_enabled=False) as ui_component:
+        with gr.Blocks() as ui_component:
             with gr.Tab("Checkpoint"):
                 with gr.Row():
-                    input_file = gr.Dropdown(models.checkpoint_tiles(), label="Checkpoint")
-                    create_refresh_button(input_file, models.list_models,
-                                      lambda: {"choices": models.checkpoint_tiles()}, "metadata_utils_refresh_1")
+                    #input_file = gr.Dropdown(models.checkpoint_tiles(), label="Checkpoint")
+                    #create_refresh_button(input_file, models.list_models,
+                    #                  lambda: {"choices": models.checkpoint_tiles()}, "metadata_utils_refresh_1")
 
                     button = gr.Button(value="Set Metadata", variant="primary")
 
