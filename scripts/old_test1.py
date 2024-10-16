@@ -54,6 +54,23 @@ def lora_lists():
     get_loras()
     return lora_list
 
+def run_fast_scandir(dir, ext):    # dir: str, ext: list
+    subfolders, files = [], []
+    for f in os.scandir(dir):
+        if f.is_dir():
+            subfolders.append(f.path)
+        if f.is_file():
+            if os.path.splitext(f.name)[1].lower() in ext:
+                files.append(f.path)
+    for dir in list(subfolders):
+        sf, f = run_fast_scandir(dir, ext)
+        subfolders.extend(sf)
+        files.extend(f)
+    return subfolders, files
+
+subfolders, files = run_fast_scandir(lora_path, [".safetensors"])
+print(files)
+
 def on_ui_tabs():
     # Create a new block.
     with gr.Blocks(analytics_enabled=False) as ui_component:    
