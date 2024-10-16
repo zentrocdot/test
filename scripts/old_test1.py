@@ -22,17 +22,22 @@ from modules import script_callbacks
 # Get LoRA path.
 lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
 
+# Create dict.
+lora_dict = {}
+
 # Function lora_scan().
 def lora_scan(lora_dir, ext):  # lora_dir: str, ext: list
     '''File scan for LoRA models.'''
+    global lora_dict
     subdirs, files = [], []
     for f in os.scandir(lora_dir):
         if f.is_dir():
             subdirs.append(f.path)
         if f.is_file():
             if os.path.splitext(f.name)[1].lower() in ext:
-                #files.append(f.name)
-                files.append(f.path)
+                lora_dict[f.name] = f.path
+                files.append(f.name)
+                #files.append(f.path)
     for dirs in list(subdirs):
         sd, fn = lora_scan(dirs, ext)
         subdirs.extend(sd)
