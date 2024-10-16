@@ -66,7 +66,8 @@ def fast_lora_scan(dir, ext):  # dir: str, ext: list
         sf, f = run_fast_scandir(dir, ext)
         subfolders.extend(sf)
         files.extend(f)
-    files = sorted(files, key=lambda x: x.count, reverse=True)
+    #files = sorted(files, key=lambda x: x.count, reverse=True)
+    files.sort(reverse=True)
     return files
 
 def on_ui_tabs():
