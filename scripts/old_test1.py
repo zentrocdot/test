@@ -61,7 +61,7 @@ def lora_lists():
     def get_loras():
         #global lora_list
         if not os.path.isdir(lora_path):
-        print("No valid path")
+            print("No valid path")
         return []
         def get_recursive(path: str):
             out_list = []
