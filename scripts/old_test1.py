@@ -33,7 +33,7 @@ def lora_scan(lora_dir, ext):  # lora_dir: str, ext: list
             if os.path.splitext(f.name)[1].lower() in ext:
                 files.append(f.name)
     for dirs in list(subdirs):
-        sd, fn = fast_lora_scan(dirs, ext)
+        sd, fn = lora_scan(dirs, ext)
         subdirs.extend(sd)
         files.extend(fn)
     files.sort(reverse=False)
