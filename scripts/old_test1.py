@@ -26,7 +26,6 @@ import os
 
 lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
 
-'''
 lora_list = []
 
 def get_loras():
@@ -54,7 +53,7 @@ def lora_lists():
     #if len(lora_list) == 0:
     get_loras()
     return lora_list
-'''    
+  
 
 def fast_lora_scan(dir, ext):  # dir: str, ext: list
     subfolders, files = [], []
