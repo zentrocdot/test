@@ -35,7 +35,7 @@ def fast_lora_scan(dir, ext):  # dir: str, ext: list
         if f.is_file():
             if os.path.splitext(f.name)[1].lower() in ext:
                 files.append(f.name)
-    for dir in list(subfolders):
+    for dir in list(subdirs):
         sf, f = run_fast_scandir(dir, ext)
         subdirs.extend(sf)
         files.extend(f)
