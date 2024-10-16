@@ -5,15 +5,11 @@ Extension for AUTOMATIC1111.
 Version 0.0.0.1
 '''
 # pylint: disable=invalid-name
-# pylint: disable=too-few-public-methods
-# pylint: disable=attribute-defined-outside-init
 # pylint: disable=import-error
-# pylint: disable=consider-using-from-import
 # pylint: disable=trailing-whitespace
-# pylint: disable=unused-argument
-# pylint: disable=too-many-instance-attributes
-# pylint: disable=no-self-use
 # pylint: disable=line-too-long
+# pylint: disable=no-member
+# pylint: disable=unbalanced-tuple-unpacking
 
 # Import the Python modules.
 import os
@@ -36,9 +32,9 @@ def fast_lora_scan(lora_dir, ext):  # lora_dir: str, ext: list
             if os.path.splitext(f.name)[1].lower() in ext:
                 files.append(f.name)
     for dirs in list(subdirs):
-        sf, f = fast_lora_scan(dirs, ext)
-        subdirs.extend(sf)
-        files.extend(f)
+        sd, fn = fast_lora_scan(dirs, ext)
+        subdirs.extend(sd)
+        files.extend(fn)
     files.sort(reverse=False)
     return files
 
