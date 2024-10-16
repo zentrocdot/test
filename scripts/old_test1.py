@@ -43,7 +43,7 @@ def lora_scan(lora_dir, ext):  # lora_dir: str, ext: list
 def get_lora_list():
     '''Simple function for use with components.'''
     lora_list = []
-    _, lora_list = fast_lora_scan(lora_path, [".safetensors"])
+    _, lora_list = lora_scan(lora_path, [".safetensors"])
     return lora_list
 
 # Function on_ui_tabs().
@@ -65,14 +65,17 @@ def on_ui_tabs():
             )
     return [(ui_component, "Metadata Viewer", "metadata_viewer_tab")]
 
+# Invoke a callback. 
 script_callbacks.on_ui_tabs(on_ui_tabs)
 
+# Function get_lora().
 def get_lora(lora_file):
     '''Function get_lora().'''
     if not os.path.isfile(os.path.join(lora_path, lora_file)):
         return None
     return os.path.join(lora_path, lora_file)
 
+# Function load_lora_metadata().
 def load_lora_metadata(input_file: str):
     '''Function load_lora_metadata().'''
     if selected_model := get_lora(input_file):
