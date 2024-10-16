@@ -26,7 +26,6 @@ import os
 
 lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
 
-'''
 lora_list = []
 
 def get_loras():
@@ -54,34 +53,6 @@ def lora_lists():
     #if len(lora_list) == 0:
     get_loras()
     return lora_list
-'''
-
-def lora_lists():
-    lora_list = []
-    def get_loras():
-        #global lora_list
-        if not os.path.isdir(lora_path):
-            print("No valid path")
-        return []
-        def get_recursive(path: str):
-            out_list = []
-            global_path = os.path.join(lora_path, path)
-            for item in os.listdir(global_path):
-                if os.path.isfile(os.path.join(global_path, item)):
-                    out_list.append(os.path.join(path, item))
-                elif os.path.isdir(os.path.join(global_path, item)):
-                    out_list.extend(get_recursive(os.path.join(path, item)))
-            return out_list
-        lora_list = get_recursive("")
-    return lora_list
-
-#print(lora_list)
-
-#def lora_lists():
-#    global lora_list
-#    #if len(lora_list) == 0:
-#    get_loras()
-#    return lora_list
 
 def on_ui_tabs():
     # Create a new block.
