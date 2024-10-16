@@ -19,8 +19,8 @@ import gradio as gr
 import modules.sd_models as models
 import modules.shared
 from modules.ui import create_refresh_button
-from metadata_util_lib import write_metadata
-import metadata_utils_file_utils as file_utils
+#from metadata_util_lib import write_metadata
+#import metadata_utils_file_utils as file_utils
 from pathlib import Path
 import json
 from modules import script_callbacks
@@ -32,6 +32,11 @@ import modules.shared
 
 lora_list = []
 lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
+
+def get_lora(lora):
+    if not os.path.isfile(os.path.join(lora_path, lora)):
+        return None
+    return os.path.join(lora_path, lora)
 
 def list_loras():
     global lora_list
@@ -62,29 +67,22 @@ def on_ui_tabs():
     with gr.Blocks(analytics_enabled=False) as ui_component:    
         # Create a new row. 
         with gr.Row():
-                #input_file = gr.Dropdown(file_utils.lora_tiles(), label="Lora")
                 input_file = gr.Dropdown(lora_tiles(), label="Lora")
-                #create_refresh_button(input_file, file_utils.list_loras,
-                #                      lambda: {"choices": file_utils.lora_tiles()},
-                #                      "metadata_utils_refresh_1")
                 create_refresh_button(input_file, list_loras,
                                       lambda: {"choices": lora_tiles()},
                                       "metadata_utils_refresh_1")
         with gr.Row():
-                json_input = gr.Code(lines=10,
-                                     label="Metadata as JSON",
-                                     language="json")
+                json_input = gr.Code(lines=10, label="Metadata as JSON", language="json")
                 input_file.change(
                     fn=on_button_load_metadata_lora,
-                    inputs=[input_file],
-                    outputs=[json_input]
+                    inputs=[input_file], outputs=[json_input]
                 )
     return [(ui_component, "Metadata Viewer", "metadata_viewer_tab")]
 
 script_callbacks.on_ui_tabs(on_ui_tabs)
 
 def on_button_load_metadata_lora(input_file: str):
-    if selected_model := file_utils.get_lora(input_file):
+    if selected_model := get_lora(input_file):
         if metadata := models.read_metadata_from_safetensors(selected_model):
             return json.dumps(metadata, indent=4, ensure_ascii=False)
         return 'No metadata'
