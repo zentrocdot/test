@@ -36,7 +36,7 @@ def fast_lora_scan(lora_dir, ext):  # lora_dir: str, ext: list
         subdirs.extend(sd)
         files.extend(fn)
     files.sort(reverse=False)
-    return files
+    return subdirs, files
 
 def get_lora_list():
     '''Simple function for use with components.'''
