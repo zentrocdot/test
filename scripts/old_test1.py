@@ -75,15 +75,6 @@ def on_ui_tabs():
 
 script_callbacks.on_ui_tabs(on_ui_tabs)
 
-'''
-def on_button_load_metadata(input_file: str):
-    if selected_model := models.get_closet_checkpoint_match(input_file):
-        if metadata := models.read_metadata_from_safetensors(selected_model.filename):
-            return json.dumps(metadata, indent=4, ensure_ascii=False)
-        return 'No metadata'
-    return 'Model not found'
-'''    
-
 def on_button_load_metadata_lora(input_file: str):
     if selected_model := file_utils.get_lora(input_file):
         if metadata := models.read_metadata_from_safetensors(selected_model):
