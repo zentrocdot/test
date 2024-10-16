@@ -24,14 +24,15 @@ lora_path = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.pat
 
 # Function lora_scan().
 def lora_scan(lora_dir, ext):  # lora_dir: str, ext: list
-    '''Fast file scan for LoRAs.'''
+    '''File scan for LoRA models.'''
     subdirs, files = [], []
     for f in os.scandir(lora_dir):
         if f.is_dir():
             subdirs.append(f.path)
         if f.is_file():
             if os.path.splitext(f.name)[1].lower() in ext:
-                files.append(f.name)
+                #files.append(f.name)
+                files.append(f.path)
     for dirs in list(subdirs):
         sd, fn = lora_scan(dirs, ext)
         subdirs.extend(sd)
