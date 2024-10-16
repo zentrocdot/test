@@ -25,9 +25,17 @@ from pathlib import Path
 import json
 from modules import script_callbacks
 
+relative_path = "/home/hades/ssd-sandisk/stable-diffusion-webui"
+
 def on_ui_tabs():
     with gr.Blocks(analytics_enabled=False) as ui_component:
         with gr.Tab("Checkpoint"):
+            with gr.Row():
+                file = gr.FileExplorer(
+                    glob="**/components/*.py",
+                    root_dir=relative_path,
+                    ignore_glob="**/__init__.py",
+        )
             with gr.Row():
                 input_file = gr.Dropdown(models.checkpoint_tiles(), label="Checkpoint")
                 create_refresh_button(input_file, models.list_models,
