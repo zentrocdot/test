@@ -68,11 +68,13 @@ def on_ui_tabs():
 script_callbacks.on_ui_tabs(on_ui_tabs)
 
 def get_lora(lora_file):
+    '''Function get_lora().'''
     if not os.path.isfile(os.path.join(lora_path, lora_file)):
         return None
     return os.path.join(lora_path, lora_file)
 
 def on_button_load_metadata_lora(input_file: str):
+    '''Function on_button_load_metadata_lora().'''
     if selected_model := get_lora(input_file):
         if metadata := models.read_metadata_from_safetensors(selected_model):
             return json.dumps(metadata, indent=4, ensure_ascii=False)
