@@ -62,20 +62,13 @@ def fast_lora_scan(dir, ext):  # dir: str, ext: list
             subfolders.append(f.path)
         if f.is_file():
             if os.path.splitext(f.name)[1].lower() in ext:
-                print(f)
-                #files.append(f.path)
                 files.append(f.name)
-                #files.append(os.path.basename(f).path)
     for dir in list(subfolders):
         sf, f = run_fast_scandir(dir, ext)
         subfolders.extend(sf)
         files.extend(f)
+    files = sorted(files, key=lambda x: x.count, reverse=True)
     return files
-
-#basename = os.path.basename(filepath)
-
-#files = fast_lora_scan(lora_path, [".safetensors"])
-#print(files)
 
 def on_ui_tabs():
     # Create a new block.
@@ -83,8 +76,8 @@ def on_ui_tabs():
         # Create a new row. 
         with gr.Row():
                 input_file = gr.Dropdown(fast_lora_scan(lora_path, [".safetensors"]), label="Lora")
-                create_refresh_button(input_file, get_loras,
-                                      lambda: {"choices": lora_lists()},
+                create_refresh_button(input_file, fast_lora_scan(lora_path, [".safetensors"]),
+                                      lambda: {"choices": fast_lora_scan(lora_path, [".safetensors"])},
                                       "metadata_utils_refresh_1")
         with gr.Row():
                 json_input = gr.Code(lines=10, label="Metadata as JSON",
